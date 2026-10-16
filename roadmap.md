@@ -1,2 +1,3 @@
-- [ ] Refresh Solid Carbide, PCD, and Brazed Carbide copy and imagery from PDF pages 6–14.
-- [ ] Verify category pages render with their matching PDF product photos.
+- [x] Refresh Solid Carbide, PCD, and Brazed Carbide copy and imagery from PDF pages 6–14.
+- [x] Verify category pages render with their matching PDF product photos.
+- [x] Use the PDF factory photos in the home page hero.

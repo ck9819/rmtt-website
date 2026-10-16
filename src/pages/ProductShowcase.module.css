@@ -55,10 +55,10 @@
 .bgImg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;   /* 2. centred — not pushed up */
+  object-fit: cover;
+  object-position: center center;
   display: block;
-  padding: 40px 80px 40px 420px;    /* left padding reserves space for text */
+  padding: 0;
   animation: subtleZoom 14s ease-in-out infinite;
 }
 
@@ -106,7 +106,8 @@
   }
   .bgSlide { position: absolute; }
   .bgImg {
-    padding: 16px;
+    object-position: center;
+    padding: 0;
     height: 240px;
   }
   .contentWrap {

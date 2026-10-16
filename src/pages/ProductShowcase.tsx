@@ -1,11 +1,16 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { ChevronLeft, ChevronRight} from 'lucide-react';
 import styles from './ProductShowcase.module.css';
+import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
+import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
+import factoryFloor from '../assets/factory-hero-floor.jpg.asset.json';
+import factoryInspection from '../assets/factory-hero-inspection.jpg.asset.json';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Slide {
   id: string;
   image: string;
+  imageAlt: string;
   category: string;
   title: string;
   subtitle: string;
@@ -13,12 +18,13 @@ interface Slide {
   href: string;
 }
 
-// ── DATA — use the 4 uploaded product images ─────────────────────────────────
+// ── DATA — factory photography from the company PDF ──────────────────────────
 const slides: Slide[] = [
   
   {
     id: 'solid-carbide-drills',
-    image: `${import.meta.env.BASE_URL}T2.png`,                       // solid carbide drill set — vertical
+    image: factoryCollage.url,
+    imageAlt: 'Riddhi precision tool manufacturing in the factory',
     category: 'Solid Carbide',
     title: 'Step Drills & Solid Carbide Drills',
     subtitle: 'High-polish flute geometry for single-pass multi-diameter drilling. Internal coolant options available for aluminium die casting and steel.',
@@ -27,7 +33,8 @@ const slides: Slide[] = [
   },
   {
     id: 'pcd-hsk-reamer',
-    image: `${import.meta.env.BASE_URL}40.png`,                       // PCD HSK shank reamer — 3/4 view
+    image: factoryMachining.url,
+    imageAlt: 'Close-up of precision machining in progress',
     category: 'PCD Tools',
     title: 'PCD Form Grooving Cutters',
     subtitle: 'VOLLMER Wire EDM + lapping edges. Module 70 / HSK connection with Z-4 PCD tips and internal coolant supply. One-shot finish in aluminium.',
@@ -36,7 +43,8 @@ const slides: Slide[] = [
   },
   {
     id: 'pcd-module-reamer',
-    image: `${import.meta.env.BASE_URL}42.png`,                       // PCD module shank reamer — front view
+    image: factoryFloor.url,
+    imageAlt: 'Precision CNC machines on the factory floor',
     category: 'PCD Tools',
     title: 'PCD Step Three Step Reamer',
     subtitle: '5 steps consolidated in one tool. Vc=210 m/min, feed 0.3 mm/rev on BT30. Module 60 runout compensation for smooth piston movement.',
@@ -45,7 +53,8 @@ const slides: Slide[] = [
   },
   {
     id: 'pcd-tools',
-    image: `${import.meta.env.BASE_URL}Pcd-tools.png`,                        // PCD reamer — horizontal close-up
+    image: factoryInspection.url,
+    imageAlt: 'Precision tool inspection equipment in the Riddhi facility',
     category: 'PCD Tools',
     title: 'Seameless Brazing',
     subtitle: 'Solid Carbide Steel body + Well balanced PCD aterial High quality pocket seats Perfect smooth flutes.',
@@ -108,7 +117,7 @@ export default function ProductShowcase(): JSX.Element {
           >
             <img
               src={s.image}
-              alt={s.title}
+              alt={s.imageAlt}
               className={styles.bgImg}
               loading={i === 0 ? 'eager' : 'lazy'}
             />

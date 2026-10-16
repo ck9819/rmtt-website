@@ -1,4 +1,30 @@
 import { Settings, Gem, Layers } from 'lucide-react';
+import solidCarbideOverview from '../assets/solid-carbide-overview.jpg.asset.json';
+import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
+import solidCarbideReamers from '../assets/solid-carbide-reamers.jpg.asset.json';
+import solidCarbideDrills from '../assets/solid-carbide-drills.jpg.asset.json';
+import pcdOverview from '../assets/pcd-overview.jpg.asset.json';
+import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
+import pcdToolingRange from '../assets/pcd-tooling-range.jpg.asset.json';
+import brazedCarbideOverview from '../assets/brazed-carbide-overview.jpg.asset.json';
+import brazedCarbideTools from '../assets/brazed-carbide-tools.jpg.asset.json';
+import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
+import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
+import pcdTool2 from '../assets/pcd-tool-2.png.asset.json';
+import pcdTool3 from '../assets/pcd-tool-3.png.asset.json';
+import pcdTool4 from '../assets/pcd-tool-4.png.asset.json';
+import pcdTool5 from '../assets/pcd-tool-5.png.asset.json';
+import pcdTool6 from '../assets/pcd-tool-6.png.asset.json';
+import pcdTool7 from '../assets/pcd-tool-7.png.asset.json';
+import pcdTool8 from '../assets/pcd-tool-8.png.asset.json';
+import brazedTool1 from '../assets/brazed-tool-1.png.asset.json';
+import brazedTool2 from '../assets/brazed-tool-2.png.asset.json';
+import brazedTool3 from '../assets/brazed-tool-3.png.asset.json';
+import brazedTool4 from '../assets/brazed-tool-4.png.asset.json';
+import brazedTool5 from '../assets/brazed-tool-5.png.asset.json';
+import brazedTool6 from '../assets/brazed-tool-6.png.asset.json';
+import brazedTool7 from '../assets/brazed-tool-7.png.asset.json';
+import brazedTool8 from '../assets/brazed-tool-8.png.asset.json';
 
 export type Product = {
   name: string;
@@ -35,46 +61,82 @@ export const categories: Category[] = [
     color: '#002855',
     bg: '#E6EDF4',
     label: 'Solid Carbide',
-    headline: 'Solid Carbide End Mills, Drills & Reamers',
+    headline: 'Solid Carbide End Mills, Reamers & Drills',
     intro:
-      'High-performance solid carbide tools engineered for steel, titanium, stainless steel and aluminium. High-polish flutes, micro cutting edge geometry, internal coolant options and advanced PVD coatings — all ground on 5-axis SAACKE machines to sub-micron tolerances.',
-    image: `${import.meta.env.BASE_URL}13.png`,
+      'High-performance solid carbide tools for demanding machining across grey and nodular cast iron, alloyed and stainless steels, titanium, Inconel and aluminium. The range includes precision end mills, reamers and drills, with application-specific geometries, polished flutes, internal coolant options and wear-resistant PVD coatings.',
+    image: solidCarbideOverview.url,
     features: [
-      'High-polish flutes for superior surface finish',
-      'Micro cutting edge geometry for precision',
-      'Internal coolant channels (optional)',
-      '5-axis SAACKE grinding for ±0.002 mm accuracy',
-      'AlTiN, TiSiN, DLC coating options',
-      'Ideal for HSC machining and 3D contouring',
+      'End mill diameters from 2 to 32 mm',
+      '2, 3, 4, 5 and 6-flute options',
+      'Multi-helix geometry, polished and edge-honed',
+      'Reamer diameters from 2 to 32 mm',
+      'Customer-specific bore tolerances, including H6 and H7',
+      'Drills from 2 to 25 mm, including special step drills',
+      'Internal coolant from 4 mm diameter on drills',
+      'Application-specific PVD wear-resistant coatings',
     ],
     subcategories: [
       {
         id: 'sc-end-mills',
         title: 'End Mills',
-        blurb: 'Two, three and four flute geometries for roughing, finishing and 3D contouring across steel, stainless and aluminium.',
+        blurb:
+          'Cost-effective high-performance milling tools for slot and shoulder milling, grooving, chamfering, roughing, finishing, high-feed and 3D profile milling.',
         products: [
-          { name: 'Ball Nose End Mills', desc: 'Tapered ball nose tools for high-precision 3D surface machining and die/mould finishing.', image: `${import.meta.env.BASE_URL}10.png`, application: 'Mould & die finishing, aerospace pockets, medical implants' },
-          { name: 'General Purpose End Mills', desc: 'Neutral geometry for everyday milling across mild steel, stainless and non-ferrous materials.', image: `${import.meta.env.BASE_URL}9.png`, application: 'Slotting, profiling, side milling of general engineering parts' },
-          { name: 'High-Performance End Mills', desc: 'Variable helix, unequal indexing and advanced coatings for vibration-free machining of hardened steels.', image: `${import.meta.env.BASE_URL}7.png`, application: 'Hardened tool steels, Inconel, titanium, stainless 17-4PH' },
-          { name: 'Finishing Application Solid Carbide Endmill', desc: 'Multi-flute reamers producing H7 or finer bores with Ra 0.4 µm surface finish.', image: `${import.meta.env.BASE_URL}8.png`, application: 'Hydraulic spool bores, gearbox shafts, valve bodies' },
-          { name: 'Tapered Ball Nose Endmill', desc: 'Ideal for HSC machining  and 3D machining Stable center geometery', image: `${import.meta.env.BASE_URL}11.png`, application: 'stainless steel, Tatanium alloys' },
+          {
+            name: 'Solid Carbide End Mills',
+            desc:
+              'Multi-helix end mills engineered for reliable results, productivity and demanding machining applications. Available with high-wear-resistance coatings and polished, edge-honed cutting edges.',
+            image: solidCarbideEndmills.url,
+            specs: [
+              { label: 'Diameter', value: '2–32 mm' },
+              { label: 'Flutes / edges', value: '2, 3, 4, 5 or 6' },
+              { label: 'Geometry', value: 'Multi-helix' },
+              { label: 'Edge finish', value: 'Polished and edge-honed' },
+            ],
+            application: 'Slotting, shoulder milling, grooving, chamfering, rough and finish milling, high-feed and 3D profile milling',
+          },
+        ],
+      },
+      {
+        id: 'sc-reamers',
+        title: 'Reamers',
+        blurb:
+          'Full-carbide reamers for precision bores and critical geometric accuracy in automotive, aerospace and other demanding applications.',
+        products: [
+          {
+            name: 'Solid Carbide Reamers',
+            desc:
+              'High-performance monoblock reamers with unequal spacing and application-specific cutting geometry. Straight flutes suit through and blind holes; left-hand spiral flutes are available for through holes.',
+            image: solidCarbideReamers.url,
+            specs: [
+              { label: 'Diameter', value: '2–32 mm' },
+              { label: 'Tolerance', value: 'Customer-specific, e.g. H6 / H7' },
+              { label: 'Flutes', value: 'Straight or left-hand spiral' },
+              { label: 'Material', value: 'Ultra-fine carbide' },
+            ],
+            application: 'Grey and nodular iron, alloyed steel, stainless steel, titanium and Inconel precision bores',
+          },
         ],
       },
       {
         id: 'sc-drills',
         title: 'Drills & Step Drills',
-        blurb: 'Solid carbide drills with polished flutes and reinforced web for chip-free single-pass drilling.',
+        blurb:
+          'Solid carbide drilling solutions with smooth polished flutes and cutting edges honed to match the application.',
         products: [
-          { name: 'Step Drills', desc: 'Multi-diameter holes finished in a single pass, eliminating tool changes and centring operations.', image: `${import.meta.env.BASE_URL}13T.png`, application: 'Cylinder heads, gearbox housings, injector bodies' },
-          { name: 'High-Polish Carbide Drills', desc: 'Mirror-polished flutes for excellent chip evacuation in deep-hole and stainless steel drilling.', image: `${import.meta.env.BASE_URL}12.png`, application: 'Stainless steel, titanium, aluminium deep-hole drilling' },
-        ],
-      },
-      {
-        id: 'sc-special',
-        title: 'Special / Multi-Grooving',
-        blurb: 'Application-specific carbide tools combining multiple cutting profiles into a single operation.',
-        products: [
-          { name: 'Special Multi-Grooving Tool', desc: 'Combination tools designed around your component drawing to cut multiple grooves in one pass.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (8).png`, application: 'Hydraulic manifold spools, automotive shaft grooves' },
+          {
+            name: 'Solid Carbide Drills',
+            desc:
+              'Application-designed two- and three-edge drills for cast iron, alloyed steel, stainless and titanium. Aluminium options include straight-fluted, high-polish designs; aerospace aluminium geometries help reduce long chips and built-up edge.',
+            image: solidCarbideDrills.url,
+            specs: [
+              { label: 'Diameter', value: '2–25 mm' },
+              { label: 'Edges', value: '2 or 3' },
+              { label: 'Helix', value: '30° standard; 40° for multi-step' },
+              { label: 'Coolant', value: 'Internal from 4 mm diameter' },
+            ],
+            application: 'Grey and nodular iron, alloyed and stainless steels, PH steel, titanium and aluminium alloys',
+          },
         ],
       },
     ],
@@ -85,62 +147,105 @@ export const categories: Category[] = [
     color: '#003B73',
     bg: '#E6EDF4',
     label: 'PCD Tools',
-    headline: 'PCD Reamers, Milling Cutters & Special Tools',
+    headline: 'PCD Tools for High-Performance Machining',
     intro:
-      'Polycrystalline diamond tipped tools engineered with VOLLMER Wire EDM edge machining and precision lapping. Ideal for high-volume aluminium die-casting, CFRP and non-ferrous applications demanding superior surface finish, dimensional accuracy and extended tool life.',
-    image: `${import.meta.env.BASE_URL}PCD-shanks.png`,
+      'Polycrystalline diamond tooling for highly productive machining of aluminium parts in automotive and aerospace applications. Riddhi develops application-specific PCD solutions for drilling, milling and precision boring, supporting tool design through manufacturing.',
+    image: pcdOverview.url,
     features: [
-      'VOLLMER Wire EDM + precision lapping edges',
-      'Seamless brazing with no heat distortion',
-      'Z-4 high-quality PCD tips',
-      'Internal coolant supply (optional)',
-      'Steel or solid carbide body options',
-      'Module 60/70, HSK and BT connections',
+      'Application-specific drilling, milling and boring solutions',
+      'Wire EDM, lapping and grinding of cutting edges',
+      'Solid carbide or steel tool bodies',
+      'Seamless brazing and high-quality pocket seats',
+      'Smooth flutes and balanced PCD material',
+      'Long tool life and high wear resistance',
+      'Surface finish below Ra 0.2 µm is achievable',
+      'Multiple operations can be combined in one tool',
     ],
     subcategories: [
       {
         id: 'pcd-tools',
-        title: 'PCD Tools',
-        blurb: 'Multi-step and single-step diamond delivering 5–10× the life of carbide in non-ferrous machining.',
+        title: 'PCD Tooling Technology',
+        blurb:
+          'PCD cutting material combines high hardness, a fine microstructure and smooth cutting surfaces to reduce built-up edge when machining aluminium.',
         products: [
-          { name: 'Single-Step & Multi-Step PCD Tools', desc: 'Up to 5 diameters in a single tool — replaces multiple operations on aluminium cylinder heads.', image: `${import.meta.env.BASE_URL}22.png`, application: 'Aluminium cylinder heads, gearbox housings' },
-          { name: 'Injector Bore PCD Tool', desc: 'Solid carbide body with PCD tipped.Long taper finish 0.4 Ra and size consistence with visible high quality finish.', image: `${import.meta.env.BASE_URL}5.png`, application: ' Cy head injector bore for 4Wheeler' },
-          { name: 'Master Cylender- Main Bore PCD Tool', desc: 'Solid carbide body with PCD. Challenge: Surface finish and clear from blow holes ', image: `${import.meta.env.BASE_URL}28.png`, application: 'Master main bore' },
+          {
+            name: 'PCD Cutting Tool Construction',
+            desc:
+              'Tool designs combine well-balanced PCD material, high-quality pocket seats, smooth flutes, precision-finished cutting edges and seamless brazing.',
+            image: pcdToolingTechnology.url,
+            application: 'High-speed aluminium machining where long tool life, tight tolerances and fine surface finish matter',
+          },
         ],
       },
       {
         id: 'pcd-reamers',
-        title: 'PCD Reamers',
-        blurb: 'Multi-step and single-step diamond reamers delivering 5–10× the life of carbide in non-ferrous machining.',
+        title: 'PCD Boring & Reaming Tools',
+        blurb:
+          'Precision PCD tooling designed around component and bore requirements, including operations that can be consolidated into one tool.',
         products: [
-          { name: 'Two-Wheeler Shock Absorber', desc: 'It is Aluminum Die Casting material. Used for Precision hole finishing (reaming) operation.', image: `${import.meta.env.BASE_URL}38.png`, application: 'Achieve high dimensional accuracy and superior surface finish for smooth piston movement' },
-          { name: 'PCD Step Three Step Reamer', desc: 'It is Aluminum Die Casting material. Used for Precision hole finishing (reaming) operation.', image: `${import.meta.env.BASE_URL}42.png`, application: 'Aerospace component finish reaming' },
+          {
+            name: 'PCD Boring Tool',
+            desc:
+              'Steel-body precision boring tool with a PCD cutting head for high-productivity machining.',
+            image: pcdTool1.url,
+            application: 'Aluminium component precision boring',
+          },
+          {
+            name: 'PCD Finish Boring Tool',
+            desc: 'Long-reach PCD tool for accurate, smooth bore finishing.',
+            image: pcdTool2.url,
+            application: 'High-performance bore finishing',
+          },
+          {
+            name: 'PCD Step Boring Tool',
+            desc: 'Application-designed PCD boring tool with stepped cutting geometry.',
+            image: pcdTool3.url,
+            application: 'Multi-feature aluminium bores',
+          },
+          {
+            name: 'PCD Reamer',
+            desc: 'PCD-edged reaming solution for consistent precision bore machining.',
+            image: pcdTool4.url,
+            application: 'Aluminium precision reaming',
+          },
         ],
       },
       {
         id: 'pcd-milling',
-        title: 'PCD Milling Cutters',
-        blurb: 'Profile, form-grooving and face mills with brazed PCD tips for one-shot finishing on aluminium.',
+        title: 'PCD Milling & Special Tools',
+        blurb:
+          'PCD milling and application-specific tools engineered for high-speed aluminium machining and multiple-operation processes.',
         products: [
-          { name: 'PCD Profile Milling Cutters', desc: 'Custom-profile mills for boot grooves, seal channels and OD profiles in one finishing pass.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (12).png`, application: 'CV joint boot grooves, transmission seal channels' },
-          { name: 'Boot & Seal groove milling', desc: 'Solid carbide body, Z-4 High quality PCD tips.It has internal coolant supplyand one shot finish. Highest seal groove surace and Consistent profile accuracy achieved', image: `${import.meta.env.BASE_URL}36.png`, application: 'CV joint boot grooves, transmission seal channels' },
-          { name: 'PCD Form Grooving Cutters', desc: 'Outside-diameter grooving cutters producing complex shapes on rotating workpieces.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (14).png`, application: 'Aluminium pistons, motor shaft grooves' },
-        ],
-      },
-      {
-        id: 'pcd-thread',
-        title: 'PCD Thread Mills',
-        blurb: 'Diamond thread mills for non-ferrous threading where tap life is the bottleneck.',
-        products: [
-          { name: 'PCD Thread Mills', desc: 'Helical interpolation thread mills with PCD tips for long-running threading on aluminium parts.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (11).png`, application: 'Aluminium housings, die-cast threaded bosses' },
-        ],
-      },
-      {
-        id: 'pcd-special',
-        title: 'Valve Seat & Guide Tools',
-        blurb: 'Combination PCD tooling for cylinder head valve seat and guide machining in a single cycle.',
-        products: [
-          { name: 'Valve Seat & Guide Tools', desc: 'Steel body with multiple PCD tips finishing seat angles and guide bore concentric to ±0.005 mm.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (15).png`, application: 'Cylinder head valve seats and guides' },
+          {
+            name: 'PCD Milling Tool',
+            desc: 'Multi-edge PCD milling tool for high material-removal rates and repeatable finishes.',
+            image: pcdTool5.url,
+            application: 'Aluminium milling operations',
+          },
+          {
+            name: 'PCD Special Tool',
+            desc: 'Custom PCD cutting solution manufactured to the component and process requirements.',
+            image: pcdTool6.url,
+            application: 'Customer-specific aluminium machining',
+          },
+          {
+            name: 'PCD Combination Tool',
+            desc: 'Combination tooling can consolidate multiple machining operations into one tool to reduce tool changes and production cost.',
+            image: pcdTool7.url,
+            application: 'Multi-operation automotive and aerospace components',
+          },
+          {
+            name: 'PCD Form Tool',
+            desc: 'Purpose-designed PCD form geometry for accurate profiles and long machining cycles.',
+            image: pcdTool8.url,
+            application: 'Application-specific profile machining',
+          },
+          {
+            name: 'PCD Tool Range',
+            desc: 'Selection of precision tool solutions designed for high-performance machining.',
+            image: pcdToolingRange.url,
+            application: 'Application-specific drilling, milling and precision boring',
+          },
         ],
       },
     ],
@@ -151,42 +256,99 @@ export const categories: Category[] = [
     color: '#3D6FA0',
     bg: '#E6EDF4',
     label: 'Brazed Carbide',
-    headline: 'Brazed Carbide Special Tools & Solutions',
+    headline: 'Brazed Carbide Tools & Special Solutions',
     intro:
-      'Cost-effective alternative to solid carbide and PCD for large-diameter, special-profile and high-volume applications. Tungsten carbide tips seamlessly brazed to steel bodies and ground on SAACKE 5-axis machines for precise edge geometry.',
-    image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (10).png`,
+      'Brazed carbide-tipped tools offer a cost-conscious way to retain strong machining performance amid high carbide raw-material costs. A heat-treated tool-steel body carries carbide tips brazed into prepared pockets, with cutting edges ground on a 5-axis CNC tool-grinding machine.',
+    image: brazedCarbideOverview.url,
     features: [
-      '5-axis SAACKE ground cutting edges',
-      'Seamless brazing with no heat distortion',
-      'Large diameter capability (80 mm+)',
-      'Cost-effective vs volatile carbide prices',
-      'Engineered for grey cast iron, steel & aluminium',
-      'Tight tolerances built in for precision',
+      'Tool-steel body, heat-treated for the application',
+      'Carbide tips brazed into prepared pockets',
+      'Cutting edges ground on 5-axis CNC equipment',
+      'Manufactured to customer-specific requirements',
+      'Stepped special tools and form tools',
+      'T-slot milling cutters',
+      'Reamers with internal coolant and PVD coating',
+      'Lugged carbide drills and reamers with internal coolant',
     ],
     subcategories: [
       {
         id: 'bc-milling',
         title: 'Milling Cutters',
-        blurb: 'Large-diameter face, Engineered for hydraulic and excavator component machining,shell and slot milling cutters with brazed carbide tips.',
+        blurb:
+          'Brazed carbide milling solutions include T-slot cutters and special milling tools manufactured for the component and customer requirements.',
         products: [
-          { name: 'Shell Milling Cutter', desc: 'Face milling cutter for hydraulic and excavator components — large diameters at competitive cost.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (20).png`, application: 'Designed to deliver consistent performance and machining efficiency in demanding industrial applications:Hydraulic valve blocks, excavator castings' },
-          { name: 'T-Slot Cutters', desc: 'Single and double-ended T-slot profile cutters for machine tool tables and fixturing slots.', image: `${import.meta.env.BASE_URL}46.png`, application: 'Machine tables, fixture plates, jig bases' },
+          {
+            name: 'Brazed Carbide Shell Milling Cutter',
+            desc:
+              'Brazed carbide-tipped shell milling cutter built on a tool-steel body for demanding machining and reduced tooling cost.',
+            image: brazedShellCutter.url,
+            application: 'Customer-specific milling applications',
+          },
+          {
+            name: 'T-Slot Milling Cutter',
+            desc:
+              'Brazed carbide T-slot cutter manufactured to the profile and requirements of the component.',
+            image: brazedTool1.url,
+            application: 'T-slot milling',
+          },
         ],
       },
       {
         id: 'bc-reamers',
-        title: 'Reamers',
-        blurb: 'Multi-diameter reamers and brazed boring bars for large bores beyond solid carbide range.',
+        title: 'Drills & Reamers',
+        blurb:
+          'Brazed carbide drilling and reaming tools, including internal-coolant options and application-specific geometries.',
         products: [
-          { name: 'Two-Step Reamer', desc: 'Multi-diameter bore finishing with brazed carbide tips — single tool replaces two reaming operations.', image: `${import.meta.env.BASE_URL}45.png`, application: 'Hydraulic cylinders, gearbox bores' },
+          {
+            name: 'Brazed Carbide Reamer',
+            desc: 'Carbide-tipped reamer with a heat-treated steel body, ground to the required geometry.',
+            image: brazedTool2.url,
+            application: 'Customer-specific precision reaming',
+          },
+          {
+            name: 'Lugged Carbide Drill',
+            desc: 'Lugged carbide drilling tool manufactured for the workpiece and application.',
+            image: brazedTool3.url,
+            application: 'Special-purpose drilling',
+          },
+          {
+            name: 'Brazed Carbide Drill',
+            desc: 'Carbide-tipped drill with application-specific cutting geometry.',
+            image: brazedTool4.url,
+            application: 'Industrial drilling applications',
+          },
+          {
+            name: 'Brazed Carbide Reamer with Coolant',
+            desc: 'Special brazed carbide reamer option with internal coolant supply and PVD coating.',
+            image: brazedTool5.url,
+            application: 'Precision reaming with internal coolant',
+          },
         ],
       },
       {
         id: 'bc-special',
-        title: 'Special Form ',
-        blurb: 'Customer-specific profiles brazed and ground to drawing — the workhorse of our brazed range.',
+        title: 'Stepped & Form Tools',
+        blurb:
+          'Special and form tools are designed around customer-specific component requirements.',
         products: [
-          { name: 'Special Form Tools', desc: 'Customer-specific profile tools ground to drawing — bring us the part, we will engineer the tool.', image: `${import.meta.env.BASE_URL}RMTT PPT.pdf (17).png`, application: 'OEM-specific component profiling' },
+          {
+            name: 'Stepped Special Tool',
+            desc: 'Brazed carbide tool with stepped geometry made to suit the required machining sequence.',
+            image: brazedTool6.url,
+            application: 'Customer-specific stepped machining',
+          },
+          {
+            name: 'Brazed Carbide Form Tool',
+            desc: 'Profiled carbide tips brazed to a steel body and ground to the required form.',
+            image: brazedTool7.url,
+            application: 'Special form milling and turning operations',
+          },
+          {
+            name: 'Special Carbide Tool',
+            desc: 'Application-engineered brazed tool manufactured to customer-specific requirements.',
+            image: brazedTool8.url,
+            application: 'Customer-specific machining operations',
+          },
         ],
       },
     ],
