@@ -6,7 +6,7 @@ import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import StatsBar from '../components/StatsBar';
 import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
-import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
+import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
 import brazedTool1 from '../assets/brazed-tool-1.png.asset.json';
 
 
@@ -33,7 +33,7 @@ const products = [
     tags: ['Multi-step reamers', 'Face mills', 'Valve seat tools', 'Injector reamers'],
     color: '#1A8A5C',
     bg: '#E8F5EE',
-    image: pcdToolingTechnology.url,
+    image: pcdTool1.url,
   },
   {
     id: 'brazed',
