@@ -1,0 +1,2 @@
+# Project decisions
+- Keep product-category content in `src/pages/productsData.tsx` and reference PDF-sourced media through checked-in `.asset.json` pointers in `src/assets` so category pages share one catalog and image binaries stay off-repo.
