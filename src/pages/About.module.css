@@ -34,9 +34,6 @@
 }
 
 /* remove dot grid — not needed on light bg */
-.pageHeroLeft::before {
-  display: none;
-}
 
 .pageTitle {
   font-size: clamp(26px, 3vw, 42px);
@@ -70,7 +67,7 @@
 
 /* eyebrow on light bg */
 .pageHeroLeft .section-eyebrow {
-  background: rgba(74,123,167,0.1);
+  background: var(--steel);
   color: #4A7BA7;
   border: 1px solid rgba(74,123,167,0.25);
   border-radius: 4px;
@@ -135,9 +132,9 @@
   object-fit: cover;
   object-position: center center;
   display: block;
-  border-radius: 14px;            /* ← soft rounded square */
+  border-radius: var(--radius-lg);            /* ← soft rounded square */
   border: 1px solid #D0DCF0;      /* ← light border/frame */
-  box-shadow: 0 4px 24px rgba(43,58,82,0.1);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.4s ease;
 }
 
@@ -150,12 +147,11 @@
   position: absolute;             /* keep as overlay but smaller */
   bottom: 40px;
   right: 40px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(4px);
+  background: var(--white);
   border: 1px solid #D0DCF0;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 8px 12px;
-  box-shadow: 0 2px 8px rgba(43,58,82,0.08);
+  box-shadow: var(--shadow-sm);
 }
 
 .makeInIndiaImg {
@@ -195,7 +191,7 @@
 }
 
 .storyImg {
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4/3;
 }
@@ -284,7 +280,7 @@
 .valueCard {
   background: #fff;
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 24px;
   transition: box-shadow 0.2s, transform 0.2s;
 }
@@ -298,7 +294,7 @@
   width: 44px;
   height: 44px;
   background: var(--blue-xlight);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -386,7 +382,7 @@
 }
 
 .locationImgWrap {
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4/3;
 }
@@ -450,15 +446,14 @@
 }
 
 /* hide old dot */
-.timelineDot { display: none; }
 
 /* ── CARD ── */
 .timelineCard {
   background: #fff;
   border: 1px solid #E2EAF5;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: 0;
-  box-shadow: 0 2px 8px rgba(43,58,82,0.06);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -468,7 +463,7 @@
 
 .timelineCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(43,58,82,0.13);
+  box-shadow: var(--shadow-md);
 }
 
 /* Ascending card heights — staircase effect */
@@ -573,7 +568,7 @@
 
 /* Card shell */
 .mvCard {
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   overflow: hidden;
   background: #fff;
@@ -583,7 +578,7 @@
 
 .mvCard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(43, 58, 82, 0.12);
+  box-shadow: var(--shadow-md);
 }
 
 /* Coloured header block */
@@ -602,8 +597,8 @@
 .mvIcon {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -714,7 +709,7 @@
 .principleCard {
   background: #fff;
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 28px;
   transition: box-shadow 0.25s, transform 0.2s;
 }
@@ -736,7 +731,7 @@
   width: 48px;
   height: 48px;
   background: var(--blue-xlight);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -761,7 +756,7 @@
   text-align: left;
   background: #fff;
   border-left: 4px solid var(--blue);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 24px 28px;
   margin-top: 32px;
 }
@@ -808,7 +803,7 @@
   margin-bottom: 24px;
   padding: 20px;
   background: var(--surface);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
 }
 
 .manufacturingList li {
@@ -871,7 +866,7 @@
 .productCategory {
   background: #fff;
   border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: 20px;
 }
 
@@ -941,7 +936,7 @@
   font-size: 15px;
   font-weight: 600;
   padding: 12px 28px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   transition: background 0.2s, transform 0.15s;
 }
 
@@ -1008,8 +1003,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: var(--white);
+  border: 1px solid var(--border-light);
   color:var(--navy);
   display: grid;
   place-items: center;
@@ -1017,7 +1012,7 @@
   transition: background 0.2s, border-color 0.2s;
 }
 .carouselArrow:hover {
-  background: rgba(74,123,167,0.25);
+  background: var(--steel);
   border-color: rgba(74,123,167,0.6);
 }
 .leaderCard {
@@ -1025,9 +1020,9 @@
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 36px;
-  background: rgba(255,255,255,0.03);
+  background: var(--white);
   border: 1px solid rgba(38, 47, 122, 0.08);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 32px;
   align-items: center;
   animation: fadeInLeader 0.5s ease;
@@ -1039,7 +1034,7 @@
 .leaderImgWrap {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: #1a2028;
 }
@@ -1086,7 +1081,7 @@
   transition: background 0.2s, transform 0.2s;
   padding: 0;
 }
-.dot:hover { background: rgba(255,255,255,0.4); }
+.dot:hover { background: var(--white); }
 .dotActive {
   background: #3d526d;
   transform: scale(1.25);

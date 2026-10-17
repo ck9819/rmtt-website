@@ -59,13 +59,6 @@
   object-position: center center;
   display: block;
   padding: 0;
-  animation: subtleZoom 14s ease-in-out infinite;
-}
-
-@keyframes subtleZoom {
-  0%   { transform: scale(1.0); }
-  50%  { transform: scale(1.03); }
-  100% { transform: scale(1.0); }
 }
 
 /* Light vignette on white — just a soft right edge fade */
@@ -162,7 +155,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #4A7BA7;
-  background: rgba(74, 123, 167, 0.1);
+  background: var(--steel);
   border: 1px solid rgba(74, 123, 167, 0.3);
   border-radius: 4px;
   padding: 4px 10px;
@@ -193,9 +186,6 @@
 }
 
 /* 4. CTA button — hidden */
-.cta {
-  display: none;
-}
 
 /* ── COUNTER + DOTS ── */
 .controls {
@@ -259,17 +249,6 @@
 }
 
 /* 3. PROGRESS BAR — hidden */
-.progressBar {
-  display: none;
-}
-
-.progressFill {
-  display: none;
-}
-
-.progressAnimate {
-  display: none;
-}
 
 /* ── ARROW BUTTONS ── */
 .arrow {
@@ -285,26 +264,20 @@
   z-index: 4;
   cursor: pointer;
   color: #2B3A52;
-
-  /* Glassmorphism arrow button */
-  background: rgba(255, 255, 255, 0.65);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
-  backdrop-filter: saturate(180%) blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: var(--white);
+  border: 1px solid var(--border-light);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 4px 16px rgba(0, 40, 85, 0.08);
+    var(--shadow-sm);
 
   transition: background 0.25s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 
 .arrow:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: var(--white);
+  border-color: var(--border-light);
   color: #4A7BA7;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 8px 24px rgba(0, 40, 85, 0.12);
+    var(--shadow-md);
   transform: translateY(-50%) scale(1.08);
 }
 
@@ -316,15 +289,6 @@
 }
 
 /* 3. THUMBNAIL STRIP — hidden */
-.thumbStrip {
-  display: none;
-}
-
-.thumb        { display: none; }
-.thumbActive  { display: none; }
-.thumbImg     { display: none; }
-.thumbOverlay { display: none; }
-.thumbLabel   { display: none; }
 
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {

@@ -16,6 +16,14 @@
   --steel: #4A6786;
   --steel-dark: #001E40;
 
+  /* Product categories — shared across every page */
+  --cat-solid: #002855;
+  --cat-pcd: #3D6FA0;
+  --cat-brazed: #4A6786;
+  --cat-solid-bg: #E6EDF4;
+  --cat-pcd-bg: #EAF0F6;
+  --cat-brazed-bg: #EBEFF3;
+
   /* Neutrals */
   --dark: #001E40;
   --text: #1A2A40;
@@ -44,51 +52,7 @@
   --radius-md: 3px;
   --radius-lg: 4px;
 
-  /* =========================================================
-     GLASSMORPHISM DESIGN SYSTEM
-     ========================================================= */
 
-  /* -- Core glass backgrounds -- */
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-strong: rgba(255, 255, 255, 0.72);
-  --glass-bg-weak: rgba(255, 255, 255, 0.35);
-  --glass-bg-dark: rgba(0, 40, 85, 0.45);
-  --glass-bg-dark-strong: rgba(0, 40, 85, 0.65);
-
-  /* -- Glass borders -- */
-  /* A very thin, light, semi-transparent border mimics the edge of glass reflecting light */
-  --glass-border: 1px solid rgba(255, 255, 255, 0.45);
-  --glass-border-strong: 1px solid rgba(255, 255, 255, 0.65);
-  --glass-border-dark: 1px solid rgba(255, 255, 255, 0.12);
-
-  /* -- Glass blur values (desktop / mobile) -- */
-  --glass-blur: saturate(180%) blur(14px);
-  --glass-blur-strong: saturate(200%) blur(18px);
-  --glass-blur-mobile: saturate(160%) blur(10px);
-
-  /* -- Glass shadow: subtle drop shadow for depth, separating from background -- */
-  --glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.55) inset,
-    0 8px 32px rgba(0, 40, 85, 0.08),
-    0 2px 6px rgba(0, 40, 85, 0.04);
-  --glass-shadow-hover:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 12px 40px rgba(0, 40, 85, 0.12),
-    0 4px 12px rgba(0, 40, 85, 0.06);
-  --glass-shadow-dark:
-    0 8px 32px rgba(0, 30, 64, 0.22),
-    0 2px 6px rgba(0, 30, 64, 0.12);
-
-  /* -- Glass button glow -- */
-  --glass-glow: 0 0 20px rgba(61, 111, 160, 0.25);
-  --glass-glow-strong: 0 0 30px rgba(61, 111, 160, 0.4);
-
-  /* -- Mesh gradient background colors (soft, professional palette) -- */
-  --mesh-1: #D6E4F0;
-  --mesh-2: #E8F0F8;
-  --mesh-3: #F0E8F4;
-  --mesh-4: #E0F2F0;
-  --mesh-5: #F2F5F8;
 }
 
 html {
@@ -100,11 +64,7 @@ html, body {
   max-width: 100%;
 }
 
-/* =========================================================
-   VIBRANT MESH GRADIENT BACKGROUND
-   Creates a flowing, colorful backdrop so the glass effect
-   is highly visible across the entire page.
-   ========================================================= */
+
 body {
   font-family: 'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
@@ -114,26 +74,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  /* Animated mesh gradient — vibrant, visible glass backdrop */
-  background:
-    radial-gradient(ellipse 70% 50% at 10% 20%, rgba(200, 180, 230, 0.55) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 60% at 85% 15%, rgba(180, 210, 240, 0.6) 0%, transparent 50%),
-    radial-gradient(ellipse 55% 70% at 50% 95%, rgba(180, 230, 210, 0.5) 0%, transparent 45%),
-    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(200, 220, 245, 0.55) 0%, transparent 40%),
-    radial-gradient(ellipse 65% 45% at 25% 65%, rgba(230, 210, 200, 0.4) 0%, transparent 45%),
-    linear-gradient(135deg, #F5F8FC 0%, #FFFFFF 35%, #F0F4F8 65%, #E8F0F8 100%);
-  background-attachment: fixed;
-  background-size: 250% 250%;
-  animation: meshShift 18s ease-in-out infinite;
+  background: var(--white);
 }
 
-/* Mesh gradient slow animation — gives life to the background */
-@keyframes meshShift {
-  0%, 100% { background-position: 0% 50%; }
-  25% { background-position: 50% 100%; }
-  50% { background-position: 100% 50%; }
-  75% { background-position: 50% 0%; }
-}
 
 /* Force light mode — ignore OS dark preference */
 @media (prefers-color-scheme: dark) {
@@ -225,219 +168,3 @@ img {
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
-/* =========================================================
-   GLASSMORPHISM UTILITY CLASSES
-   ========================================================= */
-
-/* ── Standard glass card (light theme) ──
-   Semi-transparent background + backdrop blur + light border + shadow
-   Creates the classic "frosted glass" look over the mesh gradient. */
-.glass {
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  border-radius: var(--radius-md);
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.glass:hover {
-  background: var(--glass-bg-strong);
-  box-shadow: var(--glass-shadow-hover);
-}
-
-/* ── Dark glass variant ──
-   For use on dark image backgrounds (e.g. hero overlays). */
-.glass-dark {
-  background: var(--glass-bg-dark);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: var(--glass-border-dark);
-  box-shadow: var(--glass-shadow-dark);
-  border-radius: var(--radius-md);
-  color: #fff;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-dark:hover {
-  background: var(--glass-bg-dark-strong);
-}
-
-/* ── Stronger / more opaque glass ──
-   For content that needs higher readability. */
-.glass-strong {
-  background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: var(--glass-blur-strong);
-  backdrop-filter: var(--glass-blur-strong);
-  border: var(--glass-border-strong);
-  box-shadow: var(--glass-shadow-hover);
-  border-radius: var(--radius-md);
-}
-
-/* ── Fallback for browsers without backdrop-filter support ──
-   Shows solid color so content remains readable. */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass { background: #ffffff; }
-  .glass-strong { background: #ffffff; }
-  .glass-dark { background: var(--navy); }
-}
-
-/* ── Mobile: slightly less blur for performance ── */
-@media (max-width: 600px) {
-  .glass, .glass-dark, .glass-strong {
-    -webkit-backdrop-filter: var(--glass-blur-mobile);
-    backdrop-filter: var(--glass-blur-mobile);
-  }
-}
-
-/* =========================================================
-   GLASSMORPHISM BUTTONS
-   ========================================================= */
-
-/* ── Base glass button ──
-   Default: slightly more opaque than card, smooth rounded corners, clear text.
-   Hover: brighter, subtle glow effect.
-   Active: scale(0.98) for tactile feedback. */
-.glass-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--navy);
-  letter-spacing: 0.01em;
-
-  /* Glass properties */
-  background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: var(--glass-border-strong);
-  border-radius: 12px;
-  box-shadow: var(--glass-shadow);
-
-  /* Transitions for smooth hover/active states */
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.15s ease,
-    color 0.2s ease;
-}
-
-/* Hover: brighter background, glow shadow, slight lift */
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: var(--glass-shadow-hover), var(--glass-glow);
-  transform: translateY(-2px);
-}
-
-/* Active / click: slight scale-down for tactile feel */
-.glass-button:active {
-  transform: scale(0.98) translateY(0);
-  box-shadow: var(--glass-shadow);
-}
-
-/* ── Primary glass button (accented) ──
-   Uses brand color tint in the glass for emphasis. */
-.glass-button-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.01em;
-
-  /* Slightly tinted glass with brand blue */
-  background: rgba(0, 40, 85, 0.55);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 12px;
-  box-shadow: var(--glass-shadow-dark);
-
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.15s ease;
-}
-
-.glass-button-primary:hover {
-  background: rgba(0, 40, 85, 0.72);
-  box-shadow: var(--glass-shadow-dark), var(--glass-glow);
-  transform: translateY(-2px);
-}
-
-.glass-button-primary:active {
-  transform: scale(0.98) translateY(0);
-  box-shadow: var(--glass-shadow-dark);
-}
-
-/* ── Outline glass button ──
-   Minimal glass with just a border, for secondary actions. */
-.glass-button-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--navy);
-  letter-spacing: 0.01em;
-
-  background: rgba(255, 255, 255, 0.25);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 12px;
-  box-shadow: var(--glass-shadow);
-
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.15s ease;
-}
-
-.glass-button-outline:hover {
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.glass-button-outline:active {
-  transform: scale(0.98) translateY(0);
-}
-
-/* Fallback for glass buttons on unsupported browsers */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass-button {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-md);
-  }
-  .glass-button-primary {
-    background: var(--navy);
-    border: 1px solid var(--navy);
-    color: #fff;
-  }
-  .glass-button-outline {
-    background: #ffffff;
-    border: 1px solid var(--border);
-  }
-}
-
-/* Mobile button sizing */
-@media (max-width: 600px) {
-  .glass-button,
-  .glass-button-primary,
-  .glass-button-outline {
-    padding: 10px 18px;
-    font-size: 14px;
-    border-radius: 10px;
-  }
-}
