@@ -1,64 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Microscope, Gauge, Cpu, Layers, Sparkles, Eye } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import styles from './Technology.module.css';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
-
-const machines = [
-  {
-    num: '01',
-    icon: Cpu,
-    name: 'SAACKE 5-axis CNC Grinding',
-    detail:
-      'SAACKE 5-axis tool grinding machines are part of the RMTT manufacturing facility.',
-    // TODO: confirm with client
-    // specs: ['5-axis simultaneous interpolation', 'Sub-micron geometric accuracy', 'Internal coolant hole grinding', 'Repeatable setups via digital machine memory'],
-  },
-  {
-    num: '02',
-    icon: Sparkles,
-    name: 'VOLLMER Wire EDM',
-    detail:
-      'VOLLMER Wire EDM is part of the RMTT manufacturing facility for PCD tooling.',
-    // TODO: confirm with client
-    // specs: ['PCD & CBN compatible', 'Edge geometry to ±0.002mm', 'Precision lapping post-EDM', 'No heat-affected zone'],
-  },
-  {
-    num: '03',
-    icon: Eye,
-    name: 'Walter Helicheck Optical Measurement',
-    detail:
-      'The RMTT facility includes a Walter Helicheck measuring machine.',
-    // TODO: confirm with client
-    // specs: ['Non-contact optical measurement', 'Full geometry verification', '100% outgoing inspection', 'Digital measurement records per tool'],
-  },
-  {
-    num: '04',
-    icon: Gauge,
-    name: 'Swiss Cylindrical Grinding',
-    detail:
-      'The RMTT facility includes Swiss cylindrical grinding systems.',
-    // TODO: confirm with client
-    // specs: ['h5/h6 shank tolerance', 'Runout < 0.003mm', 'Alumina and CBN wheels', 'Suitable for all carbide grades'],
-  },
-  {
-    num: '05',
-    icon: Layers,
-    name: 'Edge Preparation & Honing',
-    detail:
-      'The RMTT facility includes advanced edge honing and polishing equipment.',
-    // TODO: confirm with client
-    // specs: ['Drag finishing and brush honing', 'K-factor 0.8–2.0 µm Rk', 'Consistent edge radius control', 'Pre-coating surface preparation'],
-  },
-  {
-    num: '06',
-    icon: Microscope,
-    name: 'PVD Coating Solutions',
-    detail:
-      'The catalogue describes application-specific wear-resistant PVD coatings.',
-    // TODO: confirm with client
-    // specs: ['AlTiN — steel and cast iron', 'TiSiN — hardened steel (>55 HRC)', 'DLC — aluminium and non-ferrous', 'nACo — general high-performance'],
-  },
-];
+import { equipment } from '../data/equipment';
 
 const processSteps = [
   { step: '01', title: 'Application analysis', desc: 'You share the part drawing, material, machine type and cycle requirements. We analyse and design the optimal tool geometry.' },
@@ -84,7 +28,7 @@ export default function Technology() {
       <section className={styles.machinesSection}>
         <div className="container">
           <div className={styles.machinesGrid}>
-            {machines.map((m, i) => (
+            {equipment.map((m, i) => (
               <article key={m.num} className={`${styles.machineCard} ${i % 2 === 1 ? styles.machineCardAlt : ''}`}>
                 <div className={styles.machineImg}>
                   <PhotoPlaceholder icon={m.icon} />

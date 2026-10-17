@@ -57,8 +57,8 @@ export const categories: Category[] = [
   {
     id: 'solid-carbide',
     icon: Settings,
-    color: '#002855',
-    bg: '#E6EDF4',
+    color: 'var(--cat-solid)',
+    bg: 'var(--cat-solid-bg)',
     label: 'Solid Carbide',
     headline: 'Solid Carbide End Mills, Reamers & Drills',
     intro:
@@ -144,8 +144,8 @@ export const categories: Category[] = [
   {
     id: 'pcd',
     icon: Gem,
-    color: '#003B73',
-    bg: '#E6EDF4',
+    color: 'var(--cat-pcd)',
+    bg: 'var(--cat-pcd-bg)',
     label: 'PCD Tools',
     headline: 'PCD Tools for High-Performance Machining',
     intro:
@@ -253,8 +253,8 @@ export const categories: Category[] = [
   {
     id: 'brazed',
     icon: Layers,
-    color: '#3D6FA0',
-    bg: '#E6EDF4',
+    color: 'var(--cat-brazed)',
+    bg: 'var(--cat-brazed-bg)',
     label: 'Brazed Carbide',
     headline: 'Brazed Carbide Tools & Special Solutions',
     intro:

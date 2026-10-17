@@ -4,3 +4,6 @@
 - Render privacy and terms routes through the shared LegalPage with existing page styles to keep legal placeholders consistent without redesigning the site.
 - Keep optional leadership and customer sections gated by their typed arrays in src/data so empty client data never renders fabricated profiles or logos.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
+- Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.
+- Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
+- Use index.css and CSS Modules only; unused shadcn scaffolding is removed to keep the static site dependency surface minimal.
