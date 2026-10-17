@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, ChevronLeft, ChevronRight, Factory } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import { leaders } from '../data/leadership';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
+import PhotoPlaceholder from '../components/PhotoPlaceholder';
 
 const missionVision = [
   {
@@ -76,6 +77,7 @@ const values = [
 ];
 
 export default function About() {
+  const [facilityPhotoUnavailable, setFacilityPhotoUnavailable] = useState(false);
   const [leaderIdx, setLeaderIdx] = useState(0);
   useEffect(() => {
     if (leaders.length < 2) return;
@@ -360,11 +362,12 @@ export default function About() {
               </Link>
             </div>
             <div className={styles.locationImgWrap}>
-              <img
+              {facilityPhotoUnavailable ? <PhotoPlaceholder icon={Factory} /> : <img
                 src={factoryCollage.url}
                 alt="Riddhi facility Bengaluru"
                 className={styles.locationImg}
-              />
+                onError={() => setFacilityPhotoUnavailable(true)}
+              />}
             </div>
           </div>
         </div>
