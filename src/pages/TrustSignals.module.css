@@ -92,7 +92,7 @@
 
 .certCard {
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 24px;
   background: #fff;
   transition: box-shadow 0.25s, transform 0.2s;
@@ -106,7 +106,7 @@
 .certIconWrap {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,7 +179,7 @@
   flex: 0 0 160px;
   background: #fff;
   border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: 16px 14px;
   text-align: center;
   transition: box-shadow 0.2s, border-color 0.2s;
@@ -193,7 +193,7 @@
 .logoInitial {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,8 +274,6 @@
   }
 }
 
-.downloadLeft {}
-
 .downloadTitle {
   font-size: clamp(20px, 2.5vw, 28px);
   font-weight: 700;
@@ -298,7 +296,7 @@
   align-items: center;
   gap: 16px;
   background: linear-gradient(135deg, var(--navy) 0%, #1e3450 100%);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 20px 22px;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -312,7 +310,7 @@
 .featuredDownloadIcon {
   width: 52px;
   height: 52px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   background: rgba(255,255,255,0.12);
   display: flex;
   align-items: center;
@@ -341,7 +339,7 @@
 .featuredDownloadBtn {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: rgba(255,255,255,0.15);
   display: flex;
   align-items: center;
@@ -356,7 +354,6 @@
 }
 
 /* Individual download list */
-.downloadRight {}
 
 .downloadList {
   display: flex;
@@ -369,7 +366,7 @@
   align-items: flex-start;
   gap: 14px;
   border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: 16px 18px;
   text-decoration: none;
   background: #fff;
@@ -385,7 +382,7 @@
 .downloadItemIcon {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: var(--blue-xlight, #EBF2F9);
   display: flex;
   align-items: center;
@@ -425,7 +422,7 @@
 .downloadItemBtn {
   width: 30px;
   height: 30px;
-  border-radius: 7px;
+  border-radius: var(--radius-lg);
   background: var(--surface);
   border: 1px solid var(--border-light);
   display: flex;

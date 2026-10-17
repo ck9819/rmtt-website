@@ -622,7 +622,7 @@
   color: #fff;
   line-height: 1.35;
   margin: 0;
-  display: block;        /* ← ensure it's not display:none */
+  display: block;
   opacity: 1;
 }
 

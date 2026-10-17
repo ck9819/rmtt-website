@@ -54,8 +54,6 @@
   border-bottom-color: var(--border-light);
 }
 
-/* Fallback for browsers without backdrop-filter */
-
 .inner {
   max-width: 1400px;
   margin: 0 auto;

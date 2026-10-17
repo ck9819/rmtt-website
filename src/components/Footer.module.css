@@ -16,7 +16,6 @@
 }
 
 /* New column wrapper for Follow Us */
-.followCol {}
 
 @media (max-width: 900px) {
   .grid {
@@ -32,9 +31,6 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-.brand {}
 
 .logoImg {
   display: inline-block;
@@ -118,8 +114,6 @@
 .makeInIndiaImage:hover {
   opacity: 1;
 }
-
-.col {}
 
 .colTitle {
   font-size: 11px;
