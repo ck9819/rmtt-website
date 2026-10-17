@@ -1,7 +1,7 @@
 - [x] Refresh Solid Carbide, PCD, and Brazed Carbide copy and imagery from PDF pages 6–14.
 - [x] Verify category pages render with their matching PDF product photos.
 - [x] Use the PDF factory photos in the home page hero.
-- [ ] Correct navigation labels, active states, footer destinations, and home case-study link.
-- [ ] Centralize contact details and add placeholder privacy and terms pages.
-- [ ] Verify corrected navigation and contact links.
+- [x] Correct navigation labels, active states, footer destinations, and home case-study link.
+- [x] Centralize contact details and add placeholder privacy and terms pages.
+- [x] Verify corrected navigation and contact links.
 - [ ] Clarify truncated PDF download requirement (item 8).
