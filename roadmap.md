@@ -22,6 +22,6 @@
 - [x] Add persisted quote selections and accessible contact validation with disconnected submission.
 - [x] Add per-route document metadata and verify catalogue-to-contact flow.
 
-- [ ] Improve carousel playback, keyboard navigation, focus visibility, headings, contrast and image accessibility without redesign.
-- [ ] Self-host Source Sans 3, lazy-load secondary routes, update metadata and add static crawler files.
-- [ ] Verify keyboard flows, layouts at 375/768/1024px and Home/Products/Contact accessibility scores.
+- [x] Improve carousel playback, keyboard navigation, focus visibility, headings, contrast and image accessibility without redesign.
+- [x] Self-host Source Sans 3, lazy-load secondary routes, update metadata and add static crawler files (domain replacement documented as deployment TODO).
+- [x] Verify keyboard flows, layouts at 375/768/1024px and Home/Products/Contact accessibility scores (100 each).

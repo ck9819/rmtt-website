@@ -66,7 +66,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className={styles.topBar}>
+      <div className={styles.topBar} role="region" aria-label="Quick contact">
         <div className={styles.topBarInner}>
           <a href={siteConfig.phoneHref} className={styles.topBarLink}>
             <Phone size={13} /> {siteConfig.phone}

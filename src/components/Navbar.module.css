@@ -65,6 +65,7 @@
 }
 
 .logo {
+  min-height: 44px;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
