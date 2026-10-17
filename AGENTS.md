@@ -15,3 +15,4 @@
 - Keep one focusable main landmark around route content and lazy-load all non-Home pages so navigation stays accessible and the initial bundle stays lean.
 - Use the shared carousel playback hook so every timer respects reduced motion, focus, touch and explicit pause.
 - Serve Source Sans 3 through Fontsource with swap, avoiding third-party font requests on static hosting.
+- Allow the resolved dependency directory in Vite's development file serving so symlinked Fontsource assets load in the preview.
