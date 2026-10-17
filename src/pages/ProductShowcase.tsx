@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
-import { ChevronLeft, ChevronRight} from 'lucide-react';
+import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
+import { ChevronLeft, ChevronRight, Pause, Play} from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
@@ -66,7 +67,7 @@ const slides: Slide[] = [
 // ── COMPONENT ────────────────────────────────────────────────────────────────
 export default function ProductShowcase(): JSX.Element {
   const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const playback = useCarouselPlayback(slides.length);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -74,13 +75,14 @@ export default function ProductShowcase(): JSX.Element {
 
   const goTo = useCallback((idx: number, dir: 'next' | 'prev' = 'next') => {
     if (animating) return;
+    if (playback.reducedMotion) { setCurrent(idx); return; }
     setDirection(dir);
     setAnimating(true);
     setTimeout(() => {
       setCurrent(idx);
       setAnimating(false);
     }, 550);
-  }, [animating]);
+  }, [animating, playback.reducedMotion]);
 
   const next = useCallback(() =>
     goTo((current + 1) % count, 'next'), [current, count, goTo]);
@@ -90,18 +92,19 @@ export default function ProductShowcase(): JSX.Element {
 
   // Auto-advance
   useEffect(() => {
-    if (paused) return;
+    if (!playback.playing) return;
     timerRef.current = setInterval(next, 5000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [paused, next]);
+  }, [playback.playing, next]);
 
   const slide = slides[current];
 
   return (
     <section
       className={styles.showcase}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      role="region"
+      aria-roledescription="carousel"
+      {...playback.interactionProps}
       aria-label="Product highlights carousel"
     >
       {/* Background images — all preloaded, active one is visible */}
@@ -109,6 +112,7 @@ export default function ProductShowcase(): JSX.Element {
         {slides.map((s, i) => (
           <div
             key={s.id}
+            aria-hidden={i !== current}
             className={`
               ${styles.bgSlide}
               ${i === current ? styles.bgSlideActive : ''}
@@ -119,6 +123,9 @@ export default function ProductShowcase(): JSX.Element {
               src={s.image}
               alt={s.imageAlt}
               className={styles.bgImg}
+              width={1600}
+              height={900}
+              fetchPriority={i === 0 ? 'high' : undefined}
               loading={i === 0 ? 'eager' : 'lazy'}
             />
             {/* Dark vignette — strong at edges, lighter centre so product pops */}
@@ -134,15 +141,19 @@ export default function ProductShowcase(): JSX.Element {
         <div
           className={`${styles.textBlock} ${animating ? styles.textHide : styles.textShow}`}
           key={current}
+          aria-live={playback.playing ? 'off' : 'polite'}
         >
-          <div className={styles.category} style={{ color: slide.category === 'Solid Carbide' ? 'var(--cat-solid)' : 'var(--cat-pcd)' }}>{slide.category}</div>
-          <h2 className={styles.title}>{slide.title}</h2>
+          <div className={styles.category}>{slide.category}</div>
+          <h1 className={styles.title}>{slide.title}</h1>
           <p className={styles.subtitle}>{slide.subtitle}</p>
           <div className={styles.tag}>{slide.tag}</div>
         </div>
 
         {/* Right — slide counter + dots */}
         <div className={styles.controls}>
+          <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion}>
+            {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
+          </button>
           <div className={styles.counter}>
             <span className={styles.counterCurrent}>
               {String(current + 1).padStart(2, '0')}
@@ -158,6 +169,7 @@ export default function ProductShowcase(): JSX.Element {
                 key={i}
                 type="button"
                 aria-label={`Go to slide ${i + 1}`}
+                aria-current={i === current ? 'true' : undefined}
                 className={`${styles.dot} ${i === current ? styles.dotActive : ''}`}
                 onClick={() => goTo(i, i > current ? 'next' : 'prev')}
               />

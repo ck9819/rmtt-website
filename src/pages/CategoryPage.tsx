@@ -25,7 +25,7 @@ export default function CategoryPage() {
   if (!cat) return <Navigate to="/products" replace />;
 
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <section className={styles.pageHero}>
         <div className="container">
           <div className="section-eyebrow">{cat.label}</div>
@@ -64,7 +64,7 @@ export default function CategoryPage() {
               </ul>
             </div>
             <div className={styles.catImg}>
-              <img src={cat.image} alt={cat.headline} />
+              <img src={cat.image} alt={cat.headline} width={800} height={600} loading="lazy" />
             </div>
           </div>
 
@@ -101,6 +101,6 @@ export default function CategoryPage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, ChevronLeft, ChevronRight, Factory } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, ChevronLeft, ChevronRight, Factory, Pause, Play } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import { leaders } from '../data/leadership';
@@ -80,16 +81,17 @@ const values = [
 export default function About() {
   const [facilityPhotoUnavailable, setFacilityPhotoUnavailable] = useState(false);
   const [leaderIdx, setLeaderIdx] = useState(0);
+  const playback = useCarouselPlayback(leaders.length);
   useEffect(() => {
-    if (leaders.length < 2) return;
+    if (!playback.playing) return;
     const t = setInterval(() => setLeaderIdx(i => (i + 1) % leaders.length), 5000);
     return () => clearInterval(t);
-  }, []);
+  }, [playback.playing]);
   const leader = leaders[leaderIdx];
   const prev = () => { if (leaders.length) setLeaderIdx(i => (i - 1 + leaders.length) % leaders.length); };
   const next = () => { if (leaders.length) setLeaderIdx(i => (i + 1) % leaders.length); };
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       {/* ── ABOUT HERO — MAPAL split style ── */}
 <section className={styles.pageHero}>
   <div className={styles.pageHeroGrid}>
@@ -140,10 +142,10 @@ export default function About() {
   <img
     src={`${import.meta.env.BASE_URL}0.jpg`}
     alt="RMTT SAACKE CNC grinding machine in operation"
-    className={styles.pageHeroImg}
+    width={2420} height={3226} loading="lazy" className={styles.pageHeroImg}
   />
   <div className={styles.pageHeroBadge}>
-    <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" className={styles.makeInIndiaImg} />
+    <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" width={1500} height={704} loading="lazy" className={styles.makeInIndiaImg} />
   </div>
 </div>
 
@@ -277,7 +279,7 @@ export default function About() {
             </p>
             <div className={styles.productsGrid}>
               <div className={styles.productCategory}>
-                <h4 className={styles.productCategoryTitle}>Special Solid Carbide Tools</h4>
+                <h3 className={styles.productCategoryTitle}>Special Solid Carbide Tools</h3>
                 <ul className={styles.productList}>
                   <li>Drills and step tools</li>
                   <li>Solid carbide reamers</li>
@@ -286,7 +288,7 @@ export default function About() {
                 </ul>
               </div>
               <div className={styles.productCategory}>
-                <h4 className={styles.productCategoryTitle}>PCD Tools</h4>
+                <h3 className={styles.productCategoryTitle}>PCD Tools</h3>
                 <ul className={styles.productList}>
                   <li>Multi-step PCD reamers</li>
                   <li>Brazed carbide reamers</li>
@@ -295,7 +297,7 @@ export default function About() {
                 </ul>
               </div>
               <div className={styles.productCategory}>
-                <h4 className={styles.productCategoryTitle}>Brazed Carbide</h4>
+                <h3 className={styles.productCategoryTitle}>Brazed Carbide</h3>
                 <ul className={styles.productList}>
                   <li>Special brazed carbide tools</li>
                   <li>Multi-grooving tools</li>
@@ -338,7 +340,7 @@ export default function About() {
               {facilityPhotoUnavailable ? <PhotoPlaceholder icon={Factory} /> : <img
                 src={factoryCollage.url}
                 alt="Riddhi facility Bengaluru"
-                className={styles.locationImg}
+                width={1600} height={900} loading="lazy" className={styles.locationImg}
                 onError={() => setFacilityPhotoUnavailable(true)}
               />}
             </div>
@@ -347,7 +349,7 @@ export default function About() {
       </section>
 
       {/* Leadership is shown only when real client profiles exist. */}
-      {leader && <section className={styles.leadershipSection}>
+      {leader && <section className={styles.leadershipSection} role="region" aria-roledescription="carousel" aria-label="Founder and directors" {...playback.interactionProps}>
         <div className="container">
           <div className={styles.leadershipHead}>
             <div className="section-eyebrow">Leadership</div>
@@ -362,9 +364,9 @@ export default function About() {
               <ChevronLeft size={22} />
             </button>
 
-            <div className={styles.leaderCard} key={leader.name}>
+            <div className={styles.leaderCard} key={leader.name} aria-live={playback.playing ? 'off' : 'polite'}>
               <div className={styles.leaderImgWrap}>
-                <img src={leader.img} alt={leader.name} className={styles.leaderImg} />
+                <img src={leader.img} alt={leader.name} width={600} height={600} loading="lazy" className={styles.leaderImg} />
               </div>
               <div className={styles.leaderBody}>
                 <div className={styles.leaderRole}>{leader.role}</div>
@@ -379,6 +381,9 @@ export default function About() {
           </div>
 
           <div className={styles.carouselDots}>
+            <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion || leaders.length < 2}>
+              {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
+            </button>
             {leaders.map((_, i) => (
               <button
                 key={i}
@@ -401,6 +406,6 @@ export default function About() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

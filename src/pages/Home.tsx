@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Wrench, Car, Plane, Zap, Droplets, Cpu, CircleCheck as CheckCircle2, Award, Download, FileText } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Wrench, Car, Plane, Zap, Droplets, Cpu, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play } from 'lucide-react';
 import styles from './Home.module.css';
+import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
@@ -96,7 +97,7 @@ const trustItems = [
 
 export default function Home() {
   const [appIndex, setAppIndex] = useState(0);
-  const [appPaused, setAppPaused] = useState(false);
+  const playback = useCarouselPlayback(applications.length);
   const appCount = applications.length;
 
   
@@ -110,16 +111,16 @@ export default function Home() {
   const ctaReveal = useReveal<HTMLDivElement>();
 
   useEffect(() => {
-    if (appPaused) return;
+    if (!playback.playing) return;
     const id = setInterval(() => setAppIndex(i => (i + 1) % appCount), 4500);
     return () => clearInterval(id);
-  }, [appPaused, appCount]);
+  }, [playback.playing, appCount]);
 
   const goPrev = () => setAppIndex(i => (i - 1 + appCount) % appCount);
   const goNext = () => setAppIndex(i => (i + 1) % appCount);
 
   return (
-    <main>
+    <div>
       <ProductShowcase />
       
       {/* Industry strip */}
@@ -168,7 +169,7 @@ export default function Home() {
               <Link to={`/products#${p.id}`} key={p.id} className={styles.prodCard}>
                 <div className={styles.prodCardImg}>
                   {p.image ? (
-                    <img src={p.image} alt={p.name} className={styles.prodCardImgProduct} />
+                    <img src={p.image} alt={p.name} width={800} height={600} loading="lazy" className={styles.prodCardImgProduct} />
                   ) : (
                     <p.icon size={40} color={p.color} strokeWidth={1.5} />
                   )}
@@ -256,16 +257,18 @@ export default function Home() {
           <div
             ref={appsBodyReveal.ref}
             className={`${styles.appCarousel} ${styles.reveal} ${appsBodyReveal.shown ? styles.revealShown : ''}`}
-            onMouseEnter={() => setAppPaused(true)}
-            onMouseLeave={() => setAppPaused(false)}
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Application case studies"
+            {...playback.interactionProps}
           >
-            <div className={styles.appTrackWrap}>
+            <div className={styles.appTrackWrap} aria-live={playback.playing ? 'off' : 'polite'}>
               <div
                 className={styles.appTrack}
                 style={{ transform: `translateX(-${appIndex * 100}%)` }}
               >
-                {applications.map(app => (
-                  <div key={app.title} className={styles.appSlide}>
+                {applications.map((app, i) => (
+                  <div key={app.title} className={styles.appSlide} aria-hidden={i !== appIndex}>
                     <div className={styles.appCard}>
                       <div className={styles.appCardImg}>
                         <PhotoPlaceholder icon={app.icon} />
@@ -305,11 +308,15 @@ export default function Home() {
               <ChevronRight size={20} />
             </button>
             <div className={styles.carDots}>
+              <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion}>
+                {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
+              </button>
               {applications.map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   aria-label={`Go to case study ${i + 1}`}
+                  aria-current={i === appIndex ? 'true' : undefined}
                   className={`${styles.carDot} ${i === appIndex ? styles.carDotActive : ''}`}
                   onClick={() => setAppIndex(i)}
                 />
@@ -351,6 +358,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

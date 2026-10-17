@@ -13,14 +13,14 @@ export default function ProductDetail({ product }: { product: Product }) {
   const added = selected.some(tool => tool.slug === product.slug);
   const category = categories.find(cat => cat.id === product.category);
   const related = products.filter(tool => tool.category === product.category && tool.slug !== product.slug).sort((a, b) => Number(b.subcategory === product.subcategory) - Number(a.subcategory === product.subcategory)).slice(0, 3);
-  return <main className={styles.main}>
+  return <div className={styles.main}>
     <section className={styles.pageHero}><div className="container">
       <Link to={`/products?cat=${product.category}`} className={styles.detailLink}>Products / {category?.label}</Link>
       <h1 className={styles.pageTitle}>{product.name}</h1>
     </div></section>
     <section className={styles.catalogueSection}><div className="container">
       <div className={styles.detailGrid}>
-        <div className={styles.detailImage}>{product.image ? <img src={product.image} alt={product.name} /> : <PhotoPlaceholder icon={Settings} />}</div>
+        <div className={styles.detailImage}>{product.image ? <img src={product.image} alt={product.name} width={800} height={800} loading="lazy" /> : <PhotoPlaceholder icon={Settings} />}</div>
         <div><p className={styles.catIntro}>{product.description}</p>
           {product.applications.length > 0 && <><h2 className={styles.subCatTitle}>Typical applications</h2><ul className={styles.applicationList}>{product.applications.map(application => <li key={application}>{application}</li>)}</ul></>}
           {!!product.specs?.length && <table className={styles.specTable}><caption>Specifications</caption><tbody>{product.specs.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>}
@@ -33,5 +33,5 @@ export default function ProductDetail({ product }: { product: Product }) {
       </div>
       {related.length > 0 && <section className={styles.relatedSection}><h2 className={styles.catTitle}>Related products</h2><div className={styles.productCards}>{related.map(tool => <ProductCard key={tool.slug} product={tool} />)}</div></section>}
     </div></section>
-  </main>;
+  </div>;
 }

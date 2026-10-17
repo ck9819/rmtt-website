@@ -28,6 +28,8 @@ export default function Navbar() {
   const [productsOpen, setProductsOpen] = useState(false);
   const location = useLocation();
   const isActive = (href: string) => href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const productsButton = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -40,6 +42,18 @@ export default function Navbar() {
     setOpen(false);
     setProductsOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { setOpen(false); menuButton.current?.focus(); }
+    };
+    document.addEventListener('keydown', escape);
+    return () => { document.body.style.overflow = previous; document.removeEventListener('keydown', escape); };
+  }, [open]);
+  useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
 
   const openDropdown = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -66,7 +80,7 @@ export default function Navbar() {
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
           <Link to="/" className={styles.logo} aria-label="Riddhi Machine Tool Technology home">
-            <img src={`${import.meta.env.BASE_URL}1.png`} alt="Riddhi Machine Tool Technology" className={styles.logoImg} />
+            <img src={`${import.meta.env.BASE_URL}1.png`} alt="Riddhi Machine Tool Technology" width={1805} height={592} loading="lazy" className={styles.logoImg} />
           </Link>
           
           
@@ -77,20 +91,27 @@ export default function Navbar() {
                 <div
                   key={link.href}
                   className={styles.navItem}
+                  onFocus={openDropdown}
+                  onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setProductsOpen(false); }}
+                  onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); setProductsOpen(false); productsButton.current?.focus(); } }}
                   onMouseEnter={openDropdown}
                   onMouseLeave={scheduleClose}
                 >
-                  <Link
-                    to={link.href}
+                  <button
+                    type="button"
+                    ref={productsButton}
+                    onClick={() => setProductsOpen(value => !value)}
+                    onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDropdown(); } }}
+                    aria-controls="products-dropdown"
                     className={`${styles.navLink} ${isActive(link.href) ? styles.active : ''}`}
-                    aria-haspopup="true"
-                    aria-expanded={productsOpen}
+                                        aria-expanded={productsOpen}
                   >
                     {link.label}
                     <ChevronDown size={14} style={{ marginLeft: 4, verticalAlign: 'middle' }} />
-                  </Link>
+                  </button>
                   {productsOpen && (
-                    <div className={styles.dropdown} onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
+                    <div id="products-dropdown" className={styles.dropdown} onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
+                      <Link to="/products" className={styles.dropdownItem}>All products</Link>
                       {link.dropdown.map(opt => (
                         <Link key={opt.href} to={opt.href} className={styles.dropdownItem}>
                           {opt.label}
@@ -116,9 +137,12 @@ export default function Navbar() {
               Request Quote <span className={styles.quoteCount} aria-label={`${selected.length} selected tools`}>{selected.length}</span>
             </Link>
             <button
+              ref={menuButton}
+              type="button"
+              aria-controls="mobile-navigation"
               className={styles.menuBtn}
               onClick={() => setOpen(v => !v)}
-              aria-label="Toggle menu"
+              aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
             >
               {open ? <X size={20} /> : <Menu size={20} />}
@@ -127,7 +151,7 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className={styles.mobileMenu}>
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className={styles.mobileMenu}>
             {navLinks.map(link => (
               <div key={link.href}>
                 <Link
@@ -150,7 +174,7 @@ export default function Navbar() {
             <Link to="/contact" className={styles.mobileCta}>
               Request a Quote ({selected.length})
             </Link>
-          </div>
+          </nav>
         )}
       </header>
     </>

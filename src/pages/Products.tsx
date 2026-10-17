@@ -32,7 +32,7 @@ export default function Products() {
       return next;
     });
   };
-  return <main className={styles.main}>
+  return <div className={styles.main}>
     <section className={styles.pageHero}><div className="container">
       <div className="section-eyebrow">What we manufacture</div>
       <h1 className={styles.pageTitle}>Product range</h1>
@@ -52,5 +52,5 @@ export default function Products() {
       <div className={styles.resultsHeader}><p role="status">{results.length} {results.length === 1 ? 'tool' : 'tools'}</p>{params.size > 0 && <button type="button" className={styles.clearFilters} onClick={() => setParams({})}><X size={14} />Clear filters</button>}</div>
       {results.length ? <div className={styles.productCards}>{results.map(product => <ProductCard key={product.slug} product={product} />)}</div> : <div className={styles.emptyState}><h2>No tools match your selection</h2><Link to="/contact" className={styles.catCta}>Describe your requirement <ArrowRight size={16} /></Link></div>}
     </div></section>
-  </main>;
+  </div>;
 }

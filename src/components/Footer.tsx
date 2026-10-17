@@ -10,12 +10,12 @@ export default function Footer() {
         <div className="container">
           <div className={styles.grid}>
             <div className={styles.brand}>
-              <img src={`${import.meta.env.BASE_URL}1.png`} alt="Riddhi Machine Tool Technology" className={styles.logoImg} />
+              <img src={`${import.meta.env.BASE_URL}1.png`} alt="Riddhi Machine Tool Technology" width={1805} height={592} loading="lazy" className={styles.logoImg} />
               
             </div>
 
             <div className={styles.col}>
-              <div className={styles.colTitle}>Products</div>
+              <h2 className={styles.colTitle}>Products</h2>
               <ul className={styles.links}>
                 <li><Link to="/products#solid-carbide">Solid Carbide End Mills</Link></li>
                 <li><Link to="/products#solid-carbide">Step Drills & Reamers</Link></li>
@@ -27,7 +27,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.col}>
-              <div className={styles.colTitle}>Company</div>
+              <h2 className={styles.colTitle}>Company</h2>
               <ul className={styles.links}>
                 <li><Link to="/about">About Riddhi</Link></li>
                 <li><Link to="/services">Services</Link></li>
@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.col}>
-              <div className={styles.colTitle}>Contact</div>
+              <h2 className={styles.colTitle}>Contact</h2>
               <ul className={styles.contactList}>
                 <li>
                   <MapPin size={14} className={styles.contactIcon} />
@@ -55,7 +55,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className={styles.followCol}>
-              <div className={styles.colTitle}>Follow us</div>
+              <h2 className={styles.colTitle}>Follow us</h2>
               <div className={styles.socials}>
                 <a
                   href="https://in.linkedin.com/company/riddhi-machine-tool-technology-blr"
@@ -79,7 +79,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className="container">
           <div className={styles.bottomInner}>
-            <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" className={styles.makeInIndiaImage} />
+            <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" width={1500} height={704} loading="lazy" className={styles.makeInIndiaImage} />
             <span>© {new Date().getFullYear()} Riddhi Machine Tool Technology. All rights reserved.</span>
             <div className={styles.bottomLinks}>
               <Link to="/privacy">Privacy Policy</Link>
