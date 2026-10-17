@@ -6,6 +6,6 @@
 - [x] Verify corrected navigation and contact links.
 - [x] Rename and optimize the static catalogue PDF and update Home and Downloads links.
 - [x] Remove duplicate datasheets and invented file sizes; verify both downloads.
-- [ ] Correct end-mill copy and company placeholder without adding unverified specifications.
-- [ ] Add main-navigation Downloads link and Downloads h1 hero.
-- [ ] Verify every navigation, footer and CTA destination and TypeScript build status.
+- [x] Correct end-mill copy and company placeholder without adding unverified specifications.
+- [x] Add main-navigation Downloads link and Downloads h1 hero.
+- [x] Verify every navigation, footer and CTA destination and TypeScript build status.
