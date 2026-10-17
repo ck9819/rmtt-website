@@ -12,3 +12,6 @@
 - Keep quote selections in QuoteContext with guarded localStorage persistence because RFQ drafts must survive reloads without a backend.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
+- Keep one focusable main landmark around route content and lazy-load all non-Home pages so navigation stays accessible and the initial bundle stays lean.
+- Use the shared carousel playback hook so every timer respects reduced motion, focus, touch and explicit pause.
+- Serve Source Sans 3 through Fontsource with swap, avoiding third-party font requests on static hosting.
