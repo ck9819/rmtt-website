@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
 import styles from './Navbar.module.css';
+import { siteConfig } from '../lib/siteConfig';
 
 const productOptions = [
   { label: 'Solid Carbide', href: '/products/solid-carbide' },
@@ -13,7 +14,7 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Products', href: '/products', dropdown: productOptions },
-  { label: 'Applcations', href: '/applications' },
+  { label: 'Applications', href: '/applications' },
   { label: 'Services', href: '/services' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -23,6 +24,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const location = useLocation();
+  const isActive = (href: string) => href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -49,18 +51,18 @@ export default function Navbar() {
     <>
       <div className={styles.topBar}>
         <div className={styles.topBarInner}>
-          <a href="tel:+919945909155" className={styles.topBarLink}>
-            <Phone size={13} /> +91 99459 09155
+          <a href={siteConfig.phoneHref} className={styles.topBarLink}>
+            <Phone size={13} /> {siteConfig.phone}
           </a>
-          <a href="mailto:sales@rmtt.co.in" className={styles.topBarLink}>
-            <Mail size={13} /> sales@rmtt.co.in
+          <a href={`mailto:${siteConfig.email}`} className={styles.topBarLink}>
+            <Mail size={13} /> {siteConfig.email}
           </a>
         </div>
       </div>
 
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <Link to="/" className={styles.logo} aria-label="Riddhi Machine Tool Technology — Home">
+          <Link to="/" className={styles.logo} aria-label="Riddhi Machine Tool Technology home">
             <img src={`${import.meta.env.BASE_URL}1.png`} alt="Riddhi Machine Tool Technology" className={styles.logoImg} />
           </Link>
           
@@ -77,7 +79,7 @@ export default function Navbar() {
                 >
                   <Link
                     to={link.href}
-                    className={`${styles.navLink} ${location.pathname.startsWith(link.href) ? styles.active : ''}`}
+                    className={`${styles.navLink} ${isActive(link.href) ? styles.active : ''}`}
                     aria-haspopup="true"
                     aria-expanded={productsOpen}
                   >
@@ -98,7 +100,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`${styles.navLink} ${location.pathname.startsWith(link.href) ? styles.active : ''}`}
+                  className={`${styles.navLink} ${isActive(link.href) ? styles.active : ''}`}
                 >
                   {link.label}
                 </Link>
@@ -127,7 +129,7 @@ export default function Navbar() {
               <div key={link.href}>
                 <Link
                   to={link.href}
-                  className={`${styles.mobileLink} ${location.pathname.startsWith(link.href) ? styles.active : ''}`}
+                  className={`${styles.mobileLink} ${isActive(link.href) ? styles.active : ''}`}
                 >
                   {link.label}
                 </Link>

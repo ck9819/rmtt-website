@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CircleCheck as CheckCircle2, Upload } from 'lucide-react';
 import styles from './Contact.module.css';
+import { siteConfig } from '../lib/siteConfig';
 
 const toolTypes = [
   '— Select tool type —',
@@ -188,21 +189,21 @@ export default function Contact() {
                     <MapPin size={16} className={styles.contactIcon} />
                     <div>
                       <div className={styles.contactLabel}>Address</div>
-                      <div className={styles.contactValue}>GNC Industrial Estate,<br />Bengaluru, Karnataka 560082</div>
+                      <div className={styles.contactValue}>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</div>
                     </div>
                   </li>
                   <li className={styles.contactItem}>
                     <Phone size={16} className={styles.contactIcon} />
                     <div>
                       <div className={styles.contactLabel}>Phone / WhatsApp</div>
-                      <a href="tel:+919945909155" className={styles.contactValue}>+91 99459 09155</a>
+                      <a href={siteConfig.phoneHref} className={styles.contactValue}>{siteConfig.phone}</a>
                     </div>
                   </li>
                   <li className={styles.contactItem}>
                     <Mail size={16} className={styles.contactIcon} />
                     <div>
                       <div className={styles.contactLabel}>Email</div>
-                      <a href="mailto:sales@riddhitools.in" className={styles.contactValue}>sales@riddhitools.in</a>
+                      <a href={`mailto:${siteConfig.email}`} className={styles.contactValue}>{siteConfig.email}</a>
                     </div>
                   </li>
                   <li className={styles.contactItem}>
