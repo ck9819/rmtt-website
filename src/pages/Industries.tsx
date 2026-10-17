@@ -15,7 +15,7 @@ const caseStudies = [
     challenge:
       'Improve cycle time and achieve consistent profile accuracy for cylinder head intake and exhaust valve seats. Existing brazed carbide solution provided inconsistent finish quality and required frequent regrinding.',
     solution:
-      'Custom steel body + PCD-tipped multi-step valve seat reamer. 5-axis SAACKE ground geometry with VOLLMER EDM PCD edges and precision lapping delivers Ra < 0.4 surface finish consistently across production runs.',
+      'Custom steel body + PCD-tipped multi-step valve seat reamer. 5-axis SAACKE ground geometry with VOLLMER EDM PCD edges and precision lapping for PCD cutting edges.',
     result: 'Improved profile accuracy, cycle time reduced, superior finish consistency vs previous brazed carbide solution',
     resultIcon: TrendingUp,
     color: '#4A7BA7',
@@ -34,7 +34,7 @@ const caseStudies = [
       'Component has 5 bore steps requiring precision finishing for smooth piston movement. Original process needed 5 separate tools and multiple machine setups, consuming significant cycle time and introducing runout variability.',
     solution:
       'Custom PCD 5-step reamer with Module 70 connection, Z-4 high-quality PCD tips, internal coolant supply. Engineered for Vc=210 m/min at 0.3 mm/rev feed. One tool achieves all 5 steps in single pass with module 60 runout compensation built-in.',
-    result: '5 operations consolidated into 1 tool pass, Ra 0.4 surface finish achieved, significantly reduced cycle time and tool changes',
+    result: '5 steps in one tool, Vc=210 m/min, feed=0.3 mm/rev',
     resultIcon: Clock,
     color: '#1A8A5C',
     badge: '#E8F5EE',
@@ -52,7 +52,7 @@ const caseStudies = [
       'Spool bore requires multiple circumferential grooves with tight specifications. Original process needed multiple tool setups and changes, consuming significant machine time and introducing positional inconsistency between grooves.',
     solution:
       'One-shot special multi-grooving tool with all groove widths and spacing ground simultaneously on SAACKE 5-axis. Tight positional tolerances built into the tool geometry for precision without post-machining adjustment. Brazed carbide tips engineered for grey cast iron cutting.',
-    result: 'Up to 70% machine time reduction, all grooves held within ±0.005mm positional tolerance in single pass, improved reliability',
+    result: 'Special multi-grooving brazed carbide tool',
     resultIcon: TrendingUp,
     color: '#B07A1A',
     badge: '#FBF4E6',
@@ -69,8 +69,8 @@ const caseStudies = [
     challenge:
       'Injector bore long-taper finish requires Ra 0.4 surface quality with tight size consistency. Component requires visible high-quality finish for quality assurance. Standard solid carbide tools could not maintain finish quality across full production batches.',
     solution:
-      'Solid carbide body with PCD-tipped long-taper reamer. VOLLMER EDM machined edges with precision lapping ensure Ra < 0.4 surface finish. Form accuracy maintained at ±0.003mm across the full taper length. 5-axis SAACKE ground geometry.',
-    result: 'Ra 0.4 achieved consistently across all production batches, superior tool life, extended regrind intervals',
+      'Solid carbide body with PCD-tipped long-taper reamer. Wire EDM and lapping are described in the catalogue for PCD cutting edges. 5-axis SAACKE ground geometry.',
+    result: 'Application requirement: long taper finish 0.4 Ra and size consistency',
     resultIcon: Target,
     color: '#4A7BA7',
     badge: '#EBF2F9',
@@ -87,8 +87,8 @@ const caseStudies = [
     challenge:
       'Precision finish reaming of aerospace structural component bores with tight dimensional and positional tolerances. Requires consistent tool performance and traceability across production batches with zero defect tolerance.',
     solution:
-      'Custom PCD 3-step reamer engineered for aerospace applications. VOLLMER EDM-machined edges with precision lapping. Internal coolant supply through tool body. SAACKE 5-axis ground geometry for sub-micron accuracy. 100% inspected on Walter Helicheck optical measurement before delivery.',
-    result: 'Dimensional consistency ±0.002mm maintained across production batches, full measurement traceability, zero-defect production',
+      'Custom PCD 3-step reamer engineered for aerospace applications. VOLLMER EDM-machined edges with precision lapping. Internal coolant supply through tool body. The facility includes SAACKE 5-axis grinding and Walter Helicheck measurement.',
+    result: 'Application: aerospace component finish reaming',
     resultIcon: CheckCircle2,
     color: '#5B7FA3',
     badge: '#EBF2F9',

@@ -72,7 +72,7 @@ const applications = [
     industry: 'Two-wheeler',
     material: 'Aluminium die casting',
     tool: 'PCD 5-step reamer (Module 70, Z-4 tips)',
-    result: '5 operations in 1 tool, Vc=210 m/min, Ra 0.4 finish',
+    result: '5 steps in one tool, Vc=210 m/min',
     icon: Zap,
   },
   {
@@ -80,7 +80,7 @@ const applications = [
     industry: 'Hydraulics',
     material: 'Grey cast iron',
     tool: 'Special multi-grooving brazed carbide tool',
-    result: 'Up to 70% cycle time reduction, ±0.005mm tolerance',
+    result: 'Special multi-grooving brazed carbide tool',
     icon: Droplets,
   },
 ];

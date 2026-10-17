@@ -9,7 +9,7 @@ const machines = [
     icon: Cpu,
     name: 'SAACKE 5-axis CNC Grinding',
     detail:
-      'Our primary manufacturing platform for all solid carbide and brazed carbide tools. SAACKE\'s 5-axis grinding machines deliver sub-micron tolerance on all rotary tool geometries — helix, relief angles, edge radius and concentricity.',
+      'SAACKE 5-axis tool grinding machines are part of the RMTT manufacturing facility.',
     // TODO: confirm with client
     // specs: ['5-axis simultaneous interpolation', 'Sub-micron geometric accuracy', 'Internal coolant hole grinding', 'Repeatable setups via digital machine memory'],
   },
@@ -18,7 +18,7 @@ const machines = [
     icon: Sparkles,
     name: 'VOLLMER Wire EDM',
     detail:
-      'Dedicated to PCD and CBN tool manufacturing. Wire EDM allows precise cutting of polycrystalline diamond segments that cannot be conventionally ground. Combined with precision lapping, we achieve Ra < 0.4 on PCD cutting edges.',
+      'VOLLMER Wire EDM is part of the RMTT manufacturing facility for PCD tooling.',
     // TODO: confirm with client
     // specs: ['PCD & CBN compatible', 'Edge geometry to ±0.002mm', 'Precision lapping post-EDM', 'No heat-affected zone'],
   },
@@ -27,7 +27,7 @@ const machines = [
     icon: Eye,
     name: 'Walter Helicheck Optical Measurement',
     detail:
-      'Every tool produced at Riddhi is inspected on Walter Helicheck optical non-contact measurement system before shipping. This gives us a full digital record of geometry, runout, edge radius and surface finish for every serial number.',
+      'The RMTT facility includes a Walter Helicheck measuring machine.',
     // TODO: confirm with client
     // specs: ['Non-contact optical measurement', 'Full geometry verification', '100% outgoing inspection', 'Digital measurement records per tool'],
   },
@@ -36,7 +36,7 @@ const machines = [
     icon: Gauge,
     name: 'Swiss Cylindrical Grinding',
     detail:
-      'High-precision cylindrical grinding systems for shank and body grinding. Achieves h5 and h6 tolerance on tool shanks and body diameters, ensuring concentricity and fit in all standard tool holders.',
+      'The RMTT facility includes Swiss cylindrical grinding systems.',
     // TODO: confirm with client
     // specs: ['h5/h6 shank tolerance', 'Runout < 0.003mm', 'Alumina and CBN wheels', 'Suitable for all carbide grades'],
   },
@@ -45,7 +45,7 @@ const machines = [
     icon: Layers,
     name: 'Edge Preparation & Honing',
     detail:
-      'Micro-geometry edge preparation is performed on all tools before coating. Controlled edge honing removes micro-chipping risk and provides the ideal surface for PVD coating adhesion, extending tool life significantly.',
+      'The RMTT facility includes advanced edge honing and polishing equipment.',
     // TODO: confirm with client
     // specs: ['Drag finishing and brush honing', 'K-factor 0.8–2.0 µm Rk', 'Consistent edge radius control', 'Pre-coating surface preparation'],
   },
@@ -54,7 +54,7 @@ const machines = [
     icon: Microscope,
     name: 'PVD Coating Solutions',
     detail:
-      'We work with leading coating partners to apply the right coating for each application. AlTiN for high-temperature steel and cast iron machining, TiSiN for hardened materials, DLC for aluminium and non-ferrous applications.',
+      'The catalogue describes application-specific wear-resistant PVD coatings.',
     // TODO: confirm with client
     // specs: ['AlTiN — steel and cast iron', 'TiSiN — hardened steel (>55 HRC)', 'DLC — aluminium and non-ferrous', 'nACo — general high-performance'],
   },
@@ -64,7 +64,7 @@ const processSteps = [
   { step: '01', title: 'Application analysis', desc: 'You share the part drawing, material, machine type and cycle requirements. We analyse and design the optimal tool geometry.' },
   { step: '02', title: 'Tool design & DFM', desc: 'Our engineers create the tool design optimised for your application. We apply Design for Manufacturability to balance performance and cost.' },
   { step: '03', title: 'Manufacturing', desc: 'Tool is manufactured on SAACKE grinding or VOLLMER EDM, with edge preparation and appropriate coating applied.' },
-  { step: '04', title: 'Inspection & dispatch', desc: '100% inspection on Walter Helicheck with measurement report. Shipped with tool setting data and recommended cutting parameters.' },
+  { step: '04', title: 'Inspection & dispatch', desc: 'The facility includes Walter Helicheck measurement equipment.' },
 ];
 
 export default function Technology() {
@@ -75,7 +75,7 @@ export default function Technology() {
           <div className="section-eyebrow">Our capabilities</div>
           <h1 className={styles.pageTitle}>Manufacturing technology</h1>
           <p className={styles.pageSubtitle}>
-            German-benchmark equipment operated by experienced engineers from our Bengaluru facility. Every Riddhi tool is born from precision machinery and verified by optical measurement.
+            German-benchmark equipment operated by experienced engineers from our Bengaluru facility. The facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment.
           </p>
         </div>
       </section>
