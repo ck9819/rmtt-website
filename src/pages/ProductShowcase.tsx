@@ -135,7 +135,7 @@ export default function ProductShowcase(): JSX.Element {
           className={`${styles.textBlock} ${animating ? styles.textHide : styles.textShow}`}
           key={current}
         >
-          <div className={styles.category}>{slide.category}</div>
+          <div className={styles.category} style={{ color: slide.category === 'Solid Carbide' ? 'var(--cat-solid)' : 'var(--cat-pcd)' }}>{slide.category}</div>
           <h2 className={styles.title}>{slide.title}</h2>
           <p className={styles.subtitle}>{slide.subtitle}</p>
           <div className={styles.tag}>{slide.tag}</div>
@@ -166,13 +166,6 @@ export default function ProductShowcase(): JSX.Element {
         </div>
       </div>
 
-      {/* Progress bar */}
-      {/* <div className={styles.progressBar}>
-        <div
-          className={`${styles.progressFill} ${!paused ? styles.progressAnimate : ''}`}
-          key={`${current}-${paused}`}
-        />
-      </div> */}
 
       {/* Arrow buttons */}
       <button
@@ -192,22 +185,6 @@ export default function ProductShowcase(): JSX.Element {
         <ChevronRight size={22} />
       </button>
 
-      {/* Thumbnail strip at bottom */}
-      {/* <div className={styles.thumbStrip}>
-        {slides.map((s, i) => (
-          <button
-            key={s.id}
-            type="button"
-            aria-label={`Show ${s.title}`}
-            className={`${styles.thumb} ${i === current ? styles.thumbActive : ''}`}
-            onClick={() => goTo(i, i > current ? 'next' : 'prev')}
-          >
-            <img src={s.image} alt={s.title} className={styles.thumbImg} />
-            <div className={styles.thumbOverlay} />
-            <span className={styles.thumbLabel}>{s.category}</span>
-          </button>
-        ))}
-      </div> */}
     </section>
   );
 }

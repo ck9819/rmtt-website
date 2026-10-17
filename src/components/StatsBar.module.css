@@ -27,10 +27,8 @@
   text-align: center;
   color: #fff;
   padding: 14px 16px;
-  border-left: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255, 255, 255, 0.04);
-  -webkit-backdrop-filter: saturate(140%) blur(6px);
-  backdrop-filter: saturate(140%) blur(6px);
+  border-left: 1px solid var(--border-light);
+  background: var(--white);
   border-radius: var(--radius-md);
 }
 .stat:first-child { border-left: 0; }
@@ -60,7 +58,7 @@
 
 @media (max-width: 768px) {
   .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; }
+  .stat { border-left: 0; border-top: 1px solid var(--border-light); padding-top: 18px; }
   .stat:nth-child(-n+2) { border-top: 0; padding-top: 0; }
   .value { font-size: 28px; }
 }

@@ -4,6 +4,7 @@ import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Wrench, C
 import styles from './Home.module.css';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
+import { homeEquipment } from '../data/equipment';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
 import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
@@ -19,8 +20,8 @@ const products = [
     description:
       'High-polish flutes, internal coolant channels and advanced PVD coatings for steel, titanium and aluminium. Fully ground on 5-axis SAACKE machines.',
     tags: ['Step drills', 'Ball nose', 'Tapered', 'Thread mills'],
-    color: '#4A7BA7',
-    bg: '#EBF2F9',
+    color: 'var(--cat-solid)',
+    bg: 'var(--cat-solid-bg)',
     image: solidCarbideEndmills.url,
   },
   {
@@ -31,8 +32,8 @@ const products = [
     description:
       'Wire EDM + lapping edges, seamless brazing, steel & carbide body options. Ideal for aluminium die casting and non-ferrous applications.',
     tags: ['Multi-step reamers', 'Face mills', 'Valve seat tools', 'Injector reamers'],
-    color: '#1A8A5C',
-    bg: '#E8F5EE',
+    color: 'var(--cat-pcd)',
+    bg: 'var(--cat-pcd-bg)',
     image: pcdTool1.url,
   },
   {
@@ -43,8 +44,8 @@ const products = [
     description:
       'Cost-effective carbide solutions with 5-axis ground edges. T-slot cutters, shell mills, step reamers and custom profiles.',
     tags: ['T-slot cutters', 'Shell mills', 'Step reamers', 'Custom'],
-    color: '#B07A1A',
-    bg: '#FBF4E6',
+    color: 'var(--cat-brazed)',
+    bg: 'var(--cat-brazed-bg)',
     image: brazedTool1.url,
   },
 ];
@@ -62,6 +63,7 @@ const applications = [
   {
     title: 'Cylinder Head Valve Seat & Guide',
     industry: 'Automotive',
+    color: 'var(--cat-pcd)',
     material: 'Grey cast iron',
     tool: 'Steel body + PCD tipped multi-step reamer',
     result: 'Improved profile accuracy, better finish consistency',
@@ -70,6 +72,7 @@ const applications = [
   {
     title: 'Two-Wheeler Shock Absorber Bore',
     industry: 'Two-wheeler',
+    color: 'var(--cat-pcd)',
     material: 'Aluminium die casting',
     tool: 'PCD 5-step reamer (Module 70, Z-4 tips)',
     result: '5 steps in one tool, Vc=210 m/min',
@@ -78,6 +81,7 @@ const applications = [
   {
     title: 'Hydraulic Manifold Spool Bore Grooving',
     industry: 'Hydraulics',
+    color: 'var(--cat-brazed)',
     material: 'Grey cast iron',
     tool: 'Special multi-grooving brazed carbide tool',
     result: 'Special multi-grooving brazed carbide tool',
@@ -85,12 +89,6 @@ const applications = [
   },
 ];
 
-const machines = [
-  { num: '01', name: 'SAACKE 5-axis CNC Grinding', detail: '5-axis grinding for rotary cutting tools' },
-  { num: '02', name: 'VOLLMER Wire EDM', detail: 'PCD & CBN edge machining with precision lapping finish' },
-  { num: '03', name: 'Walter Helicheck', detail: 'Optical non-contact tool measurement & inspection' },
-  { num: '04', name: 'Swiss Cylindrical Grinding', detail: 'High-precision body & shank grinding systems' },
-];
 
 const trustItems = [
   { icon: Award, text: 'German-benchmark equipment' },
@@ -202,7 +200,7 @@ export default function Home() {
               ref={techReveal.ref}
               className={`${styles.techLeft} ${styles.reveal} ${techReveal.shown ? styles.revealShown : ''}`}
             >
-              <div className="section-eyebrow" style={{ background: 'rgba(74,123,167,0.2)', color: '#447199' }}>
+              <div className="section-eyebrow" style={{ background: 'var(--blue-xlight)', color: 'var(--steel)' }}>
                 Our equipment
               </div>
               <h2 className={styles.techTitle}>Manufacturing technology</h2>
@@ -225,12 +223,12 @@ export default function Home() {
               ref={techRightReveal.ref}
               className={`${styles.techRight} ${styles.revealStagger} ${techRightReveal.shown ? styles.revealStaggerShown : ''}`}
             >
-              {machines.map(m => (
+              {homeEquipment.map(m => (
                 <div key={m.num} className={styles.techCard}>
                   <div className={styles.techCardNum}>{m.num}</div>
                   <div className={styles.techCardBody}>
-                    <div className={styles.techCardName}>{m.name}</div>
-                    <div className={styles.techCardDetail}>{m.detail}</div>
+                    <div className={styles.techCardName}>{m.shortName}</div>
+                    <div className={styles.techCardDetail}>{m.summary}</div>
                   </div>
                 </div>
               ))}
@@ -272,7 +270,7 @@ export default function Home() {
                       <div className={styles.appCardImg}>
                         <PhotoPlaceholder icon={app.icon} />
                         <div className={styles.appCardImgOverlay} />
-                        <span className={styles.appBadge}>{app.industry}</span>
+                        <span className={styles.appBadge} style={{ background: app.color }}>{app.industry}</span>
                       </div>
                       <div className={styles.appCardBody}>
                         <h3 className={styles.appTitle}>{app.title}</h3>

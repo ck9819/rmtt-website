@@ -4,6 +4,7 @@ import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Light
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import { leaders } from '../data/leadership';
+import { facilityEquipment } from '../data/equipment';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 
@@ -95,17 +96,7 @@ export default function About() {
 
     {/* LEFT — text */}
     <div className={styles.pageHeroLeft}>
-      <div className="section-eyebrow" 
-      // style={{
-      //   background: 'rgba(74,123,167,0.18)',
-      //   color: '#6B8FBF',
-      //   border: '1px solid rgba(74,123,167,0.3)',
-      //   borderRadius: '4px',
-      //   padding: '4px 10px',
-      //   display: 'inline-block',
-      //   marginBottom: '20px',
-      // }}
-      >
+      <div className="section-eyebrow">
         Who we are
       </div>
 
@@ -264,11 +255,9 @@ export default function About() {
               Aligned with the Make in India vision, Riddhi Machine Tool Technology has invested in a state-of-the-art manufacturing facility equipped with advanced global technologies.
             </p>
             <ul className={styles.manufacturingList}>
-              <li><CheckCircle2 size={16} /> SAACKE 5-Axis Tool Grinding Machines</li>
-              <li><CheckCircle2 size={16} /> Swiss Cylindrical Grinding Systems</li>
-              <li><CheckCircle2 size={16} /> Advanced Edge Honing and Polishing Equipment</li>
-              <li><CheckCircle2 size={16} /> Walter Helicheck Measuring Machine</li>
-              <li><CheckCircle2 size={16} /> Vollmer Wire EDM Machine</li>
+              {facilityEquipment.map(item => (
+                <li key={item.id}><CheckCircle2 size={16} /> {item.facilityName}</li>
+              ))}
             </ul>
             <p className={styles.manufacturingNote}>
               Our manufacturing standards match German quality benchmarks, ensuring high accuracy, process consistency, and extended tool life across applications.
@@ -339,22 +328,6 @@ export default function About() {
                     <span className={styles.locationLabel}>Address</span>
                     <span>GNC Industrial Estate, Agara village, Tataguni, Kanakapura Main Rd, Bengaluru, Karnataka 560082</span>
                   </div>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />
-                  <span>5-axis SAACKE grinding machines</span>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />
-                  <span>VOLLMER Wire EDM for PCD tools</span>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />
-                  <span>Walter Helicheck optical measurement lab</span>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />
-                  <span>Swiss cylindrical grinding systems</span>
                 </li>
               </ul>
               <Link to="/contact" className={styles.locationCta}>
