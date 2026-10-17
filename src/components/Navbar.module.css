@@ -107,10 +107,12 @@
 
 .navLink:hover {
   background: var(--navy);
+  color: var(--white);
 }
 
 .navLink.active {
   background: var(--navy);
+  color: var(--white);
   border-bottom-color: var(--navy);
   font-weight: 600;
 }
@@ -188,6 +190,7 @@
 .mobileLink:hover,
 .mobileLink.active {
   background: var(--navy);
+  color: var(--white);
   border-left-color: var(--navy);
 }
 
@@ -258,6 +261,7 @@
 
 .dropdownItem:hover {
   background: var(--navy);
+  color: var(--white);
   border-left-color: var(--navy);
 }
 
@@ -280,3 +284,6 @@
   background: var(--navy);
   border-left-color: var(--navy);
 }
+
+.quoteCount { min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: var(--white); color: var(--navy); border-radius: var(--radius-sm); font-size: 12px; }
+@media (max-width: 1200px) and (min-width: 901px) { .navLink { padding: 22px 10px; } .inner { gap: 12px; } .nav { margin-left: 0; } }

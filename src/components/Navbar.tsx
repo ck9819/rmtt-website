@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
 import styles from './Navbar.module.css';
+import { useQuote } from '../context/QuoteContext';
 import { siteConfig } from '../lib/siteConfig';
 
 const productOptions = [
@@ -21,6 +22,7 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
 ];
 
 export default function Navbar() {
+  const { selected } = useQuote();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
@@ -111,7 +113,7 @@ export default function Navbar() {
 
           <div className={styles.actions}>
             <Link to="/contact" className={styles.cta}>
-              Request Quote
+              Request Quote <span className={styles.quoteCount} aria-label={`${selected.length} selected tools`}>{selected.length}</span>
             </Link>
             <button
               className={styles.menuBtn}
@@ -146,7 +148,7 @@ export default function Navbar() {
               </div>
             ))}
             <Link to="/contact" className={styles.mobileCta}>
-              Request a Quote
+              Request a Quote ({selected.length})
             </Link>
           </div>
         )}

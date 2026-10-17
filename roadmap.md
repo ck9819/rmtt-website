@@ -17,3 +17,7 @@
 - [x] Consolidate flat styling and category tokens; remove dead showcase blocks and hero zoom.
 - [x] Share equipment data across Home, About and Technology, listing it only once on About.
 - [x] Verify page rendering, mobile navigation, category consistency and automatic build; stylesheet source reduced 18.3% (production bundle comparison unavailable).
+
+- [x] Create static product catalogue with shared filters and product details.
+- [x] Add persisted quote selections and accessible contact validation with disconnected submission.
+- [x] Add per-route document metadata and verify catalogue-to-contact flow.
