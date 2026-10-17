@@ -3,6 +3,7 @@ import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { ChevronRight, ArrowRight, Check, FileText } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
+import ProductCard from '../components/ProductCard';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -74,35 +75,7 @@ export default function CategoryPage() {
                 <p className={styles.subCatBlurb}>{sub.blurb}</p>
               </div>
               <div className={styles.productCards}>
-                {sub.products.map(p => (
-                  <article key={p.name} className={styles.productCard}>
-                    {p.image && (
-                      <div className={styles.productImgWrap}>
-                        <img src={p.image} alt={p.name} loading="lazy" />
-                      </div>
-                    )}
-                    <div className={styles.productBody}>
-                      <h4 className={styles.productName}>{p.name}</h4>
-                      <p className={styles.productDesc}>{p.desc}</p>
-                      {p.specs && (
-                        <dl className={styles.specGrid}>
-                          {p.specs.map(s => (
-                            <div key={s.label} className={styles.specItem}>
-                              <dt>{s.label}</dt>
-                              <dd>{s.value}</dd>
-                            </div>
-                          ))}
-                        </dl>
-                      )}
-                      {p.application && (
-                        <div className={styles.appLine}>
-                          <span className={styles.appLabel}>Typical use</span>
-                          <span>{p.application}</span>
-                        </div>
-                      )}
-                    </div>
-                  </article>
-                ))}
+                {sub.products.map(product => <ProductCard key={product.slug} product={product} />)}
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Plus, Check, ArrowRight } from 'lucide-react';
+import { Plus, Check, ArrowRight, Settings } from 'lucide-react';
 import type { Product } from '../data/products';
 import { useQuote } from '../context/QuoteContext';
 import PhotoPlaceholder from './PhotoPlaceholder';
@@ -10,7 +10,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const added = selected.some(tool => tool.slug === product.slug);
   return <article className={styles.productCard}>
     <Link to={`/products/${product.slug}`} className={styles.productImgWrap} aria-label={`View ${product.name}`}>
-      {product.image ? <img src={product.image} alt={product.name} loading="lazy" /> : <PhotoPlaceholder label={product.name} />}
+      {product.image ? <img src={product.image} alt={product.name} loading="lazy" /> : <PhotoPlaceholder icon={Settings} />}
     </Link>
     <div className={styles.productBody}>
       <h3 className={styles.productName}><Link to={`/products/${product.slug}`}>{product.name}</Link></h3>

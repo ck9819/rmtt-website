@@ -1,93 +1,56 @@
 import { useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Check, FileText } from 'lucide-react';
-import styles from './Products.module.css';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Search, X, ArrowRight } from 'lucide-react';
+import { products } from '../data/products';
 import { categories } from './productsData';
+import { filterProducts } from '../lib/catalogue';
+import ProductCard from '../components/ProductCard';
+import styles from './Products.module.css';
+
+const materials = [...new Set(products.flatMap(product => product.materials))].sort();
+const industries = [...new Set(products.flatMap(product => product.industries))].sort();
 
 export default function Products() {
+  const [params, setParams] = useSearchParams();
   const { hash } = useLocation();
-
   useEffect(() => {
-    if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 110;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        return;
-      }
+    const category = hash.slice(1);
+    if (categories.some(cat => cat.id === category)) {
+      setParams(current => { const next = new URLSearchParams(current); next.set('cat', category); return next; }, { replace: true });
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [hash]);
-
-  return (
-    <main className={styles.main}>
-      <section className={styles.pageHero}>
-        <div className="container">
-          <div className="section-eyebrow">What we manufacture</div>
-          <h1 className={styles.pageTitle}>Product range</h1>
-          <p className={styles.pageSubtitle}>
-            Three tool technologies — Solid Carbide, PCD and Brazed Carbide — all manufactured to the same exacting standards on German equipment in Bengaluru.
-          </p>
-          <div className={styles.jumpLinks}>
-            {categories.map(c => (
-              <Link key={c.id} to={`/products/${c.id}`} className={styles.jumpLink}>
-                <c.icon size={14} />
-                {c.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {categories.map((cat) => (
-        <section key={cat.id} id={cat.id} className={styles.catSection}>
-          <div className="container">
-            <div className={styles.catHeader}>
-              <div className={styles.catHeaderText}>
-                <div className="section-eyebrow">{cat.label}</div>
-                <h2 className={styles.catTitle}>{cat.headline}</h2>
-                <p className={styles.catIntro}>{cat.intro}</p>
-                <ul className={styles.features}>
-                  {cat.features.map(f => (
-                    <li key={f} className={styles.feature}>
-                      <Check size={14} style={{ color: cat.color, flexShrink: 0 }} />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div style={{ marginTop: 22 }}>
-                  <Link to={`/products/${cat.id}`} className={styles.catCta}>
-                    Explore {cat.label} <ChevronRight size={15} />
-                  </Link>
-                </div>
-              </div>
-              <div className={styles.catImg}>
-                <img src={cat.image} alt={cat.headline} />
-              </div>
-            </div>
-
-            <div className={styles.catFooter}>
-              <Link to="/contact" className={styles.catCta}>
-                <FileText size={15} />
-                Request quote for {cat.label}
-                <ChevronRight size={15} />
-              </Link>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      <section className={styles.bottomCta}>
-        <div className="container">
-          <h2 className={styles.ctaTitle}>Don't see what you need?</h2>
-          <p className={styles.ctaSub}>
-            We regularly manufacture custom and special tools to customer specifications. Share your drawing or describe your challenge.
-          </p>
-          <Link to="/contact" className={styles.ctaBtn}>
-            Describe your requirement <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
-    </main>
-  );
+  }, [hash, setParams]);
+  const results = filterProducts(params);
+  const update = (key: string, value: string) => {
+    setParams(current => { const next = new URLSearchParams(current); value ? next.set(key, value) : next.delete(key); return next; }, { replace: key === 'q' });
+  };
+  const toggle = (key: string, value: string) => {
+    setParams(current => {
+      const next = new URLSearchParams(current);
+      const values = next.getAll(key);
+      next.delete(key);
+      (values.includes(value) ? values.filter(item => item !== value) : [...values, value]).forEach(item => next.append(key, item));
+      return next;
+    });
+  };
+  return <main className={styles.main}>
+    <section className={styles.pageHero}><div className="container">
+      <div className="section-eyebrow">What we manufacture</div>
+      <h1 className={styles.pageTitle}>Product range</h1>
+      <p className={styles.pageSubtitle}>Three tool technologies — Solid Carbide, PCD and Brazed Carbide — all manufactured to the same exacting standards on German equipment in Bengaluru.</p>
+    </div></section>
+    <div className={styles.filterBar}><div className="container">
+      <div className={styles.categoryTabs} role="group" aria-label="Product category">
+        {[{ id: 'all', label: 'All' }, ...categories].map(cat => <button key={cat.id} type="button" className={styles.filterChip} aria-pressed={(params.get('cat') || 'all') === cat.id} onClick={() => update('cat', cat.id === 'all' ? '' : cat.id)}>{cat.id === 'pcd' ? 'PCD' : cat.label}</button>)}
+      </div>
+    </div></div>
+    <section className={styles.catalogueSection}><div className="container">
+      <label className={styles.searchLabel} htmlFor="product-search">Search products</label>
+      <div className={styles.searchBox}><Search size={18} /><input id="product-search" type="search" maxLength={200} placeholder="Search tools or applications" value={params.get('q') || ''} onChange={event => update('q', event.target.value)} /></div>
+      {([{ key: 'material', label: 'Material', values: materials }, { key: 'industry', label: 'Industry', values: industries }]).map(filter => <fieldset className={styles.filterGroup} key={filter.key}>
+        <legend>{filter.label}</legend><div className={styles.chipRow}>{filter.values.map(value => <button type="button" key={value} className={styles.filterChip} aria-pressed={params.getAll(filter.key).includes(value)} onClick={() => toggle(filter.key, value)}>{value}</button>)}</div>
+      </fieldset>)}
+      <div className={styles.resultsHeader}><p role="status">{results.length} {results.length === 1 ? 'tool' : 'tools'}</p>{params.size > 0 && <button type="button" className={styles.clearFilters} onClick={() => setParams({})}><X size={14} />Clear filters</button>}</div>
+      {results.length ? <div className={styles.productCards}>{results.map(product => <ProductCard key={product.slug} product={product} />)}</div> : <div className={styles.emptyState}><h2>No tools match your selection</h2><Link to="/contact" className={styles.catCta}>Describe your requirement <ArrowRight size={16} /></Link></div>}
+    </div></section>
+  </main>;
 }
