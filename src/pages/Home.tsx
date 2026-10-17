@@ -343,8 +343,8 @@ export default function Home() {
                 Request a Quote
               </Link>
               <a
-                href="/RMTT_PPT.pdf"
-                download
+                href={`${import.meta.env.BASE_URL}rmtt-catalogue.pdf`}
+                download="rmtt-catalogue.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.ctaBtnSecondary}

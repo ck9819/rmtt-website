@@ -26,7 +26,6 @@ interface Download {
   id: string;
   title: string;
   description: string;
-  fileSize: string;
   fileType: string;
   href: string;
   featured?: boolean;
@@ -85,44 +84,18 @@ const customerLogos: CustomerLogo[] = [
   { id: '6', name: 'General Industry', industry: 'General Engg.', initial: 'G', color: '#7A3B1A', bg: '#F9EDEA' },
 ];
 
+// TODO: Add per-category datasheets when real PDFs are available.
 const downloads: Download[] = [
   {
     id: 'company-catalogue',
-    title: 'RMTT Product Catalogue',
+    title: 'Product Catalogue',
     description:
       'Complete product range — solid carbide, PCD and brazed carbide tools with specifications, applications and case studies.',
-    fileSize: '4.2 MB',
     fileType: 'PDF',
-    href: '/RMTT_PPT.pdf',
+    href: `${import.meta.env.BASE_URL}rmtt-catalogue.pdf`,
     featured: true,
   },
-  {
-    id: 'solid-carbide',
-    title: 'Solid Carbide Tools Datasheet',
-    description:
-      'End mills, step drills, reamers and special tools — geometry specifications, coating options and cutting data.',
-    fileSize: '1.8 MB',
-    fileType: 'PDF',
-    href: '/RMTT_PPT.pdf',
-  },
-  {
-    id: 'pcd-tools',
-    title: 'PCD Tools Technical Guide',
-    description:
-      'PCD reamers, milling cutters and valve seat tools — full application data, cutting parameters and dimensional drawings.',
-    fileSize: '2.1 MB',
-    fileType: 'PDF',
-    href: '/RMTT_PPT.pdf',
-  },
-  {
-    id: 'brazed-carbide',
-    title: 'Brazed Carbide Solutions',
-    description:
-      'T-slot cutters, shell mills, step reamers — ideal for hydraulic and excavator component machining.',
-    fileSize: '1.4 MB',
-    fileType: 'PDF',
-    href: '/RMTT_PPT.pdf',
-  },
+
 ];
 
 // ── STATS (trust numbers) ─────────────────────────────────────────────────────
@@ -245,15 +218,14 @@ export default function TrustSignals() {
             {/* Left — heading */}
             <div className={styles.downloadLeft}>
               <div className="section-eyebrow">Downloads</div>
-              <h2 className={styles.downloadTitle}>Product catalogues & datasheets</h2>
+              <h2 className={styles.downloadTitle}>Product Catalogue</h2>
               <p className={styles.downloadSub}>
-                Download our complete product catalogue or individual tool datasheets.
-                All documents include specifications, cutting parameters and application guidance.
+                Download our complete product catalogue for tool specifications and applications.
               </p>
               {/* Featured download — big CTA */}
               <a
                 href={downloads[0].href}
-                download
+                download="rmtt-catalogue.pdf"
                 className={styles.featuredDownload}
                 onClick={() => handleDownload(downloads[0])}
                 target="_blank"
@@ -265,7 +237,7 @@ export default function TrustSignals() {
                 <div className={styles.featuredDownloadBody}>
                   <div className={styles.featuredDownloadTitle}>{downloads[0].title}</div>
                   <div className={styles.featuredDownloadMeta}>
-                    {downloads[0].fileType} · {downloads[0].fileSize} · Full product range
+                    {downloads[0].fileType} · Full product range
                   </div>
                 </div>
                 <div className={styles.featuredDownloadBtn}>
@@ -278,40 +250,6 @@ export default function TrustSignals() {
               </a>
             </div>
 
-            {/* Right — individual datasheets */}
-            <div className={styles.downloadRight}>
-              <div className={styles.downloadList}>
-                {downloads.slice(1).map((item) => (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    download
-                    className={styles.downloadItem}
-                    onClick={() => handleDownload(item)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className={styles.downloadItemIcon}>
-                      <FileText size={18} />
-                    </div>
-                    <div className={styles.downloadItemBody}>
-                      <div className={styles.downloadItemTitle}>{item.title}</div>
-                      <div className={styles.downloadItemDesc}>{item.description}</div>
-                      <div className={styles.downloadItemMeta}>
-                        {item.fileType} · {item.fileSize}
-                      </div>
-                    </div>
-                    <div className={styles.downloadItemBtn}>
-                      {downloading === item.id ? (
-                        <span className={styles.downloadingSpinner} />
-                      ) : (
-                        <Download size={15} />
-                      )}
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
 
           </div>
         </div>
