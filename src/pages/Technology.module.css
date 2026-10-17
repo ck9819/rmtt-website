@@ -1,5 +1,5 @@
 .main {
-  padding-top: 72px;
+  padding-top: 100px;
 }
 
 .pageHero {
@@ -282,3 +282,8 @@
     padding: 48px 0;
   }
 }
+
+.pageHero :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
+@media (max-width: 600px) { .main { padding-top: 64px; } }
+
+.processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
