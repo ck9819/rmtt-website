@@ -187,51 +187,6 @@
   margin-top: 10px;
 }
 
-/* Success state */
-.successState {
-  text-align: center;
-  padding: 48px 24px;
-}
-
-.successIcon {
-  color: var(--success);
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.successTitle {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 12px;
-}
-
-.successText {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  max-width: 400px;
-  margin: 0 auto 28px;
-}
-
-.successBtn {
-  background: transparent;
-  color: var(--blue);
-  font-size: 14px;
-  font-weight: 600;
-  border: 1px solid var(--blue);
-  padding: 10px 22px;
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-
-.successBtn:hover {
-  background: var(--blue);
-  color: #fff;
-}
-
 /* Sidebar */
 .sidebar {
   display: flex;
@@ -351,3 +306,17 @@ a.contactValue:hover {
     font-size: 30px;
   }
 }
+
+.selectedTools { margin-bottom: 28px; }
+.selectedTools ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.selectedTools li { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; font-size: 13px; max-width: 100%; }
+.selectedTools li a { overflow-wrap: anywhere; }
+.selectedTools button { background: transparent; border: 0; display: flex; color: var(--navy); padding: 4px; }
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.error { color: var(--error); font-size: 13px; }
+.input[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--error); }
+.drawingField { margin: 24px 0; padding: 18px; border: 1px dashed var(--border); }
+.drawingField label { display: flex; align-items: center; gap: 8px; }
+.drawingField input { width: 100%; margin-top: 12px; color: var(--text); }
+.submitError { color: var(--error); border-left: 3px solid var(--error); padding: 12px; background: var(--surface); margin-bottom: 16px; }
+.submitError a, .formNote a { text-decoration: underline; }

@@ -1,185 +1,87 @@
-import { useState } from 'react';
-import { MapPin, Phone, Mail, Send, CircleCheck as CheckCircle2, Upload } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail, Send, Upload, X } from 'lucide-react';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
+import { useQuote } from '../context/QuoteContext';
+import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm } from '../lib/rfq';
 
-const toolTypes = [
-  '— Select tool type —',
-  'Solid carbide end mill',
-  'Solid carbide step drill',
-  'Solid carbide reamer',
-  'PCD reamer (multi-step)',
-  'PCD face mill',
-  'PCD valve seat tool',
-  'Brazed carbide tool',
-  'Special / custom tool',
-  'Not sure — need recommendation',
+const fields: { name: keyof RfqForm; label: string; required?: boolean; type?: string; placeholder?: string }[] = [
+  { name: 'name', label: 'Full name', required: true, placeholder: 'Your full name' },
+  { name: 'company', label: 'Company', required: true, placeholder: 'Your company name' },
+  { name: 'email', label: 'Email', required: true, type: 'email', placeholder: 'you@company.com' },
+  { name: 'phone', label: 'Phone / WhatsApp', type: 'tel' },
+  { name: 'toolType', label: 'Tool type required' },
+  { name: 'industry', label: 'Industry' },
+  { name: 'material', label: 'Component material', placeholder: 'Aluminium die casting, Grey CI…' },
+  { name: 'machine', label: 'Machine type', placeholder: 'VMC, HMC, SPM…' },
+  { name: 'qty', label: 'Quantity per month (components)', placeholder: 'e.g. 500 components' },
 ];
-
-const industries = [
-  '— Select industry —',
-  'Automotive',
-  'Two-wheeler',
-  'Aerospace',
-  'Hydraulics & pneumatics',
-  'Precision engineering',
-  'General engineering',
-  'Medical devices',
-  'Other',
-];
+const industryOptions = ['Automotive', 'Two-wheeler', 'Aerospace', 'Hydraulics & pneumatics', 'Precision engineering', 'General engineering', 'Medical devices', 'Other'];
+const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', toolType: '', industry: '', material: '', machine: '', qty: '', description: '', website: '' };
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: '', company: '', email: '', phone: '',
-    toolType: '', industry: '', material: '', machine: '', qty: '', description: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const { selected, remove } = useQuote();
+  const [form, setForm] = useState<RfqForm>(initialForm);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [drawing, setDrawing] = useState<File>();
+  const [fileError, setFileError] = useState<string>();
+  const [submitError, setSubmitError] = useState('');
+  const [sending, setSending] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const selectedNames = selected.map(tool => tool.name).join('; ');
+  const selectedSlugs = selected.map(tool => tool.slug);
+  useEffect(() => { setForm(current => ({ ...current, toolType: selectedNames })); }, [selectedNames]);
+  const change = (name: keyof RfqForm, value: string) => {
+    setForm(current => ({ ...current, [name]: value.slice(0, fieldLimits[name]) }));
+    setErrors(current => ({ ...current, [name]: '' }));
+    setSubmitError('');
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setSubmitError('');
+    const parsed = rfqSchema.safeParse(form);
+    const nextErrors: Record<string, string> = {};
+    if (!parsed.success) parsed.error.issues.forEach(issue => { const key = String(issue.path[0]); if (!nextErrors[key]) nextErrors[key] = issue.message; });
+    const attachmentError = validateDrawing(drawing) || fileError;
+    setErrors(nextErrors);
+    setFileError(attachmentError);
+    if (!parsed.success || attachmentError) {
+      requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
+      return;
+    }
+    const toolType = [...new Set([...(parsed.data.toolType ? [parsed.data.toolType] : []), ...selected.map(tool => tool.name)])].join('; ').slice(0, fieldLimits.toolType);
+    setForm({ ...parsed.data, toolType });
+    setSending(true);
+    try { await submitRfq({ ...parsed.data, toolType, tools: selectedSlugs, drawing }); }
+    catch (error) { setSubmitError(error instanceof Error ? error.message : 'Your request could not be sent. Please contact us directly.'); }
+    finally { setSending(false); }
   };
-
-  return (
-    <main className={styles.main}>
-      <section className={styles.pageHero}>
-        <div className="container">
-          <div className="section-eyebrow">Get in touch</div>
-          <h1 className={styles.pageTitle}>Request a quote</h1>
-          <p className={styles.pageSubtitle}>
-            Share your application details to request a technical proposal and pricing.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.contactSection}>
-        <div className="container">
-          <div className={styles.contactGrid}>
-            {/* Form */}
-            <div className={styles.formWrap}>
-              {submitted ? (
-                <div className={styles.successState}>
-                  <div className={styles.successIcon}><CheckCircle2 size={40} /></div>
-                  <h2 className={styles.successTitle}>Request submitted!</h2>
-                  <p className={styles.successText}>
-                    Thank you for your enquiry. Our team will review your requirements for a technical proposal.
-                  </p>
-                  <button className={styles.successBtn} onClick={() => setSubmitted(false)}>
-                    Submit another request
-                  </button>
-                </div>
-              ) : (
-                <form className={styles.form} onSubmit={handleSubmit}>
-                  <h2 className={styles.formTitle}>Your details</h2>
-                  <div className={styles.formRow}>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="name">Full name *</label>
-                      <input
-                        id="name" name="name" type="text" required
-                        className={styles.input} placeholder="Rajesh Kumar"
-                        value={form.name} onChange={handleChange}
-                      />
-                    </div>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="company">Company *</label>
-                      <input
-                        id="company" name="company" type="text" required
-                        className={styles.input} placeholder="Your company name"
-                        value={form.company} onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.formRow}>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="email">Email *</label>
-                      <input
-                        id="email" name="email" type="email" required
-                        className={styles.input} placeholder="r.kumar@company.com"
-                        value={form.email} onChange={handleChange}
-                      />
-                    </div>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="phone">Phone / WhatsApp</label>
-                      <input
-                        id="phone" name="phone" type="tel"
-                        className={styles.input} placeholder="+91 98765 43210"
-                        value={form.phone} onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  <h2 className={styles.formTitle} style={{ marginTop: 28 }}>Application details</h2>
-                  <div className={styles.formRow}>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="toolType">Tool type required</label>
-                      <select id="toolType" name="toolType" className={styles.select} value={form.toolType} onChange={handleChange}>
-                        {toolTypes.map(t => <option key={t} value={t === toolTypes[0] ? '' : t}>{t}</option>)}
-                      </select>
-                    </div>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="industry">Industry</label>
-                      <select id="industry" name="industry" className={styles.select} value={form.industry} onChange={handleChange}>
-                        {industries.map(t => <option key={t} value={t === industries[0] ? '' : t}>{t}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                  <div className={styles.formRow}>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="material">Component material</label>
-                      <input
-                        id="material" name="material" type="text"
-                        className={styles.input} placeholder="Aluminium die casting, Grey CI…"
-                        value={form.material} onChange={handleChange}
-                      />
-                    </div>
-                    <div className={styles.formField}>
-                      <label className={styles.label} htmlFor="machine">Machine type</label>
-                      <input
-                        id="machine" name="machine" type="text"
-                        className={styles.input} placeholder="VMC, HMC, SPM…"
-                        value={form.machine} onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.formField} style={{ marginBottom: 16 }}>
-                    <label className={styles.label} htmlFor="qty">Quantity per month (components)</label>
-                    <input
-                      id="qty" name="qty" type="text"
-                      className={styles.input} placeholder="e.g. 500 components"
-                      value={form.qty} onChange={handleChange}
-                    />
-                  </div>
-                  <div className={styles.formField} style={{ marginBottom: 16 }}>
-                    <label className={styles.label} htmlFor="description">Application description / challenges *</label>
-                    <textarea
-                      id="description" name="description" required
-                      className={styles.textarea}
-                      placeholder="Describe the machining challenge, current tool being used, and the problem you want to solve…"
-                      value={form.description} onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className={styles.uploadArea}>
-                    <Upload size={20} className={styles.uploadIcon} />
-                    <div>
-                      <div className={styles.uploadTitle}>Upload drawing (optional)</div>
-                      <div className={styles.uploadSub}>PDF, DXF, DWG — up to 10 MB</div>
-                    </div>
-                  </div>
-
-                  <button type="submit" className={styles.submitBtn}>
-                    <Send size={16} />
-                    Submit request
-                  </button>
-                  <p className={styles.formNote}>By submitting you agree to our privacy policy. We never share your data.</p>
-                </form>
-              )}
-            </div>
-
+  return <main className={styles.main}>
+    <section className={styles.pageHero}><div className="container"><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Request a quote</h1><p className={styles.pageSubtitle}>Share your application details to request a technical proposal and pricing.</p></div></section>
+    <section className={styles.contactSection}><div className="container"><div className={styles.contactGrid}>
+      <div className={styles.formWrap}>
+        {selected.length > 0 && <div className={styles.selectedTools}><h2 className={styles.formTitle}>Selected tools</h2><ul>{selected.map(tool => <li key={tool.slug}><Link to={`/products/${tool.slug}`}>{tool.name}</Link><button type="button" onClick={() => remove(tool.slug)} aria-label={`Remove ${tool.name}`}><X size={16} /></button></li>)}</ul></div>}
+        <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
+          <div className={styles.honeypot} aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" maxLength={fieldLimits.website} value={form.website} onChange={event => change('website', event.target.value)} /></div>
+          <h2 className={styles.formTitle}>Your details</h2>
+          <div className={styles.formRow}>
+            {fields.map(field => <div className={styles.formField} key={field.name}>
+              <label className={styles.label} htmlFor={field.name}>{field.label}{field.required ? ' *' : ''}</label>
+              {field.name === 'industry' ? <select id={field.name} name={field.name} className={styles.select} value={form.industry} onChange={event => change('industry', event.target.value)} aria-describedby={errors.industry ? 'industry-error' : undefined} aria-invalid={!!errors.industry}><option value="">— Select industry —</option>{industryOptions.map(value => <option key={value}>{value}</option>)}</select> : <input id={field.name} name={field.name} type={field.type || 'text'} className={styles.input} placeholder={field.placeholder} value={form[field.name]} maxLength={fieldLimits[field.name]} required={field.required} aria-invalid={!!errors[field.name]} aria-describedby={errors[field.name] ? `${field.name}-error` : undefined} onChange={event => change(field.name, event.target.value)} onBlur={event => change(field.name, event.target.value.trim())} />}
+              {errors[field.name] && <p id={`${field.name}-error`} role="alert" className={styles.error}>{errors[field.name]}</p>}
+            </div>)}
+          </div>
+          <div className={styles.formField}><label className={styles.label} htmlFor="description">Application description / challenges *</label><textarea id="description" name="description" required className={styles.textarea} maxLength={fieldLimits.description} placeholder="Describe the machining challenge, current tool and the problem you want to solve…" value={form.description} onChange={event => change('description', event.target.value)} onBlur={event => change('description', event.target.value.trim())} aria-invalid={!!errors.description} aria-describedby={errors.description ? 'description-error' : undefined} />{errors.description && <p id="description-error" role="alert" className={styles.error}>{errors.description}</p>}</div>
+          <div className={styles.drawingField}><label htmlFor="drawing" className={styles.uploadTitle}><Upload size={18} />Upload drawing (optional)</label><p id="drawing-help" className={styles.uploadSub}>PDF, DXF, DWG — up to 10 MB</p><input id="drawing" type="file" accept=".pdf,.dxf,.dwg" aria-invalid={!!fileError} aria-describedby={`drawing-help${fileError ? ' drawing-error' : ''}`} onChange={event => {
+            const file = event.target.files?.[0]; const error = validateDrawing(file); setFileError(error); setDrawing(error ? undefined : file); setSubmitError(''); if (error) event.target.value = '';
+          }} />{fileError && <p id="drawing-error" role="alert" className={styles.error}>{fileError}</p>}</div>
+          {errors.website && <p role="alert" className={styles.error}>{errors.website}</p>}
+          {submitError && <p role="alert" className={styles.submitError}>{submitError} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>}
+          <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Submit request'}</button>
+          <p className={styles.formNote}>By submitting you agree to our <Link to="/privacy">privacy policy</Link>.</p>
+        </form>
+      </div>
             {/* Info sidebar */}
             <div className={styles.sidebar}>
               <div className={styles.sideCard}>
@@ -245,9 +147,6 @@ export default function Contact() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+    </div></div></section>
+  </main>;
 }
