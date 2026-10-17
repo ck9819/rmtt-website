@@ -10,6 +10,7 @@ import Technology from './pages/Technology';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import TrustSignals from './pages/TrustSignals';
+import LegalPage from './pages/LegalPage';
 
 export default function App() {
   return (
@@ -24,6 +25,8 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/downloads" element={<TrustSignals />} />
+        <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />
+        <Route path="/terms" element={<LegalPage title="Terms" />} />
       </Routes>
       <Footer />
       <WhatsAppFab />

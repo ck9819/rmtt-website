@@ -254,7 +254,7 @@ export default function Home() {
               <h2 className={styles.sectionTitle}>Application case studies</h2>
               <p className={styles.sectionSub}>Real challenges solved with engineered tooling solutions.</p>
             </div>
-            <Link to="/industries" className={styles.sectionLink}>
+            <Link to="/applications" className={styles.sectionLink}>
               All case studies <ArrowRight size={14} />
             </Link>
           </div>

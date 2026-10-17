@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import styles from './Footer.module.css';
+import { siteConfig } from '../lib/siteConfig';
 
 export default function Footer() {
   return (
@@ -21,7 +22,7 @@ export default function Footer() {
                 <li><Link to="/products#pcd">PCD Tools</Link></li>
                 <li><Link to="/products#pcd">PCD Reamers & Millers</Link></li>
                 <li><Link to="/products#brazed">Brazed Carbide Tools</Link></li>
-                <li><Link to="/products#special">Special / Custom Tools</Link></li>
+                <li><Link to="/products#brazed">Special / Custom Tools</Link></li>
               </ul>
             </div>
 
@@ -29,10 +30,10 @@ export default function Footer() {
               <div className={styles.colTitle}>Company</div>
               <ul className={styles.links}>
                 <li><Link to="/about">About Riddhi</Link></li>
-                <li><Link to="/servisex">Services</Link></li>
-                <li><Link to="/applications">Appliations</Link></li>
+                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/applications">Applications</Link></li>
                 <li><Link to="/contact">Contact Us</Link></li>
-                <li><a href="/downloads">Downloads</a></li>
+                <li><Link to="/downloads">Downloads</Link></li>
               </ul>
             </div>
 
@@ -41,15 +42,15 @@ export default function Footer() {
               <ul className={styles.contactList}>
                 <li>
                   <MapPin size={14} className={styles.contactIcon} />
-                  <span>GNC Industrial Estate,<br />Bengaluru, KA 560082</span>
+                  <span>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</span>
                 </li>
                 <li>
                   <Phone size={14} className={styles.contactIcon} />
-                  <a href="tel:+919945909155">+91 99459 09155</a>
+                  <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
                 </li>
                 <li>
                   <Mail size={14} className={styles.contactIcon} />
-                  <a href="mailto:sales@riddhitools.in">sales@riddhitools.in</a>
+                  <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
                 </li>
               </ul>
             </div>
@@ -69,19 +70,6 @@ export default function Footer() {
                     <circle cx="4" cy="4" r="2"/>
                   </svg>
                 </a>
-                <a href="#" aria-label="YouTube" className={styles.social}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
-                  </svg>
-                </a>
-                <a href="#" aria-label="Instagram" className={styles.social}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                  </svg>
-                </a>
               </div>
             </div>
         </div>
@@ -94,8 +82,8 @@ export default function Footer() {
             <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" className={styles.makeInIndiaImage} />
             <span>© {new Date().getFullYear()} Riddhi Machine Tool Technology. All rights reserved.</span>
             <div className={styles.bottomLinks}>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms</a>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms</Link>
             </div>
           </div>
         </div>
