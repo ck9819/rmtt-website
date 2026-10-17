@@ -13,3 +13,7 @@
 - [x] Remove unsupported stats and certification claims; comment unconfirmed technology specs.
 - [x] Replace external stock photos with real project media or neutral icon panels.
 - [x] Document client content needs and verify all affected pages.
+- [ ] Remove unused styling, UI code, assets, dependencies and stale documentation; rewrite run instructions.
+- [ ] Consolidate flat styling and category tokens; remove dead showcase blocks and hero zoom.
+- [ ] Share equipment data across Home, About and Technology, listing it only once on About.
+- [ ] Verify navigation, layout, category consistency and output reduction.
