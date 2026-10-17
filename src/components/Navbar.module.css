@@ -107,10 +107,12 @@
 
 .navLink:hover {
   background: var(--navy);
+  color: var(--white);
 }
 
 .navLink.active {
   background: var(--navy);
+  color: var(--white);
   border-bottom-color: var(--navy);
   font-weight: 600;
 }
@@ -188,6 +190,7 @@
 .mobileLink:hover,
 .mobileLink.active {
   background: var(--navy);
+  color: var(--white);
   border-left-color: var(--navy);
 }
 
@@ -258,6 +261,7 @@
 
 .dropdownItem:hover {
   background: var(--navy);
+  color: var(--white);
   border-left-color: var(--navy);
 }
 

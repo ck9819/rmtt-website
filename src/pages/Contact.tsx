@@ -50,7 +50,7 @@ export default function Contact() {
       requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
       return;
     }
-    const toolType = [...new Set([...(parsed.data.toolType ? [parsed.data.toolType] : []), ...selected.map(tool => tool.name)])].join('; ').slice(0, fieldLimits.toolType);
+    const toolType = [...new Set([...parsed.data.toolType.split(';').map(value => value.trim()).filter(Boolean), ...selected.map(tool => tool.name)])].join('; ').slice(0, fieldLimits.toolType);
     setForm({ ...parsed.data, toolType });
     setSending(true);
     try { await submitRfq({ ...parsed.data, toolType, tools: selectedSlugs, drawing }); }
