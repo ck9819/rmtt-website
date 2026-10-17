@@ -82,17 +82,18 @@ export const categories: Category[] = [
           'Cost-effective high-performance milling tools for slot and shoulder milling, grooving, chamfering, roughing, finishing, high-feed and 3D profile milling.',
         products: [
           {
-            name: 'Solid Carbide End Mills',
+            name: 'Finishing Application Solid Carbide Endmill',
             desc:
-              'Multi-helix end mills engineered for reliable results, productivity and demanding machining applications. Available with high-wear-resistance coatings and polished, edge-honed cutting edges.',
+              'Solid carbide end mill for finish milling flat surfaces, shoulders and contours, removing remaining stock after roughing to achieve the required surface finish and final shape.',
             image: solidCarbideEndmills.url,
-            specs: [
+            // TODO: Confirm specifications for this finishing end mill before displaying them.
+            /* specs: [
               { label: 'Diameter', value: '2–32 mm' },
               { label: 'Flutes / edges', value: '2, 3, 4, 5 or 6' },
               { label: 'Geometry', value: 'Multi-helix' },
               { label: 'Edge finish', value: 'Polished and edge-honed' },
-            ],
-            application: 'Slotting, shoulder milling, grooving, chamfering, rough and finish milling, high-feed and 3D profile milling',
+            ], */
+            application: 'Finish milling of flat surfaces, shoulders and contours',
           },
         ],
       },

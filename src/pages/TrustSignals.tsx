@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Download, FileText, Award, ShieldCheck, Star, ChevronRight } from 'lucide-react';
 import styles from './TrustSignals.module.css';
+import pageStyles from './Contact.module.css';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Certificate {
@@ -122,7 +123,12 @@ export default function TrustSignals() {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <main className={styles.wrapper}>
+      <section className={pageStyles.pageHero}>
+        <div className="container">
+          <h1 className={pageStyles.pageTitle}>Downloads</h1>
+        </div>
+      </section>
 
       {/* ── 1. TRUST STATS BAR ── */}
       <section className={styles.statsBar}>
@@ -255,6 +261,6 @@ export default function TrustSignals() {
         </div>
       </section>
 
-    </div>
+    </main>
   );
 }

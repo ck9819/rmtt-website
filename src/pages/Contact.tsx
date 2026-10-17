@@ -88,7 +88,7 @@ export default function Contact() {
                       <label className={styles.label} htmlFor="company">Company *</label>
                       <input
                         id="company" name="company" type="text" required
-                        className={styles.input} placeholder="Bosch Ltd."
+                        className={styles.input} placeholder="Your company name"
                         value={form.company} onChange={handleChange}
                       />
                     </div>
