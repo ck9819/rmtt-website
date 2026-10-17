@@ -4,5 +4,5 @@
 - [x] Correct navigation labels, active states, footer destinations, and home case-study link.
 - [x] Centralize contact details and add placeholder privacy and terms pages.
 - [x] Verify corrected navigation and contact links.
-- [ ] Rename the static catalogue PDF and update Home and Downloads links.
-- [ ] Remove duplicate datasheets and invented file sizes; verify both downloads.
+- [x] Rename and optimize the static catalogue PDF and update Home and Downloads links.
+- [x] Remove duplicate datasheets and invented file sizes; verify both downloads.
