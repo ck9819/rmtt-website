@@ -91,7 +91,7 @@ export default function Navbar() {
                 <div
                   key={link.href}
                   className={styles.navItem}
-                  onFocus={openDropdown}
+                  onFocus={event => { if (!event.currentTarget.contains(event.relatedTarget)) openDropdown(); }}
                   onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setProductsOpen(false); }}
                   onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); setProductsOpen(false); productsButton.current?.focus(); } }}
                   onMouseEnter={openDropdown}

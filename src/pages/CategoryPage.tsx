@@ -75,7 +75,7 @@ export default function CategoryPage() {
                 <p className={styles.subCatBlurb}>{sub.blurb}</p>
               </div>
               <div className={styles.productCards}>
-                {sub.products.map(product => <ProductCard key={product.slug} product={product} />)}
+                {sub.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={4} />)}
               </div>
             </div>
           ))}

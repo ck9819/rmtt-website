@@ -5,7 +5,8 @@ import { useQuote } from '../context/QuoteContext';
 import PhotoPlaceholder from './PhotoPlaceholder';
 import styles from '../pages/Products.module.css';
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, headingLevel = 3 }: { product: Product; headingLevel?: 2 | 3 | 4 }) {
+  const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const { selected, add } = useQuote();
   const added = selected.some(tool => tool.slug === product.slug);
   return <article className={styles.productCard}>
@@ -13,7 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
       {product.image ? <img src={product.image} alt={product.name} width={800} height={600} loading="lazy" /> : <PhotoPlaceholder icon={Settings} />}
     </Link>
     <div className={styles.productBody}>
-      <h3 className={styles.productName}><Link to={`/products/${product.slug}`}>{product.name}</Link></h3>
+      <Heading className={styles.productName}><Link to={`/products/${product.slug}`}>{product.name}</Link></Heading>
       <p className={styles.productDesc}>{product.description}</p>
       <div className={styles.cardActions}>
         <Link to={`/products/${product.slug}`} className={styles.detailLink}>Tool details <ArrowRight size={14} /></Link>
