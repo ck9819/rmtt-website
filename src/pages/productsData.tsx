@@ -1,5 +1,8 @@
 import { products, type Product } from '../data/products';
 import { Settings, Gem, Layers } from 'lucide-react';
+import solidCarbideOverview from '../assets/solid-carbide-overview.jpg.asset.json';
+import pcdOverview from '../assets/pcd-overview.jpg.asset.json';
+import brazedCarbideOverview from '../assets/brazed-carbide-overview.jpg.asset.json';
 
 
 export type SubCategory = {
