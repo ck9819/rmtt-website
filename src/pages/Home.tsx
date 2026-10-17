@@ -220,7 +220,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link to="/technology" className={styles.techLink}>
+              <Link to="/services" className={styles.techLink}>
                 See all technology <ArrowRight size={14} />
               </Link>
             </div>
