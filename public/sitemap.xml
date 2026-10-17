@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: Replace https://www.example.com with the client domain before deployment.
+     HashRouter URLs preserve static navigation but fragments are not separately indexable by search engines.
+     lastmod is omitted because authoritative page-specific content dates are unavailable. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.example.com/#/</loc></url>
+  <url><loc>https://www.example.com/#/about</loc></url>
+  <url><loc>https://www.example.com/#/products</loc></url>
+  <url><loc>https://www.example.com/#/products/solid-carbide</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd</loc></url>
+  <url><loc>https://www.example.com/#/products/brazed</loc></url>
+  <url><loc>https://www.example.com/#/applications</loc></url>
+  <url><loc>https://www.example.com/#/services</loc></url>
+  <url><loc>https://www.example.com/#/downloads</loc></url>
+  <url><loc>https://www.example.com/#/contact</loc></url>
+  <url><loc>https://www.example.com/#/privacy</loc></url>
+  <url><loc>https://www.example.com/#/terms</loc></url>
+  <url><loc>https://www.example.com/#/products/finishing-application-solid-carbide-endmill</loc></url>
+  <url><loc>https://www.example.com/#/products/solid-carbide-reamers</loc></url>
+  <url><loc>https://www.example.com/#/products/solid-carbide-drills</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-cutting-tool-construction</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-boring-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-finish-boring-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-step-boring-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-reamer</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-milling-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-special-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-combination-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-form-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/pcd-tool-range</loc></url>
+  <url><loc>https://www.example.com/#/products/brazed-carbide-shell-milling-cutter</loc></url>
+  <url><loc>https://www.example.com/#/products/t-slot-milling-cutter</loc></url>
+  <url><loc>https://www.example.com/#/products/brazed-carbide-reamer</loc></url>
+  <url><loc>https://www.example.com/#/products/lugged-carbide-drill</loc></url>
+  <url><loc>https://www.example.com/#/products/brazed-carbide-drill</loc></url>
+  <url><loc>https://www.example.com/#/products/brazed-carbide-reamer-with-coolant</loc></url>
+  <url><loc>https://www.example.com/#/products/stepped-special-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/brazed-carbide-form-tool</loc></url>
+  <url><loc>https://www.example.com/#/products/special-carbide-tool</loc></url>
+</urlset>

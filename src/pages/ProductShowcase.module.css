@@ -154,8 +154,8 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #4A7BA7;
-  background: var(--steel);
+  color: var(--navy);
+  background: var(--blue-xlight);
   border: 1px solid rgba(74, 123, 167, 0.3);
   border-radius: 4px;
   padding: 4px 10px;
@@ -163,12 +163,12 @@
 }
 
 .title {
-  font-size: clamp(22px, 3vw, 38px);
+  font-size: 38px;
   font-weight: 700;
   color: #1A2535;                 /* dark navy on white */
   line-height: 1.2;
   margin-bottom: 12px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .subtitle {
@@ -181,7 +181,7 @@
 
 .tag {
   font-size: 11px;
-  color: #8A9BB0;
+  color: var(--text-muted);
   letter-spacing: 0.04em;
 }
 
@@ -207,18 +207,18 @@
   font-weight: 700;
   color: #1A2535;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .counterSep {
   font-size: 18px;
-  color: #B0BFCC;
+  color: var(--text-muted);
   margin: 0 2px;
 }
 
 .counterTotal {
   font-size: 18px;
-  color: #B0BFCC;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -296,3 +296,18 @@
   .textShow, .textHide { animation: none; opacity: 1; transform: none; }
   .bgEnterNext, .bgEnterPrev { animation: none; }
 }
+/* Preserve the narrow dot graphic inside a generously sized hit area. */
+.dot { width: 24px; height: 36px; min-width: 24px; padding: 0; background: transparent; position: relative; }
+.dot::after { content: ''; display: block; width: 4px; height: 20px; margin: auto; border-radius: var(--radius-sm); background: var(--border); }
+.dotActive, .dot:hover { background: transparent; }
+.dotActive::after { background: var(--steel); height: 36px; }
+@media (max-width: 768px) {
+  .title { font-size: 26px; }
+  .contentWrap { padding-bottom: 20px; }
+  .controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
+  .dots { flex-direction: row; gap: 0; }
+  .dot, .dotActive { width: 36px; height: 24px; }
+  .dot::after { width: 20px; height: 4px; }
+  .dotActive::after { width: 36px; height: 4px; }
+}
+@media (max-width: 600px) { .showcase { margin-top: 64px; } }

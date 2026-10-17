@@ -320,3 +320,8 @@ a.contactValue:hover {
 .drawingField input { width: 100%; margin-top: 12px; color: var(--text); }
 .submitError { color: var(--error); border-left: 3px solid var(--error); padding: 12px; background: var(--surface); margin-bottom: 16px; }
 .submitError a, .formNote a { text-decoration: underline; }
+
+.input, .select, .textarea, .drawingField input { min-height: 44px; min-width: 0; }
+.selectedTools button { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; flex-shrink: 0; }
+.formWrap, .sidebar, .formField { min-width: 0; }
+.drawingField input::file-selector-button { min-height: 44px; padding: 8px 12px; font: inherit; }

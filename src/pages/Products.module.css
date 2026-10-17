@@ -445,3 +445,9 @@
 .productName { overflow-wrap: anywhere; letter-spacing: 0; }
 @media (max-width: 900px) { .detailGrid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .filterBar { top: 64px; } .filterChip { padding: 8px 10px; } }
+
+.filterChip, .quoteButton, .clearFilters, .detailLink, .jumpLink { min-height: 44px; min-width: 44px; }
+.productName a { display: block; min-height: 44px; }
+.searchBox input { min-height: 44px; min-width: 0; }
+.productBody { min-width: 0; }
+@media (max-width: 600px) { .resultsHeader { gap: 12px; flex-wrap: wrap; } }
