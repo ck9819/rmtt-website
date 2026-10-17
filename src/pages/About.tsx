@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
+import { leaders } from '../data/leadership';
+import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 
 const missionVision = [
   {
@@ -73,36 +75,16 @@ const values = [
   },
 ];
 
-const leaders = [
-  {
-    name: 'Mr. Suresh Kumar',
-    role: 'Founder & Managing Director',
-    img: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'With over three decades in precision tooling, our founder established RMTT with a vision to bring world-class cutting tool manufacturing to India — combining German engineering standards with the Make in India movement.',
-  },
-  {
-    name: 'Mrs. Lakshmi Suresh',
-    role: 'Director — Operations',
-    img: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'Leading day-to-day operations and quality systems, she ensures every tool that leaves the facility meets the tightest tolerance and consistency standards expected by global OEMs.',
-  },
-  {
-    name: 'Mr. Karthik R.',
-    role: 'Director — Technology',
-    img: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'Driving R&D and process innovation across PCD, solid carbide, and brazed tooling — translating customer application challenges into engineered cutting tool solutions.',
-  },
-];
-
 export default function About() {
   const [leaderIdx, setLeaderIdx] = useState(0);
   useEffect(() => {
+    if (leaders.length < 2) return;
     const t = setInterval(() => setLeaderIdx(i => (i + 1) % leaders.length), 5000);
     return () => clearInterval(t);
   }, []);
   const leader = leaders[leaderIdx];
-  const prev = () => setLeaderIdx(i => (i - 1 + leaders.length) % leaders.length);
-  const next = () => setLeaderIdx(i => (i + 1) % leaders.length);
+  const prev = () => { if (leaders.length) setLeaderIdx(i => (i - 1 + leaders.length) % leaders.length); };
+  const next = () => { if (leaders.length) setLeaderIdx(i => (i + 1) % leaders.length); };
   return (
     <main className={styles.main}>
       {/* ── ABOUT HERO — MAPAL split style ── */}
@@ -379,7 +361,7 @@ export default function About() {
             </div>
             <div className={styles.locationImgWrap}>
               <img
-                src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={factoryCollage.url}
                 alt="Riddhi facility Bengaluru"
                 className={styles.locationImg}
               />
@@ -388,8 +370,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership Carousel */}
-      <section className={styles.leadershipSection}>
+      {/* Leadership is shown only when real client profiles exist. */}
+      {leader && <section className={styles.leadershipSection}>
         <div className="container">
           <div className={styles.leadershipHead}>
             <div className="section-eyebrow">Leadership</div>
@@ -431,7 +413,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* CTA */}
       <section className={styles.ctaSection}>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Car, Zap, Droplets, Plane, Cpu, CircleCheck as CheckCircle2, ArrowRight, TrendingUp, Clock, Target } from 'lucide-react';
 import styles from './Industries.module.css';
+import PhotoPlaceholder from '../components/PhotoPlaceholder';
 
 const caseStudies = [
   {
@@ -17,7 +18,6 @@ const caseStudies = [
       'Custom steel body + PCD-tipped multi-step valve seat reamer. 5-axis SAACKE ground geometry with VOLLMER EDM PCD edges and precision lapping delivers Ra < 0.4 surface finish consistently across production runs.',
     result: 'Improved profile accuracy, cycle time reduced, superior finish consistency vs previous brazed carbide solution',
     resultIcon: TrendingUp,
-    img: 'https://images.pexels.com/photos/3862365/pexels-photo-3862365.jpeg?auto=compress&cs=tinysrgb&w=800',
     color: '#4A7BA7',
     badge: '#EBF2F9',
     badgeText: '#4A7BA7',
@@ -36,7 +36,6 @@ const caseStudies = [
       'Custom PCD 5-step reamer with Module 70 connection, Z-4 high-quality PCD tips, internal coolant supply. Engineered for Vc=210 m/min at 0.3 mm/rev feed. One tool achieves all 5 steps in single pass with module 60 runout compensation built-in.',
     result: '5 operations consolidated into 1 tool pass, Ra 0.4 surface finish achieved, significantly reduced cycle time and tool changes',
     resultIcon: Clock,
-    img: 'https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=800',
     color: '#1A8A5C',
     badge: '#E8F5EE',
     badgeText: '#1A8A5C',
@@ -55,7 +54,6 @@ const caseStudies = [
       'One-shot special multi-grooving tool with all groove widths and spacing ground simultaneously on SAACKE 5-axis. Tight positional tolerances built into the tool geometry for precision without post-machining adjustment. Brazed carbide tips engineered for grey cast iron cutting.',
     result: 'Up to 70% machine time reduction, all grooves held within ±0.005mm positional tolerance in single pass, improved reliability',
     resultIcon: TrendingUp,
-    img: 'https://images.pexels.com/photos/162568/oil-pump-jack-donkey-pump-164682.jpeg?auto=compress&cs=tinysrgb&w=800',
     color: '#B07A1A',
     badge: '#FBF4E6',
     badgeText: '#B07A1A',
@@ -74,7 +72,6 @@ const caseStudies = [
       'Solid carbide body with PCD-tipped long-taper reamer. VOLLMER EDM machined edges with precision lapping ensure Ra < 0.4 surface finish. Form accuracy maintained at ±0.003mm across the full taper length. 5-axis SAACKE ground geometry.',
     result: 'Ra 0.4 achieved consistently across all production batches, superior tool life, extended regrind intervals',
     resultIcon: Target,
-    img: 'https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=800',
     color: '#4A7BA7',
     badge: '#EBF2F9',
     badgeText: '#4A7BA7',
@@ -93,7 +90,6 @@ const caseStudies = [
       'Custom PCD 3-step reamer engineered for aerospace applications. VOLLMER EDM-machined edges with precision lapping. Internal coolant supply through tool body. SAACKE 5-axis ground geometry for sub-micron accuracy. 100% inspected on Walter Helicheck optical measurement before delivery.',
     result: 'Dimensional consistency ±0.002mm maintained across production batches, full measurement traceability, zero-defect production',
     resultIcon: CheckCircle2,
-    img: 'https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg?auto=compress&cs=tinysrgb&w=800',
     color: '#5B7FA3',
     badge: '#EBF2F9',
     badgeText: '#5B7FA3',
@@ -112,7 +108,6 @@ const caseStudies = [
       'Solid carbide body with PCD-tipped profile milling cutter engineered specifically for grey cast iron. Optimized flute geometry for chip evacuation, advanced coating (AlTiN), and edge preparation. VOLLMER EDM + precision lapping for smooth cutting edges.',
     result: 'Consistent bore finish quality, superior tool life, reduced rework, improved surface integrity',
     resultIcon: Target,
-    img: 'https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800',
     color: '#1A8A5C',
     badge: '#E8F5EE',
     badgeText: '#1A8A5C',
@@ -138,7 +133,7 @@ export default function Industries() {
             {caseStudies.map(cs => (
               <article key={cs.id} className={styles.caseCard}>
                 <div className={styles.caseImg}>
-                  <img src={cs.img} alt={cs.title} />
+                  <PhotoPlaceholder icon={cs.IndustryIcon} />
                   <div className={styles.caseImgOverlay} />
                   <span className={styles.caseBadge} style={{ background: cs.color }}>
                     <cs.IndustryIcon size={12} />
