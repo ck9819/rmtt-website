@@ -7,7 +7,6 @@ import pcdOverview from '../assets/pcd-overview.jpg.asset.json';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tooling-range.jpg.asset.json';
 import brazedCarbideOverview from '../assets/brazed-carbide-overview.jpg.asset.json';
-import brazedCarbideTools from '../assets/brazed-carbide-tools.jpg.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
 import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
 import pcdTool2 from '../assets/pcd-tool-2.png.asset.json';
