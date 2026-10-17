@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Wrench, Car, Plane, Zap, Droplets, Cpu, CircleCheck as CheckCircle2, Award, Clock, Target, Download, FileText } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Wrench, Car, Plane, Zap, Droplets, Cpu, CircleCheck as CheckCircle2, Award, Download, FileText } from 'lucide-react';
 import styles from './Home.module.css';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
-import StatsBar from '../components/StatsBar';
+import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
 import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
 import brazedTool1 from '../assets/brazed-tool-1.png.asset.json';
@@ -50,12 +50,12 @@ const products = [
 ];
 
 const industries = [
-  { icon: Car, label: 'Automotive', count: '12+ case studies' },
-  { icon: Zap, label: 'Two-wheeler', count: '8+ case studies' },
-  { icon: Droplets, label: 'Hydraulics', count: '5+ case studies' },
-  { icon: Plane, label: 'Aerospace', count: '6+ case studies' },
-  { icon: Cpu, label: 'Precision Engg.', count: '10+ case studies' },
-  { icon: Wrench, label: 'General Engg.', count: '15+ case studies' },
+  { icon: Car, label: 'Automotive' },
+  { icon: Zap, label: 'Two-wheeler' },
+  { icon: Droplets, label: 'Hydraulics' },
+  { icon: Plane, label: 'Aerospace' },
+  { icon: Cpu, label: 'Precision Engg.' },
+  { icon: Wrench, label: 'General Engg.' },
 ];
 
 const applications = [
@@ -65,28 +65,28 @@ const applications = [
     material: 'Grey cast iron',
     tool: 'Steel body + PCD tipped multi-step reamer',
     result: 'Improved profile accuracy, better finish consistency',
-    img: 'https://images.pexels.com/photos/3862365/pexels-photo-3862365.jpeg?auto=compress&cs=tinysrgb&w=600',
+    icon: Car,
   },
   {
     title: 'Two-Wheeler Shock Absorber Bore',
     industry: 'Two-wheeler',
     material: 'Aluminium die casting',
     tool: 'PCD 5-step reamer (Module 70, Z-4 tips)',
-    result: '5 operations in 1 tool, Vc=210 m/min, Ra 0.4 finish',
-    img: 'https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=600',
+    result: '5 steps in one tool, Vc=210 m/min',
+    icon: Zap,
   },
   {
     title: 'Hydraulic Manifold Spool Bore Grooving',
     industry: 'Hydraulics',
     material: 'Grey cast iron',
     tool: 'Special multi-grooving brazed carbide tool',
-    result: 'Up to 70% cycle time reduction, ±0.005mm tolerance',
-    img: 'https://images.pexels.com/photos/162568/oil-pump-jack-donkey-pump-164682.jpeg?auto=compress&cs=tinysrgb&w=600',
+    result: 'Special multi-grooving brazed carbide tool',
+    icon: Droplets,
   },
 ];
 
 const machines = [
-  { num: '01', name: 'SAACKE 5-axis CNC Grinding', detail: 'Sub-micron tolerance on all rotary tool geometries' },
+  { num: '01', name: 'SAACKE 5-axis CNC Grinding', detail: '5-axis grinding for rotary cutting tools' },
   { num: '02', name: 'VOLLMER Wire EDM', detail: 'PCD & CBN edge machining with precision lapping finish' },
   { num: '03', name: 'Walter Helicheck', detail: 'Optical non-contact tool measurement & inspection' },
   { num: '04', name: 'Swiss Cylindrical Grinding', detail: 'High-precision body & shank grinding systems' },
@@ -94,9 +94,6 @@ const machines = [
 
 const trustItems = [
   { icon: Award, text: 'German-benchmark equipment' },
-  { icon: Target, text: '±0.002mm tolerance capability' },
-  { icon: CheckCircle2, text: 'ISO-aligned quality processes' },
-  { icon: Clock, text: 'Fast turnaround & technical support' },
 ];
 
 export default function Home() {
@@ -145,7 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      <StatsBar />
+
 
       {/* Products */}
       <section className={styles.section}>
@@ -210,7 +207,7 @@ export default function Home() {
               </div>
               <h2 className={styles.techTitle}>Manufacturing technology</h2>
               <p className={styles.techSub}>
-                German-benchmark machines operated by experienced engineers from our Bengaluru facility. Every tool is inspected with Walter Helicheck optical measurement.
+                German-benchmark machines operated by experienced engineers from our Bengaluru facility. The facility includes Walter Helicheck optical measurement.
               </p>
               <div className={styles.trustItems}>
                 {trustItems.map(t => (
@@ -273,7 +270,7 @@ export default function Home() {
                   <div key={app.title} className={styles.appSlide}>
                     <div className={styles.appCard}>
                       <div className={styles.appCardImg}>
-                        <img src={app.img} alt={app.title} />
+                        <PhotoPlaceholder icon={app.icon} />
                         <div className={styles.appCardImgOverlay} />
                         <span className={styles.appBadge}>{app.industry}</span>
                       </div>
@@ -334,7 +331,7 @@ export default function Home() {
             <div className={styles.ctaText}>
               <h2 className={styles.ctaTitle}>Ready to optimise your machining process?</h2>
               <p className={styles.ctaSub}>
-                Share your application details and we'll engineer the right tool for your requirements. We respond within 24 hours with a technical proposal.
+                Share your application details and we'll engineer the right tool for your requirements.
               </p>
             </div>
             <div className={styles.ctaBtns}>

@@ -81,7 +81,7 @@ export default function Products() {
         <div className="container">
           <h2 className={styles.ctaTitle}>Don't see what you need?</h2>
           <p className={styles.ctaSub}>
-            We regularly manufacture custom and special tools to customer specifications. Share your drawing or describe your challenge and we'll respond within 24 hours.
+            We regularly manufacture custom and special tools to customer specifications. Share your drawing or describe your challenge.
           </p>
           <Link to="/contact" className={styles.ctaBtn}>
             Describe your requirement <ArrowRight size={16} />

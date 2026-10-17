@@ -9,3 +9,7 @@
 - [x] Correct end-mill copy and company placeholder without adding unverified specifications.
 - [x] Add main-navigation Downloads link and Downloads h1 hero.
 - [x] Verify every navigation, footer and CTA destination and TypeScript build status.
+- [x] Hide fabricated leadership and customer sections behind empty client-supplied data.
+- [x] Remove unsupported stats and certification claims; comment unconfirmed technology specs.
+- [x] Replace external stock photos with real project media or neutral icon panels.
+- [x] Document client content needs and verify all affected pages.

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CircleCheck as CheckCircle2, Upload } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, CircleCheck as CheckCircle2, Upload } from 'lucide-react';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
 
@@ -51,7 +51,7 @@ export default function Contact() {
           <div className="section-eyebrow">Get in touch</div>
           <h1 className={styles.pageTitle}>Request a quote</h1>
           <p className={styles.pageSubtitle}>
-            Share your application details and we'll respond within 24 hours with a technical proposal and pricing.
+            Share your application details to request a technical proposal and pricing.
           </p>
         </div>
       </section>
@@ -66,7 +66,7 @@ export default function Contact() {
                   <div className={styles.successIcon}><CheckCircle2 size={40} /></div>
                   <h2 className={styles.successTitle}>Request submitted!</h2>
                   <p className={styles.successText}>
-                    Thank you for your enquiry. Our team will review your requirements and respond within 24 hours with a technical proposal.
+                    Thank you for your enquiry. Our team will review your requirements for a technical proposal.
                   </p>
                   <button className={styles.successBtn} onClick={() => setSubmitted(false)}>
                     Submit another request
@@ -206,13 +206,7 @@ export default function Contact() {
                       <a href={`mailto:${siteConfig.email}`} className={styles.contactValue}>{siteConfig.email}</a>
                     </div>
                   </li>
-                  <li className={styles.contactItem}>
-                    <Clock size={16} className={styles.contactIcon} />
-                    <div>
-                      <div className={styles.contactLabel}>Response time</div>
-                      <div className={styles.contactValue}>Within 24 hours on working days</div>
-                    </div>
-                  </li>
+
                 </ul>
               </div>
 
@@ -229,7 +223,7 @@ export default function Contact() {
                   <li className={styles.nextStep}>
                     <div className={styles.nextNum}>2</div>
                     <div>
-                      <div className={styles.nextTitle}>Proposal within 24h</div>
+                      <div className={styles.nextTitle}>Technical proposal</div>
                       <div className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</div>
                     </div>
                   </li>
