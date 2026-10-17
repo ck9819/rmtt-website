@@ -54,7 +54,7 @@
 
 .pageSubtitleSecond {
   font-size: 14px;
-  color: #6B7A99;                /* ← softer for secondary text */
+  color: var(--text-muted);
   line-height: 1.72;
   margin-bottom: 36px;
   max-width: 440px;
@@ -104,7 +104,7 @@
 
 .heroFactLbl {
   font-size: 11px;
-  color: #8A9BB0;
+  color: var(--text-muted);
   letter-spacing: 0.03em;
 }
 
@@ -1048,7 +1048,7 @@
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #6B8FBF;
+  color: var(--text-muted);
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -1095,3 +1095,10 @@
   .leaderImgWrap { max-width: 240px; margin: 0 auto; }
   .carouselArrow { width: 38px; height: 38px; }
 }
+
+.carouselDots { align-items: center; }
+.dot, .dotActive { width: 24px; height: 24px; background: transparent; transform: none; display: grid; place-items: center; }
+.dot::after { content: ''; width: 9px; height: 9px; background: var(--blue-light); border-radius: 50%; }
+.dotActive::after { background: var(--navy); }
+.dot:hover { background: transparent; }
+@media (max-width: 768px) { .carouselArrow { width: 44px; height: 44px; } .leaderCarousel { flex-wrap: wrap; } .leaderCard { min-width: 0; } }

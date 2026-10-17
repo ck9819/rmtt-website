@@ -57,7 +57,7 @@ export default function Contact() {
     catch (error) { setSubmitError(error instanceof Error ? error.message : 'Your request could not be sent. Please contact us directly.'); }
     finally { setSending(false); }
   };
-  return <main className={styles.main}>
+  return <div className={styles.main}>
     <section className={styles.pageHero}><div className="container"><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Request a quote</h1><p className={styles.pageSubtitle}>Share your application details to request a technical proposal and pricing.</p></div></section>
     <section className={styles.contactSection}><div className="container"><div className={styles.contactGrid}>
       <div className={styles.formWrap}>
@@ -85,7 +85,7 @@ export default function Contact() {
             {/* Info sidebar */}
             <div className={styles.sidebar}>
               <div className={styles.sideCard}>
-                <h3 className={styles.sideTitle}>Contact information</h3>
+                <h2 className={styles.sideTitle}>Contact information</h2>
                 <ul className={styles.contactList}>
                   <li className={styles.contactItem}>
                     <MapPin size={16} className={styles.contactIcon} />
@@ -113,7 +113,7 @@ export default function Contact() {
               </div>
 
               <div className={styles.sideCard}>
-                <h3 className={styles.sideTitle}>What happens next?</h3>
+                <h2 className={styles.sideTitle}>What happens next?</h2>
                 <ol className={styles.nextSteps}>
                   <li className={styles.nextStep}>
                     <div className={styles.nextNum}>1</div>
@@ -143,10 +143,10 @@ export default function Contact() {
                 <img
                   src={`${import.meta.env.BASE_URL}image002.png`}
                   alt="Riddhi cutting tool range"
-                  className={styles.toolsImg}
+                  width={377} height={86} loading="lazy" className={styles.toolsImg}
                 />
               </div>
             </div>
     </div></div></section>
-  </main>;
+  </div>;
 }

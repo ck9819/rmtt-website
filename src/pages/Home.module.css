@@ -855,3 +855,9 @@
   .reveal, .revealStagger > * { transition: none; opacity: 1; transform: none; }
   .prodCard::after { display: none; }
 }
+
+.carDots { align-items: center; }
+.carDot, .carDotActive { width: 24px; height: 24px; background: transparent; border: 0; box-shadow: none; display: grid; place-items: center; }
+.carDot::after { content: ''; width: 8px; height: 8px; border: 1px solid var(--border); border-radius: 50%; background: var(--white); }
+.carDotActive::after { width: 24px; background: var(--navy); border-radius: var(--radius-lg); }
+.carDot:hover { background: transparent; }

@@ -61,7 +61,7 @@ export default function TrustSignals() {
   };
 
   return (
-    <main className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <section className={pageStyles.pageHero}>
         <div className="container">
           <h1 className={pageStyles.pageTitle}>Downloads</h1>
@@ -102,7 +102,7 @@ export default function TrustSignals() {
             <div className={styles.logosTrack}>
               {customers.map(customer => (
                 <div key={customer.id} className={styles.logoCard}>
-                  <img src={customer.logo} alt={customer.name} width={120} height={60} />
+                  <img src={customer.logo} alt={customer.name} width={120} height={60} loading="lazy" />
                 </div>
               ))}
             </div>
@@ -155,6 +155,6 @@ export default function TrustSignals() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

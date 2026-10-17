@@ -65,6 +65,7 @@
 }
 
 .logo {
+  min-height: 44px;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -95,6 +96,10 @@
 }
 
 .navLink {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 0;
   font-size: 15px;
   font-weight: 500;
   color: var(--navy);
@@ -154,8 +159,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-lg);
   color: var(--navy);
   transition: background 0.15s ease;
@@ -164,10 +169,13 @@
 }
 
 .menuBtn:hover {
+  color: var(--white);
   background: var(--navy);
 }
 
 .mobileMenu {
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   padding: 8px 0;
@@ -178,6 +186,8 @@
 }
 
 .mobileLink {
+  display: block;
+  min-height: 44px;
   font-size: 15px;
   font-weight: 500;
   color: var(--navy);
@@ -275,7 +285,8 @@
   display: block;
   padding: 10px 24px 10px 44px;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--white);
+  min-height: 44px;
   border-left: 3px solid transparent;
   transition: background 0.15s ease;
 }
@@ -287,3 +298,6 @@
 
 .quoteCount { min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: var(--white); color: var(--navy); border-radius: var(--radius-sm); font-size: 12px; }
 @media (max-width: 1200px) and (min-width: 901px) { .navLink { padding: 22px 10px; } .inner { gap: 12px; } .nav { margin-left: 0; } }
+
+@media (max-width: 600px) { .mobileMenu { max-height: calc(100dvh - 64px); } }
+@media (max-width: 1100px) and (min-width: 901px) { .inner { gap: 8px; padding: 0 16px; } .navLink { padding: 22px 7px; } .cta { padding: 10px; } .logo { padding: 6px; } }

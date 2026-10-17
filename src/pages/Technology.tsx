@@ -13,7 +13,7 @@ const processSteps = [
 
 export default function Technology() {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <section className={styles.pageHero}>
         <div className="container">
           <div className="section-eyebrow">Our capabilities</div>
@@ -81,6 +81,6 @@ export default function Technology() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

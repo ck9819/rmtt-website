@@ -1,5 +1,5 @@
 .main {
-  padding-top: 72px;
+  padding-top: 100px;
 }
 
 .pageHero {
@@ -202,7 +202,7 @@
   border-radius: 50%;
   background: rgba(74,123,167,0.25);
   border: 2px solid var(--blue);
-  color: var(--blue-light);
+  color: var(--on-dark-muted);
   font-size: 14px;
   font-weight: 700;
   display: flex;
@@ -230,7 +230,7 @@
 
 .processStepDesc {
   font-size: 13px;
-  color: rgba(255,255,255,0.5);
+  color: var(--on-dark-muted);
   line-height: 1.65;
 }
 
@@ -282,3 +282,8 @@
     padding: 48px 0;
   }
 }
+
+.pageHero :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
+@media (max-width: 600px) { .main { padding-top: 64px; } }
+
+.processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }

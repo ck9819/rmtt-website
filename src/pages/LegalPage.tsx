@@ -2,7 +2,7 @@ import styles from './Contact.module.css';
 
 export default function LegalPage({ title }: { title: string }) {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <section className={styles.pageHero}>
         <div className="container">
           <h1 className={styles.pageTitle}>{title}</h1>
@@ -13,6 +13,6 @@ export default function LegalPage({ title }: { title: string }) {
           <p>TODO: client legal copy</p>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

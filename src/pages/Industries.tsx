@@ -116,7 +116,7 @@ const caseStudies = [
 
 export default function Industries() {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <section className={styles.pageHero}>
         <div className="container">
           <div className="section-eyebrow">Proven results</div>
@@ -186,6 +186,6 @@ export default function Industries() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
