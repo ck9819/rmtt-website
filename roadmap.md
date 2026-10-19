@@ -26,3 +26,5 @@
 - [x] Self-host Source Sans 3, lazy-load secondary routes, update metadata and add static crawler files (domain replacement documented as deployment TODO).
 - [x] Verify keyboard flows, layouts at 375/768/1024px and Home/Products/Contact accessibility scores (100 each).
 - [ ] Populate the About leadership carousel — waiting for client-approved names, roles, biographies and portraits.
+- [x] Correct showcase copy and headings; add range links and quote/catalogue buttons.
+- [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.

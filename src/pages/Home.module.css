@@ -520,9 +520,9 @@
   font-weight: 600;
   padding: 13px 24px;
   border-radius: var(--radius-lg);
-  color: var(--navy);
+  color: var(--white);
   letter-spacing: 0.01em;
-  background: var(--white);
+  background: var(--cta);
   border: 1px solid var(--border-light);
   box-shadow:
     var(--shadow-sm);
@@ -534,7 +534,7 @@
 }
 
 .ctaBtnPrimary:hover {
-  background: var(--white);
+  background: var(--cta-dark);
   box-shadow:
     var(--shadow-md);
   transform: translateY(-2px);
@@ -809,17 +809,6 @@
 .ctaBtnPrimary {
   position: relative;
   overflow: hidden;
-}
-.ctaBtnPrimary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(74,123,167,0.3), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.ctaBtnPrimary:hover::after {
-  opacity: 1;
 }
 
 /* Stat number subtle pulse on reveal */
