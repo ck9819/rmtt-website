@@ -29,6 +29,7 @@ export type Product = {
   subcategory: string;
   description: string;
   image?: string;
+  images?: { src: string; alt: string }[];
   applications: string[];
   materials: string[];
   industries: string[];
@@ -310,3 +311,9 @@ export const products: Product[] = [
             applications: ['Customer-specific machining operations'],
           }
 ];
+
+export type ProductImage = { src: string; alt: string };
+export function getProductImages(product: Pick<Product, 'name' | 'image' | 'images'>): ProductImage[] {
+  if (product.images?.length) return product.images;
+  return product.image ? [{ src: product.image, alt: product.name }] : [];
+}
