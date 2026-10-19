@@ -4,6 +4,7 @@ import { ChevronRight, ArrowRight, Check, FileText } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import ProductCard from '../components/ProductCard';
+import Gallery from '../components/Gallery';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -60,8 +61,8 @@ export default function CategoryPage() {
                 ))}
               </ul>
             </div>
-            <div className={styles.catImg}>
-              <img src={cat.image} alt={cat.headline} width={800} height={600} loading="lazy" />
+            <div className={styles.catGallery}>
+              <Gallery images={[{ src: cat.image, alt: cat.headline }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
             </div>
           </div>
 

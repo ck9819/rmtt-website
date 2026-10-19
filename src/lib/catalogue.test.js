@@ -86,3 +86,12 @@ describe('approved company data', () => {
     expect(equipment.map(item => item.id)).toEqual(['saacke', 'vollmer', 'helicheck', 'coating']);
   });
 });
+
+import { getProductImages } from '../data/products';
+describe('product images', () => {
+  test('prefers images[], falls back to image, else empty', () => {
+    expect(getProductImages({ name: 'A', image: 'a.jpg', images: [{ src: 'b.jpg', alt: 'B' }] })).toEqual([{ src: 'b.jpg', alt: 'B' }]);
+    expect(getProductImages({ name: 'A', image: 'a.jpg' })).toEqual([{ src: 'a.jpg', alt: 'A' }]);
+    expect(getProductImages({ name: 'A' })).toEqual([]);
+  });
+});

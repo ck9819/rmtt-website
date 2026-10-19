@@ -11,7 +11,7 @@ export default function ProductCard({ product, headingLevel = 3 }: { product: Pr
   const added = selected.some(tool => tool.slug === product.slug);
   return <article className={styles.productCard}>
     <Link to={`/products/${product.slug}`} className={styles.productImgWrap} aria-label={`View ${product.name}`}>
-      {product.image ? <img src={product.image} alt={product.name} width={800} height={600} loading="lazy" /> : <PhotoPlaceholder icon={Settings} />}
+      {product.image ? <img src={product.image} alt={product.name} width={800} height={600} loading="lazy" decoding="async" draggable={false} onDragStart={e => e.preventDefault()} onContextMenu={e => e.preventDefault()} className={styles.protectedImg} /> : <PhotoPlaceholder icon={Settings} />}
     </Link>
     <div className={styles.productBody}>
       <Heading className={styles.productName}><Link to={`/products/${product.slug}`}>{product.name}</Link></Heading>

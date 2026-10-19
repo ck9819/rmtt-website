@@ -79,7 +79,7 @@ export default function Footer() {
         <div className="container">
           <div className={styles.bottomInner}>
             <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" width={1500} height={704} loading="lazy" className={styles.makeInIndiaImage} />
-            <span>© {new Date().getFullYear()} Riddhi Machine Tool Technology. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Riddhi Machine Tool Technology. Images may not be copied or reused without permission.</span>
             <div className={styles.bottomLinks}>
               <Link to="/privacy">Privacy Policy</Link>
               <Link to="/terms">Terms</Link>
