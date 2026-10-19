@@ -15,6 +15,7 @@
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
 - Keep quote selections in QuoteContext with guarded localStorage persistence because RFQ drafts must survive reloads without a backend.
+- Preserve the quote context identity through Vite hot-update data so mounted providers and refreshed consumers cannot diverge during preview updates.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
 - Keep one focusable main landmark around route content and lazy-load all non-Home pages so navigation stays accessible and the initial bundle stays lean.
