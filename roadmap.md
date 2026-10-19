@@ -26,7 +26,7 @@
 - [x] Self-host Source Sans 3, lazy-load secondary routes, update metadata and add static crawler files (domain replacement documented as deployment TODO).
 - [x] Verify keyboard flows, layouts at 375/768/1024px and Home/Products/Contact accessibility scores (100 each).
 - [x] Populate the About leadership carousel with approved names, initials and no unconfirmed roles or biographies.
-- [ ] Align industry choices, founders' note, hero taglines and catalogue specifications with the FINAL deck; remove unsupported equipment/benchmark claims and verify source spelling and page flows.
+- [x] Align industry choices, founders' note, hero taglines and catalogue specifications; remove unsupported equipment/benchmark claims. Verified desktop/mobile page flows and 20 tests; automatic build passes. Keep Helicheck because FINAL deck spelling is unconfirmed (source discrepancy documented).
 - [x] Correct showcase copy and headings; add range links and quote/catalogue buttons.
 - [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.
 - [x] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions; browser checks, 13 tests and automatic build pass.
