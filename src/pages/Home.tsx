@@ -12,7 +12,8 @@ import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
 import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
 import brazedTool1 from '../assets/brazed-tool-1.png.asset.json';
-import { getLatestNews, news } from '../data/news';
+import { getLatestNews } from '../data/news';
+const latestNews = getLatestNews(3);
 import NewsCard from '../components/NewsCard';
 import newsStyles from './News.module.css';
 
@@ -323,18 +324,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      {news.length > 0 && (
+      {latestNews.length > 0 && (
         <section className={newsStyles.section} aria-labelledby="latest-news-heading">
           <div className="container">
             <div className={newsStyles.heading}>
               <h2 id="latest-news-heading" className={newsStyles.sectionTitle}>Latest news</h2>
-              <Link to="/news" className={newsStyles.allLink}>All news <ArrowRight size={16} aria-hidden="true" /></Link>
+              <Link to="/news" className={newsStyles.allLink}>View all news <ArrowRight size={16} aria-hidden="true" /></Link>
             </div>
-            <div className={newsStyles.grid}>{getLatestNews(3).map(item => <NewsCard key={item.id} item={item} headingLevel={3} />)}</div>
+            <div className={newsStyles.grid}>{latestNews.map(item => <NewsCard key={item.id} item={item} headingLevel={3} />)}</div>
           </div>
         </section>
       )}
+      {/* CTA Banner */}
       <section className={styles.ctaSection}>
         <div className="container">
           <div

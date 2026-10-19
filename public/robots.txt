@@ -1,4 +1,4 @@
-# TODO: Replace https://www.example.com with the client domain before deployment.
+# TODO: Switch to the client domain when connected.
 User-agent: *
 Allow: /
-Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://rmtt-website.lovable.app/sitemap.xml
