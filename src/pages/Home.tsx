@@ -121,6 +121,7 @@ export default function Home() {
 
   return (
     <div>
+      <h1 className="visually-hidden">Precision cutting tools: solid carbide, PCD and brazed carbide, made in Bengaluru</h1>
       <ProductShowcase />
       
       {/* Industry strip */}

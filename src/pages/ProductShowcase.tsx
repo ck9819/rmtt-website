@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
-import { ChevronLeft, ChevronRight, Pause, Play} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, Pause, Play, FileText, Download } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
@@ -30,7 +31,7 @@ const slides: Slide[] = [
     title: 'Step Drills & Solid Carbide Drills',
     subtitle: 'High-polish flute geometry for single-pass multi-diameter drilling. Internal coolant options available for aluminium die casting and steel.',
     tag: 'Aluminium · Steel · Multi-diameter',
-    href: '/products#solid-carbide',
+    href: '/products/solid-carbide',
   },
   {
     id: 'pcd-hsk-reamer',
@@ -38,19 +39,19 @@ const slides: Slide[] = [
     imageAlt: 'Close-up of precision machining in progress',
     category: 'PCD Tools',
     title: 'PCD Form Grooving Cutters',
-    subtitle: 'VOLLMER Wire EDM + lapping edges. Module 70 / HSK connection with Z-4 PCD tips and internal coolant supply. One-shot finish in aluminium.',
+    subtitle: 'Purpose-designed PCD form geometry for accurate profiles and long machining cycles.',
     tag: 'Two-wheeler · Aluminium die casting',
-    href: '/products#pcd',
+    href: '/products/pcd',
   },
   {
     id: 'pcd-module-reamer',
     image: factoryFloor.url,
     imageAlt: 'Precision CNC machines on the factory floor',
     category: 'PCD Tools',
-    title: 'PCD Step Three Step Reamer',
-    subtitle: '5 steps consolidated in one tool. Vc=210 m/min, feed 0.3 mm/rev on BT30. Module 60 runout compensation for smooth piston movement.',
-    tag: 'Precision bore finishing · Module 60/70',
-    href: '/products#pcd',
+    title: 'PCD Multi-Step Reamer',
+    subtitle: 'PCD-edged reaming solution for consistent precision bore machining, with application-designed stepped cutting geometry.',
+    tag: 'Precision bore machining · Aluminium',
+    href: '/products/pcd',
   },
   {
     id: 'pcd-tools',
@@ -58,9 +59,9 @@ const slides: Slide[] = [
     imageAlt: 'Precision tool inspection equipment in the Riddhi facility',
     category: 'PCD Tools',
     title: 'Seameless Brazing',
-    subtitle: 'Solid Carbide Steel body + Well balanced PCD aterial High quality pocket seats Perfect smooth flutes.',
+    subtitle: 'Solid Carbide Steel body + Well balanced PCD material High quality pocket seats Perfect smooth flutes.',
     tag: 'Automotive · Grey cast iron',
-    href: '/products#pcd',
+    href: '/products/pcd',
   },
 ];
 
@@ -144,9 +145,16 @@ export default function ProductShowcase(): JSX.Element {
           aria-live={playback.playing ? 'off' : 'polite'}
         >
           <div className={styles.category}>{slide.category}</div>
-          <h1 className={styles.title}>{slide.title}</h1>
+          <h2 className={styles.title}>{slide.title}</h2>
           <p className={styles.subtitle}>{slide.subtitle}</p>
-          <div className={styles.tag}>{slide.tag}</div>
+          <div className={styles.tag}>
+            <span>{slide.tag}</span>
+            <Link to={slide.href} className={styles.rangeLink}>View range →</Link>
+          </div>
+          <div className={styles.ctaRow}>
+            <Link to="/contact" className={styles.primaryCta}><FileText size={16} />Request a Quote</Link>
+            <a href={`${import.meta.env.BASE_URL}rmtt-catalogue.pdf`} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryCta}><Download size={16} />Download Catalogue</a>
+          </div>
         </div>
 
         {/* Right — slide counter + dots */}
