@@ -6,6 +6,7 @@ import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
+import { products as catalogueProducts } from '../data/products';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
 import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
@@ -20,7 +21,7 @@ const products = [
     name: 'End Mills & Drills',
     description:
       'High-polish flutes, internal coolant channels and advanced PVD coatings for steel, titanium and aluminium. Fully ground on 5-axis SAACKE machines.',
-    tags: ['Step drills', 'Ball nose', 'Tapered', 'Thread mills'],
+    tags: catalogueProducts.filter(product => product.category === 'solid-carbide').slice(0, 4).map(product => product.name),
     color: 'var(--cat-solid)',
     bg: 'var(--cat-solid-bg)',
     image: solidCarbideEndmills.url,
@@ -32,7 +33,7 @@ const products = [
     name: 'PCD Reamers & Millers',
     description:
       'Wire EDM + lapping edges, seamless brazing, steel & carbide body options. Ideal for aluminium die casting and non-ferrous applications.',
-    tags: ['Multi-step reamers', 'Face mills', 'Valve seat tools', 'Injector reamers'],
+    tags: catalogueProducts.filter(product => product.category === 'pcd').slice(0, 4).map(product => product.name),
     color: 'var(--cat-pcd)',
     bg: 'var(--cat-pcd-bg)',
     image: pcdTool1.url,
@@ -44,7 +45,7 @@ const products = [
     name: 'Special Brazed Tools',
     description:
       'Cost-effective carbide solutions with 5-axis ground edges. T-slot cutters, shell mills, step reamers and custom profiles.',
-    tags: ['T-slot cutters', 'Shell mills', 'Step reamers', 'Custom'],
+    tags: catalogueProducts.filter(product => product.category === 'brazed').slice(0, 4).map(product => product.name),
     color: 'var(--cat-brazed)',
     bg: 'var(--cat-brazed-bg)',
     image: brazedTool1.url,
@@ -167,7 +168,7 @@ export default function Home() {
             className={`${styles.prodGrid} ${styles.revealStagger} ${productsGridReveal.shown ? styles.revealStaggerShown : ''}`}
           >
             {products.map(p => (
-              <Link to={`/products#${p.id}`} key={p.id} className={styles.prodCard}>
+              <Link to={`/products/${p.id}`} key={p.id} className={styles.prodCard}>
                 <div className={styles.prodCardImg}>
                   {p.image ? (
                     <img src={p.image} alt={p.name} width={800} height={600} loading="lazy" className={styles.prodCardImgProduct} />

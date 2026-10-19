@@ -17,12 +17,10 @@ export default function Footer() {
             <div className={styles.col}>
               <h2 className={styles.colTitle}>Products</h2>
               <ul className={styles.links}>
-                <li><Link to="/products#solid-carbide">Solid Carbide End Mills</Link></li>
-                <li><Link to="/products#solid-carbide">Step Drills & Reamers</Link></li>
-                <li><Link to="/products#pcd">PCD Tools</Link></li>
-                <li><Link to="/products#pcd">PCD Reamers & Millers</Link></li>
-                <li><Link to="/products#brazed">Brazed Carbide Tools</Link></li>
-                <li><Link to="/products#brazed">Special / Custom Tools</Link></li>
+                <li><Link to="/products/solid-carbide">Solid Carbide Tools</Link></li>
+                <li><Link to="/products/pcd">PCD Tools</Link></li>
+                <li><Link to="/products/brazed">Brazed Carbide Tools</Link></li>
+                <li><Link to="/products">All products</Link></li>
               </ul>
             </div>
 
