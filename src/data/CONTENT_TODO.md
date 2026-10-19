@@ -5,7 +5,7 @@ Source reviewed: the existing `public/rmtt-catalogue.pdf` company deck.
 
 ## Leadership
 - Removed Suresh Kumar, Lakshmi Suresh and Karthik R. profiles, biographies and three stock portraits. These were invented, not verified people.
-- Founder & directors carousel is hidden while `leadership.ts` is empty. Needed: real names, roles, approved biographies and portraits supplied by the client.
+- Approved names now appear in the leadership carousel: Roshan Tanuk, K. Ravi Kumar and K. Syamala Kumar. TODO: client-approved roles and portraits; initials are shown until portraits are supplied. No biographies.
 
 ## Customers and certifications
 - Removed Automotive OEM, Two-Wheeler Major, Hydraulics Leader, Aerospace Tier-1, Precision Engineer and General Industry single-letter tiles.
@@ -26,11 +26,11 @@ Source reviewed: the existing `public/rmtt-catalogue.pdf` company deck.
 ## Photographs
 - Removed every Pexels image URL: 3 Home application photos, 6 Industries case photos, 6 Technology machine/process photos, 3 leadership portraits and About facility stock image.
 - Home and Industries now use neutral steel-blue industry icon panels. Needed: distinct real photos for each named application; no image should be reused across cards.
-- Technology now uses neutral steel-blue equipment icons. Needed: distinct verified SAACKE, VOLLMER, Walter Helicheck, Swiss grinding, honing and coating photographs.
+- Technology now uses neutral steel-blue equipment icons. Needed: distinct verified SAACKE, VOLLMER, Walter Helicheck and coating photographs.
 - About retains the real `public/0.jpg` machine photo and uses the existing PDF-derived factory collage for the facility. Existing hero factory photos remain.
 
 ## Technology specifications
-All six original specification arrays are commented with “TODO: confirm with client”. Needed: manufacturer documentation or client-verified process records for each bullet:
+The original specification arrays are commented with “TODO: confirm with client”. Needed: manufacturer documentation or client-verified process records for each bullet:
 - SAACKE: simultaneous interpolation, sub-micron geometric accuracy, internal coolant hole grinding, digital machine memory.
 - VOLLMER: CBN compatibility, edge geometry ±0.002mm, precision lapping post-EDM, no heat-affected zone. General wire EDM/lapping remains catalogue-backed, but the complete spec list requires confirmation.
 - Walter: non-contact/full geometry verification, 100% outgoing inspection, per-tool digital records.
@@ -40,6 +40,10 @@ All six original specification arrays are commented with “TODO: confirm with c
 - Removed corresponding unsupported detailed prose, serial-number traceability, Ra <0.4, sub-micron and h5/h6 guarantees, and 100% inspection/report/dispatch-data promises. Only catalogue-described equipment and general PVD coating remain.
 
 ## Existing pending content
-- Finishing end-mill specifications remain commented pending client confirmation.
+- End-mill specifications and internal-coolant / special multi-step reamer options are now supplied from the FINAL deck.
 - Category datasheet downloads remain absent until real separate PDFs exist.
 - Privacy and Terms remain “TODO: client legal copy” pending approved legal text.
+## Removed equipment and benchmark wording
+- TODO: confirm Swiss Cylindrical Grinding Systems before listing as owned equipment. Removed Home body/shank grinding summary and Technology / About equipment entries.
+- TODO: confirm Advanced Edge Honing and Polishing Equipment before listing as owned equipment. Removed edge preparation / honing equipment entry; product edge-honed specifications remain approved.
+- Removed “German-benchmark equipment”, “German-benchmark machines”, “German-grade capability” and “Our manufacturing standards match German quality benchmarks, ensuring high accuracy, process consistency, and extended tool life across applications.” TODO: source evidence and client approval before reinstating benchmark claims.

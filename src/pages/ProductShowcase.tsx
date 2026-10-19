@@ -144,6 +144,7 @@ export default function ProductShowcase(): JSX.Element {
           key={current}
           aria-live={playback.playing ? 'off' : 'polite'}
         >
+          <p className={styles.tagline}>Engineering confidence in every cut</p>
           <div className={styles.category}>{slide.category}</div>
           <h2 className={styles.title}>{slide.title}</h2>
           <p className={styles.subtitle}>{slide.subtitle}</p>

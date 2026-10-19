@@ -37,7 +37,7 @@ export type Product = {
 };
 
 // Only source-backed, previously visible specifications are included.
-// TODO: Confirm finishing end-mill specifications; specs intentionally undefined.
+// End-mill specifications approved from the company FINAL deck.
 export const products: Product[] = [
 {
     slug: 'finishing-application-solid-carbide-endmill',

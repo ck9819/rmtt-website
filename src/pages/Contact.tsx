@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Send, Upload, X } from 'lucide-react';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
+import { industryNames } from '../data/industries';
 import { useQuote } from '../context/QuoteContext';
 import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm } from '../lib/rfq';
 
@@ -17,7 +18,7 @@ const fields: { name: keyof typeof fieldLimits; label: string; required?: boolea
   { name: 'machine', label: 'Machine type', placeholder: 'VMC, HMC, SPM…' },
   { name: 'qty', label: 'Quantity per month (components)', placeholder: 'e.g. 500 components' },
 ];
-const industryOptions = ['Automotive', 'Two-wheeler', 'Aerospace', 'Hydraulics & pneumatics', 'Precision engineering', 'General engineering', 'Medical devices', 'Other'];
+const industryOptions = industryNames;
 const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', toolType: '', industry: '', material: '', machine: '', qty: '', description: '', website: '', consent: false };
 
 export default function Contact() {

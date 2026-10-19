@@ -1,4 +1,4 @@
-import { Microscope, Gauge, Cpu, Layers, Sparkles, Eye } from 'lucide-react';
+import { Microscope, Cpu, Sparkles, Eye } from 'lucide-react';
 
 export const equipment = [
   {
@@ -48,34 +48,6 @@ export const equipment = [
   },
   {
     num: '04',
-    id: 'swiss-grinding',
-    homeFeatured: true,
-    facilityEquipment: true,
-    shortName: "Swiss Cylindrical Grinding",
-    summary: "High-precision body & shank grinding systems",
-    facilityName: "Swiss Cylindrical Grinding Systems",
-    icon: Gauge,
-    name: 'Swiss Cylindrical Grinding',
-    detail:
-      'The RMTT facility includes Swiss cylindrical grinding systems.',
-    // TODO: confirm with client
-    // specs: ['h5/h6 shank tolerance', 'Runout < 0.003mm', 'Alumina and CBN wheels', 'Suitable for all carbide grades'],
-  },
-  {
-    num: '05',
-    id: 'honing',
-    homeFeatured: false,
-    facilityEquipment: true,
-    facilityName: "Advanced Edge Honing and Polishing Equipment",
-    icon: Layers,
-    name: 'Edge Preparation & Honing',
-    detail:
-      'The RMTT facility includes advanced edge honing and polishing equipment.',
-    // TODO: confirm with client
-    // specs: ['Drag finishing and brush honing', 'K-factor 0.8–2.0 µm Rk', 'Consistent edge radius control', 'Pre-coating surface preparation'],
-  },
-  {
-    num: '06',
     id: 'coating',
     homeFeatured: false,
     facilityEquipment: false,

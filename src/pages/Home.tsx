@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Wrench, Car, Plane, Zap, Droplets, Cpu, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
+import { industries } from '../data/industries';
 import { products as catalogueProducts } from '../data/products';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
@@ -52,15 +53,6 @@ const products = [
   },
 ];
 
-const industries = [
-  { icon: Car, label: 'Automotive' },
-  { icon: Zap, label: 'Two-wheeler' },
-  { icon: Droplets, label: 'Hydraulics' },
-  { icon: Plane, label: 'Aerospace' },
-  { icon: Cpu, label: 'Precision Engg.' },
-  { icon: Wrench, label: 'General Engg.' },
-];
-
 const applications = [
   {
     title: 'Cylinder Head Valve Seat & Guide',
@@ -93,7 +85,7 @@ const applications = [
 
 
 const trustItems = [
-  { icon: Award, text: 'German-benchmark equipment' },
+  { icon: Award, text: 'SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement' },
 ];
 
 export default function Home() {
@@ -208,7 +200,7 @@ export default function Home() {
               </div>
               <h2 className={styles.techTitle}>Manufacturing technology</h2>
               <p className={styles.techSub}>
-                German-benchmark machines operated by experienced engineers from our Bengaluru facility. The facility includes Walter Helicheck optical measurement.
+                The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck optical measurement.
               </p>
               <div className={styles.trustItems}>
                 {trustItems.map(t => (

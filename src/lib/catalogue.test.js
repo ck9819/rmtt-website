@@ -1,5 +1,8 @@
 import { describe, expect, test } from 'bun:test';
 import { products } from '../data/products';
+import { industryNames } from '../data/industries';
+import { leaders } from '../data/leadership';
+import { equipment } from '../data/equipment';
 import { filterProducts, readQuoteSlugs, saveQuoteSlugs } from './catalogue';
 import { MAX_DRAWING_BYTES, rfqSchema, submitRfq, validateDrawing } from './rfq';
 
@@ -12,8 +15,18 @@ describe('static catalogue rules', () => {
     const result = filterProducts(new URLSearchParams('cat=solid-carbide&material=titanium&industry=Automotive'));
     expect(result.map(tool => tool.slug)).toEqual(['solid-carbide-reamers']);
   });
-  test('unknown end-mill specifications stay absent', () => {
-    expect(products.find(tool => tool.slug === 'finishing-application-solid-carbide-endmill')?.specs).toBeUndefined();
+  test('end-mill specifications match the approved FINAL deck values', () => {
+    expect(products.find(tool => tool.slug === 'finishing-application-solid-carbide-endmill')?.specs).toEqual([
+      { label: 'Diameter', value: '2–32 mm' },
+      { label: 'Flutes (Z)', value: '2, 3, 4, 5, 6' },
+      { label: 'Technology', value: 'multi-helix with high wear-resistance coatings' },
+      { label: 'Features', value: 'high-polished and edge-honed' },
+    ]);
+  });
+  test('reamers include approved coolant and multi-step options', () => {
+    const specs = products.find(tool => tool.slug === 'solid-carbide-reamers')?.specs;
+    expect(specs).toContainEqual({ label: 'Coolant', value: 'Internal coolant supply' });
+    expect(specs).toContainEqual({ label: 'Options', value: 'Special multi-step reamers' });
   });
   test('restores persisted selections without duplicates or unknown tools', () => {
     let saved = '';
@@ -56,5 +69,20 @@ describe('client-side quote validation', () => {
   });
   test('submission never reports success while disconnected', async () => {
     await expect(submitRfq({ ...form, tools: ['pcd-reamer'] })).rejects.toThrow('not connected');
+  });
+});
+describe('approved company data', () => {
+  test('industry options contain exactly the six approved sectors', () => {
+    expect(industryNames).toEqual(['Automotive', 'Aerospace', 'Defence', 'Energy', 'General Engineering', 'Hydraulic']);
+  });
+  test('leadership uses approved names without unknown roles or photos', () => {
+    expect(leaders).toEqual([
+      { name: 'Roshan Tanuk', role: '', img: '' },
+      { name: 'K. Ravi Kumar', role: '', img: '' },
+      { name: 'K. Syamala Kumar', role: '', img: '' },
+    ]);
+  });
+  test('unconfirmed equipment is excluded', () => {
+    expect(equipment.map(item => item.id)).toEqual(['saacke', 'vollmer', 'helicheck', 'coating']);
   });
 });
