@@ -40,6 +40,7 @@ export default function NewsArticle() {
               : block.type === 'h' ? <h2 key={i}>{block.text}</h2>
               : <ul key={i}>{block.items.map(li => <li key={li}>{li}</li>)}</ul>)}
           </div>
+          {item.linkedinUrl && <p><a className={styles.back} href={item.linkedinUrl} target="_blank" rel="noopener noreferrer">View the original post on LinkedIn (opens in a new tab)</a></p>}
           {gallery.length > 0 && (
             <div className={styles.gallery}>
               <h2 className={styles.galleryTitle}>Gallery</h2>
