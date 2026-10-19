@@ -4,11 +4,10 @@ import { news, publishedNews, getLatestNews, getNewsById } from './news';
 import { formatNewsDate, newsImageUrl } from '../lib/news';
 import { siteConfig } from '../lib/siteConfig';
 
-test('seven articles are published and the held VOLLMER item is hidden', () => {
-  expect(publishedNews.length).toBe(7);
-  expect(publishedNews.some(item => item.id === 'vollmer-edm-welcome')).toBe(false);
-  expect(getNewsById('vollmer-edm-welcome')).toBeUndefined();
-  expect(news.find(item => item.id === 'vollmer-edm-welcome')?.published).toBe(false);
+test('eight articles are published, including the VOLLMER post', () => {
+  expect(publishedNews.length).toBe(8);
+  expect(getNewsById('vollmer-edm-welcome')?.image?.src).toBe('/images/news/vollmer-edm.webp');
+  expect(news.every(item => item.published)).toBe(true);
 });
 test('latest news returns the three newest published items', () => {
   expect(getLatestNews(3).map(item => item.date)).toEqual(['2026-10-10', '2026-09-22', '2026-08-28']);
@@ -26,6 +25,6 @@ test('sitemap lists every published article and not the held one, on the site do
   const xml = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8');
   for (const item of publishedNews) expect(xml).toContain(`${siteConfig.siteUrl}/#/news/${item.id}`);
   expect(xml).toContain(`${siteConfig.siteUrl}/#/news</loc>`);
-  expect(xml).not.toContain('vollmer-edm-welcome');
+  expect(xml).toContain('vollmer-edm-welcome');
   expect(xml).not.toContain('example.com');
 });

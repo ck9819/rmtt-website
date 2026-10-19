@@ -212,8 +212,12 @@ export const news: NewsItem[] = [
     body: [
       { type: 'p', text: 'We are happy to welcome our new VOLLMER EDM machine to the Riddhi family. This addition strengthens our capabilities in precision manufacturing, advanced technology, and delivering the quality our customers expect from us.' },
     ],
-    linkedinUrl: undefined,
-    published: false,
+    image: {
+      src: '/images/news/vollmer-edm.webp',
+      alt: 'The new VOLLMER EDM machine at the Riddhi facility',
+    },
+    linkedinUrl: 'https://www.linkedin.com/posts/ravi-kumar-k-86794417_riddhimachinetooltechnology-vollmer-edm-activity-7500101192245575681-_i5s',
+    published: true, // TODO: date is a placeholder; confirm the real post date.
   },
 ];
 
