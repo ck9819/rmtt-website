@@ -30,6 +30,7 @@ export default function Footer() {
                 <li><Link to="/about">About Riddhi</Link></li>
                 <li><Link to="/services">Services</Link></li>
                 <li><Link to="/applications">Applications</Link></li>
+                <li><Link to="/news">News</Link></li>
                 <li><Link to="/contact">Contact Us</Link></li>
                 <li><Link to="/downloads">Downloads</Link></li>
               </ul>
@@ -59,7 +60,7 @@ export default function Footer() {
                   href="https://in.linkedin.com/company/riddhi-machine-tool-technology-blr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="LinkedIn"
+                  aria-label="Follow Riddhi on LinkedIn — opens LinkedIn in a new tab"
                   className={styles.social}>
               
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

@@ -22,3 +22,4 @@
 - Use the shared carousel playback hook so every timer respects reduced motion, focus, touch and explicit pause.
 - Serve Source Sans 3 through Fontsource with swap, avoiding third-party font requests on static hosting.
 - Allow the resolved dependency directory in Vite's development file serving so symlinked Fontsource assets load in the preview.
+- Keep typed news and sorting in `src/data/news.ts`, reuse NewsCard on Home and News, and allow only local news-image paths with a placeholder on failure so static hosting needs no external feed or dependencies.
