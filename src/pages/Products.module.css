@@ -433,8 +433,8 @@
 .emptyState { padding: 60px 0; text-align: center; }
 .emptyState h2 { margin-bottom: 24px; }
 .detailGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.detailImage { aspect-ratio: 1; background: var(--cat-solid-bg); border: 1px solid var(--border); }
-.detailImage img { height: 100%; width: 100%; object-fit: contain; padding: 24px; }
+.detailImage { min-width: 0; }
+.detailImage > div > button:first-child img { padding: 24px; }
 .applicationList { padding-left: 20px; margin: 16px 0 24px; color: var(--text-secondary); }
 .specTable { width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left; }
 .specTable caption { text-align: left; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
