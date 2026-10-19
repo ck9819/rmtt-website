@@ -3,6 +3,7 @@
 }
 
 .pageHero {
+  --focus-outline: var(--white);
   background: linear-gradient(135deg, var(--navy) 0%, var(--steel-dark) 100%);
   padding: 64px 0 56px;
 }
