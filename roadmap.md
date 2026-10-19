@@ -31,3 +31,6 @@
 - [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.
 - [x] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions; browser checks, 13 tests and automatic build pass.
 - [x] Add data-driven legal placeholders, required consent, shared 404 page, surface-aware focus rings and 1100px navigation collapse; browser flows, 16 tests and automatic build pass.
+- [ ] Add shared News cards, a lazy-loaded News page, navigation, metadata and conditional Home latest news.
+- [ ] Verify empty and single-item news states, sorting, local images and preview rendering.
+- [ ] Obtain the VOLLMER post's confirmed publication date and direct LinkedIn URL from the client; supplied URL is a hashtag search.
