@@ -11,7 +11,7 @@ const pages: Record<string, [string, string]> = {
   '/applications': ['Applications', 'Explore cutting tool applications for automotive, aerospace and precision machining.'],
   '/services': ['Technology and services', 'Explore our tool manufacturing, inspection and coating equipment.'],
   '/downloads': ['Downloads', 'Download the Riddhi Machine Tool Technology product catalogue.'],
-  '/news': ['News', 'Read the latest news and LinkedIn updates from Riddhi Machine Tool Technology.'],
+  '/news': ['News & Articles', 'Company news and technical articles on cutting tools from Riddhi Machine Tool Technology.'],
   '/contact': ['Request a quote', 'Share your selected tools and machining requirements with Riddhi Machine Tool Technology.'],
   '/privacy': ['Privacy Policy', 'Riddhi Machine Tool Technology privacy policy — client legal copy pending.'],
   '/terms': ['Terms', 'Riddhi Machine Tool Technology terms — client legal copy pending.'],
