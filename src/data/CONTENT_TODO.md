@@ -3,6 +3,12 @@
 No replacements below should be published until supporting material is supplied.
 Source reviewed: the existing `public/rmtt-catalogue.pdf` company deck.
 
+## News
+- TODO: Add real posts supplied by the client (text, image, LinkedIn URL).
+- The only approved item is “Welcoming our new VOLLMER EDM machine”; its supplied photo is stored as `/images/news/vollmer-edm.webp` (image-6.png converted to WebP).
+- Original matching post located: https://www.linkedin.com/posts/ravi-kumar-k-86794417_riddhimachinetooltechnology-vollmer-edm-activity-7500101192245575681-_i5s. TODO: confirm its exact publication date; the search result suggests 31 August 2026, but page metadata could not be verified. The card remains undated until confirmed.
+- For future posts supply an exact YYYY-MM-DD date, title, summary, local photo with alt text, and direct LinkedIn post URL. Missing/failed photos render PhotoPlaceholder; no external image URLs or embedded feeds.
+
 ## Leadership
 - Removed Suresh Kumar, Lakshmi Suresh and Karthik R. profiles, biographies and three stock portraits. These were invented, not verified people.
 - Approved names now appear in the leadership carousel: Roshan Tanuk, K. Ravi Kumar and K. Syamala Kumar. TODO: client-approved roles and portraits; initials are shown until portraits are supplied. No biographies.
