@@ -29,4 +29,4 @@
 - [x] Correct showcase copy and headings; add range links and quote/catalogue buttons.
 - [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.
 - [x] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions; browser checks, 13 tests and automatic build pass.
-- [ ] Add data-driven legal placeholders, required consent, shared 404 page, surface-aware focus rings and 1100px navigation collapse; verify flows and build.
+- [x] Add data-driven legal placeholders, required consent, shared 404 page, surface-aware focus rings and 1100px navigation collapse; browser flows, 16 tests and automatic build pass.
