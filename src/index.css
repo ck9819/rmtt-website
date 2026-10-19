@@ -185,7 +185,10 @@ img {
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
-:focus-visible { outline: 3px solid var(--accent) !important; outline-offset: 3px; box-shadow: 0 0 0 3px var(--white); }
+/* Dark sections can set this token or declare data-focus-surface="dark". */
+footer, [data-focus-surface="dark"] { --focus-outline: var(--white); }
+[data-focus-surface="light"] { --focus-outline: var(--navy); }
+:focus-visible { outline: 3px solid var(--focus-outline, var(--navy)) !important; outline-offset: 3px; box-shadow: 0 0 0 3px var(--white) !important; }
 main { scroll-margin-top: 110px; }
 .skip-link { position: fixed; top: 8px; left: 8px; z-index: 200; padding: 12px 16px; background: var(--white); color: var(--navy); transform: translateY(-200%); }
 .skip-link:focus { transform: translateY(0); }

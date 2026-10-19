@@ -26,8 +26,13 @@ describe('static catalogue rules', () => {
   });
 });
 
-const form = { name: ' Person ', company: ' Company ', email: 'person@example.com', phone: '', toolType: 'PCD Reamer', industry: '', material: '', machine: '', qty: '', description: ' Bore finishing ', website: '' };
+const form = { name: ' Person ', company: ' Company ', email: 'person@example.com', phone: '', toolType: 'PCD Reamer', industry: '', material: '', machine: '', qty: '', description: ' Bore finishing ', website: '', consent: true };
 describe('client-side quote validation', () => {
+  test('explicit consent is required before an enquiry can be submitted', () => {
+    expect(rfqSchema.safeParse({ ...form, consent: false }).success).toBe(false);
+    expect(rfqSchema.safeParse({ ...form, consent: undefined }).success).toBe(false);
+    expect(rfqSchema.safeParse(form).success).toBe(true);
+  });
   test('10 MB is accepted and anything larger is rejected', () => {
     expect(MAX_DRAWING_BYTES).toBe(10 * 1024 * 1024);
     expect(validateDrawing({ name: 'drawing.pdf', type: 'application/pdf', size: MAX_DRAWING_BYTES })).toBeUndefined();

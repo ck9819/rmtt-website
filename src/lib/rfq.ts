@@ -12,6 +12,7 @@ export const rfqSchema = z.object({
   material: optionalText(fieldLimits.material), machine: optionalText(fieldLimits.machine), qty: optionalText(fieldLimits.qty),
   description: optionalText(fieldLimits.description).pipe(z.string().min(1, 'Describe your application.')),
   website: optionalText(fieldLimits.website).pipe(z.string().max(0, 'Unable to submit this request.')),
+  consent: z.boolean().refine(value => value, 'Please agree to the use of your details to respond to your enquiry.'),
 });
 export type RfqForm = z.infer<typeof rfqSchema>;
 export type RfqPayload = RfqForm & { tools: string[]; drawing?: File };

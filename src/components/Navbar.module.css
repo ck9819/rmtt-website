@@ -226,7 +226,8 @@
   box-shadow: var(--shadow-md);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .inner { justify-content: space-between; }
   .nav { display: none; }
   .cta { display: none; }
   .menuBtn { display: flex; }
@@ -297,7 +298,6 @@
 }
 
 .quoteCount { min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: var(--white); color: var(--navy); border-radius: var(--radius-sm); font-size: 12px; }
-@media (max-width: 1200px) and (min-width: 901px) { .navLink { padding: 22px 10px; } .inner { gap: 12px; } .nav { margin-left: 0; } }
+@media (max-width: 1200px) and (min-width: 1101px) { .navLink { padding: 22px 10px; } .inner { gap: 12px; } .nav { margin-left: 0; } }
 
 @media (max-width: 600px) { .mobileMenu { max-height: calc(100dvh - 64px); } }
-@media (max-width: 1100px) and (min-width: 901px) { .inner { gap: 8px; padding: 0 16px; } .navLink { padding: 22px 7px; } .cta { padding: 10px; } .logo { padding: 6px; } }
