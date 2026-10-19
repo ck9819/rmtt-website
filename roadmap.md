@@ -25,7 +25,8 @@
 - [x] Improve carousel playback, keyboard navigation, focus visibility, headings, contrast and image accessibility without redesign.
 - [x] Self-host Source Sans 3, lazy-load secondary routes, update metadata and add static crawler files (domain replacement documented as deployment TODO).
 - [x] Verify keyboard flows, layouts at 375/768/1024px and Home/Products/Contact accessibility scores (100 each).
-- [ ] Populate the About leadership carousel — waiting for client-approved names, roles, biographies and portraits.
+- [x] Populate the About leadership carousel with approved names, initials and no unconfirmed roles or biographies.
+- [ ] Align industry choices, founders' note, hero taglines and catalogue specifications with the FINAL deck; remove unsupported equipment/benchmark claims and verify source spelling and page flows.
 - [x] Correct showcase copy and headings; add range links and quote/catalogue buttons.
 - [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.
 - [x] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions; browser checks, 13 tests and automatic build pass.

@@ -6,6 +6,8 @@
 - Use the shared NotFound page for unmatched application and catalogue routes so recovery links and page titles agree.
 - Use the inherited `--focus-outline` token or `data-focus-surface` for dark focus contexts so CSS Modules share one focus-ring rule.
 - Keep optional leadership and customer sections gated by their typed arrays in src/data so empty client data never renders fabricated profiles or logos.
+- Share the industry options and icons through src/data/industries.ts across Home, Contact and catalogue filters; keep product industry assignments source-backed rather than inferred from company sectors.
+- Leadership profiles omit biographies, hide blank roles and render initials for missing portraits so approved names can appear without invented titles or images.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
 - Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.
 - Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
