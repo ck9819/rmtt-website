@@ -2,6 +2,9 @@
 - Keep product records in `src/data/products.ts` and category presentation in `src/pages/productsData.tsx` and reference PDF-sourced media through checked-in `.asset.json` pointers in `src/assets` so category pages share one catalog and image binaries stay off-repo.
 - Define shared contact details, including WhatsApp, in `src/lib/siteConfig.ts` and import them wherever contact links render to prevent inconsistent destinations.
 - Render privacy and terms routes through the shared LegalPage with existing page styles to keep legal placeholders consistent without redesigning the site.
+- Store approved legal sections in `src/data/legal.ts`; empty arrays render a contact placeholder so legal copy is never fabricated.
+- Use the shared NotFound page for unmatched application and catalogue routes so recovery links and page titles agree.
+- Use the inherited `--focus-outline` token or `data-focus-surface` for dark focus contexts so CSS Modules share one focus-ring rule.
 - Keep optional leadership and customer sections gated by their typed arrays in src/data so empty client data never renders fabricated profiles or logos.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
 - Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.

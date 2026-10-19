@@ -16,7 +16,7 @@ const pages: Record<string, [string, string]> = {
 };
 export default function RouteMeta() {
   const { pathname } = useLocation();
-  const id = pathname.startsWith('/products/') ? pathname.split('/')[2] : undefined;
+  const id = /^\/products\/[^/]+\/?$/.test(pathname) ? pathname.split('/')[2] : undefined;
   const product = products.find(tool => tool.slug === id);
   const category = categories.find(cat => cat.id === id);
   const [title, description] = product ? [product.name, product.description] : category ? [category.label, category.intro] : pages[pathname] || ['Page not found', 'Explore Riddhi Machine Tool Technology cutting tools.'];

@@ -6,7 +6,7 @@ import { siteConfig } from '../lib/siteConfig';
 import { useQuote } from '../context/QuoteContext';
 import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm } from '../lib/rfq';
 
-const fields: { name: keyof RfqForm; label: string; required?: boolean; type?: string; placeholder?: string }[] = [
+const fields: { name: keyof typeof fieldLimits; label: string; required?: boolean; type?: string; placeholder?: string }[] = [
   { name: 'name', label: 'Full name', required: true, placeholder: 'Your full name' },
   { name: 'company', label: 'Company', required: true, placeholder: 'Your company name' },
   { name: 'email', label: 'Email', required: true, type: 'email', placeholder: 'you@company.com' },
@@ -18,7 +18,7 @@ const fields: { name: keyof RfqForm; label: string; required?: boolean; type?: s
   { name: 'qty', label: 'Quantity per month (components)', placeholder: 'e.g. 500 components' },
 ];
 const industryOptions = ['Automotive', 'Two-wheeler', 'Aerospace', 'Hydraulics & pneumatics', 'Precision engineering', 'General engineering', 'Medical devices', 'Other'];
-const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', toolType: '', industry: '', material: '', machine: '', qty: '', description: '', website: '' };
+const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', toolType: '', industry: '', material: '', machine: '', qty: '', description: '', website: '', consent: false };
 
 export default function Contact() {
   const { selected, remove } = useQuote();
@@ -32,7 +32,7 @@ export default function Contact() {
   const selectedNames = selected.map(tool => tool.name).join('; ');
   const selectedSlugs = selected.map(tool => tool.slug);
   useEffect(() => { setForm(current => ({ ...current, toolType: selectedNames })); }, [selectedNames]);
-  const change = (name: keyof RfqForm, value: string) => {
+  const change = (name: keyof typeof fieldLimits, value: string) => {
     setForm(current => ({ ...current, [name]: value.slice(0, fieldLimits[name]) }));
     setErrors(current => ({ ...current, [name]: '' }));
     setSubmitError('');
@@ -77,9 +77,17 @@ export default function Contact() {
             const file = event.target.files?.[0]; const error = validateDrawing(file); setFileError(error); setDrawing(error ? undefined : file); setSubmitError(''); if (error) event.target.value = '';
           }} />{fileError && <p id="drawing-error" role="alert" className={styles.error}>{fileError}</p>}</div>
           {errors.website && <p role="alert" className={styles.error}>{errors.website}</p>}
+          <p id="consent-help" className={styles.formNote}>By submitting this form you agree that RMTT may use your details to respond to your enquiry, as described in our <Link to="/privacy">privacy policy</Link>.</p>
+          <div className={styles.consentField}>
+            <label htmlFor="consent"><input id="consent" name="consent" type="checkbox" required checked={form.consent} aria-invalid={!!errors.consent} aria-describedby={`consent-help${errors.consent ? ' consent-error' : ''}`} onChange={event => {
+              setForm(current => ({ ...current, consent: event.target.checked }));
+              setErrors(current => ({ ...current, consent: '' }));
+              setSubmitError('');
+            }} />I agree</label>
+            {errors.consent && <p id="consent-error" role="alert" className={styles.error}>{errors.consent}</p>}
+          </div>
           {submitError && <p role="alert" className={styles.submitError}>{submitError} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>}
           <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Submit request'}</button>
-          <p className={styles.formNote}>By submitting you agree to our <Link to="/privacy">privacy policy</Link>.</p>
         </form>
       </div>
             {/* Info sidebar */}
