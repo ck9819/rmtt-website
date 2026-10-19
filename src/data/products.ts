@@ -37,7 +37,7 @@ export type Product = {
 };
 
 // Only source-backed, previously visible specifications are included.
-// TODO: Confirm finishing end-mill specifications; specs intentionally undefined.
+// End-mill specifications approved from the company FINAL deck.
 export const products: Product[] = [
 {
     slug: 'finishing-application-solid-carbide-endmill',
@@ -49,7 +49,12 @@ export const products: Product[] = [
             description:
               'Solid carbide end mill for finish milling flat surfaces, shoulders and contours, removing remaining stock after roughing to achieve the required surface finish and final shape.',
             image: solidCarbideEndmills.url,
-            // TODO: Confirm specifications for this finishing end mill before displaying them.
+            specs: [
+              { label: 'Diameter', value: '2–32 mm' },
+              { label: 'Flutes (Z)', value: '2, 3, 4, 5, 6' },
+              { label: 'Technology', value: 'multi-helix with high wear-resistance coatings' },
+              { label: 'Features', value: 'high-polished and edge-honed' },
+            ],
             
             applications: ['Finish milling of flat surfaces, shoulders and contours'],
           },
@@ -68,6 +73,8 @@ export const products: Product[] = [
               { label: 'Tolerance', value: 'Customer-specific, e.g. H6 / H7' },
               { label: 'Flutes', value: 'Straight or left-hand spiral' },
               { label: 'Material', value: 'Ultra-fine carbide' },
+              { label: 'Coolant', value: 'Internal coolant supply' },
+              { label: 'Options', value: 'Special multi-step reamers' },
             ],
             applications: ['Grey and nodular iron, alloyed steel, stainless steel, titanium and Inconel precision bores'],
           },

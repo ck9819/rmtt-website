@@ -1,9 +1,12 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, type Context, type ReactNode } from 'react';
 import { products, type Product } from '../data/products';
 import { readQuoteSlugs, saveQuoteSlugs } from '../lib/catalogue';
 
 type Quote = { selected: Product[]; add: (slug: string) => void; remove: (slug: string) => void };
-const QuoteContext = createContext<Quote | undefined>(undefined);
+// Keep provider and consumers on the same context during Vite hot updates.
+// Otherwise an already-mounted provider can retain the previous context object.
+const QuoteContext: Context<Quote | undefined> = import.meta.hot?.data.quoteContext ?? createContext<Quote | undefined>(undefined);
+if (import.meta.hot) import.meta.hot.data.quoteContext = QuoteContext;
 
 export function QuoteProvider({ children }: { children: ReactNode }) {
   const [slugs, setSlugs] = useState<string[]>(() => {

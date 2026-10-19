@@ -1036,7 +1036,7 @@
   aspect-ratio: 1;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: #1a2028;
+  background: var(--blue-xlight);
 }
 .leaderImg {
   width: 100%;
@@ -1102,3 +1102,8 @@
 .dotActive::after { background: var(--navy); }
 .dot:hover { background: transparent; }
 @media (max-width: 768px) { .carouselArrow { width: 44px; height: 44px; } .leaderCarousel { flex-wrap: wrap; } .leaderCard { min-width: 0; } }
+
+.heroTagline { color: var(--navy); font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 18px; }
+.foundersNote { max-width: 900px; font-size: 18px; color: var(--text-secondary); line-height: 1.75; }
+.leaderInitials { width: 100%; height: 100%; display: grid; place-items: center; color: var(--navy); font-size: 48px; font-weight: 600; }
+@media (max-width: 768px) { .leaderCard { flex-basis: 100%; order: -1; } .leaderName { text-align: center; } .leaderCarousel { justify-content: space-between; } }

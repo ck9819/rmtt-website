@@ -23,7 +23,7 @@ export default function JourneyTimeline() {
           <div className="section-eyebrow">Our journey</div>
           <h2 className={styles.title}>Milestones of innovation</h2>
           <p className={styles.sub}>
-            From a 2013 trading startup to a precision tool manufacturer with German-grade capability.
+            From a 2013 trading startup to a precision tool manufacturer.
           </p>
           <p className={styles.intro}>
             We began our journey in 2013 as a startup trading company, laying the foundation

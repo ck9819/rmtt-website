@@ -6,6 +6,8 @@
 - Use the shared NotFound page for unmatched application and catalogue routes so recovery links and page titles agree.
 - Use the inherited `--focus-outline` token or `data-focus-surface` for dark focus contexts so CSS Modules share one focus-ring rule.
 - Keep optional leadership and customer sections gated by their typed arrays in src/data so empty client data never renders fabricated profiles or logos.
+- Share the industry options and icons through src/data/industries.ts across Home, Contact and catalogue filters; keep product industry assignments source-backed rather than inferred from company sectors.
+- Leadership profiles omit biographies, hide blank roles and render initials for missing portraits so approved names can appear without invented titles or images.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
 - Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.
 - Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
@@ -13,6 +15,7 @@
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
 - Keep quote selections in QuoteContext with guarded localStorage persistence because RFQ drafts must survive reloads without a backend.
+- Preserve the quote context identity through Vite hot-update data so mounted providers and refreshed consumers cannot diverge during preview updates.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
 - Keep one focusable main landmark around route content and lazy-load all non-Home pages so navigation stays accessible and the initial bundle stays lean.

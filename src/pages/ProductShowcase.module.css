@@ -339,3 +339,5 @@
   .dotActive::after { width: 36px; height: 4px; }
 }
 @media (max-width: 600px) { .showcase { margin-top: 64px; } }
+
+.tagline { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--navy); margin-bottom: 18px; }

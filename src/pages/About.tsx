@@ -106,6 +106,7 @@ export default function About() {
         Riddhi Machine<br />Tool Technology
       </h1>
 
+      <p className={styles.heroTagline}>Transforming raw materials into finer tools</p>
       <p className={styles.pageSubtitle}>
         Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting
         tools manufacturer delivering solid carbide and PCD solutions through advanced
@@ -152,6 +153,12 @@ export default function About() {
   </div>
 </section>
 
+      <section className={styles.storySection} aria-labelledby="founders-note-title">
+        <div className="container">
+          <h2 id="founders-note-title" className={styles.storyTitle}>Founders' note</h2>
+          <p className={styles.foundersNote}>Riddhi Machine Tool Technology stands for more than just a reliable supplier/manufacturer of high-quality PCD tools &amp; solid carbide tools; it stands for technical expertise, collaboration, partnerships and solutions that make customers more successful in the long term.</p>
+        </div>
+      </section>
       <JourneyTimeline />
       {/* Mission & Vision */}
       <section className={styles.missionVisionSection}>
@@ -261,9 +268,7 @@ export default function About() {
                 <li key={item.id}><CheckCircle2 size={16} /> {item.facilityName}</li>
               ))}
             </ul>
-            <p className={styles.manufacturingNote}>
-              Our manufacturing standards match German quality benchmarks, ensuring high accuracy, process consistency, and extended tool life across applications.
-            </p>
+
           </div>
         </div>
       </section>
@@ -349,11 +354,11 @@ export default function About() {
       </section>
 
       {/* Leadership is shown only when real client profiles exist. */}
-      {leader && <section className={styles.leadershipSection} role="region" aria-roledescription="carousel" aria-label="Founder and directors" {...playback.interactionProps}>
+      {leader && <section className={styles.leadershipSection} role="region" aria-roledescription="carousel" aria-label="Leadership" {...playback.interactionProps}>
         <div className="container">
           <div className={styles.leadershipHead}>
             <div className="section-eyebrow">Leadership</div>
-            <h2 className={styles.leadershipTitle}>Founder & directors</h2>
+            <h2 className={styles.leadershipTitle}>Leadership</h2>
             <p className={styles.leadershipSub}>
               Meet the people who shape RMTT's vision, engineering and customer commitment.
             </p>
@@ -366,12 +371,11 @@ export default function About() {
 
             <div className={styles.leaderCard} key={leader.name} aria-live={playback.playing ? 'off' : 'polite'}>
               <div className={styles.leaderImgWrap}>
-                <img src={leader.img} alt={leader.name} width={600} height={600} loading="lazy" className={styles.leaderImg} />
+                {leader.img ? <img src={leader.img} alt={leader.name} width={600} height={600} loading="lazy" className={styles.leaderImg} /> : <div className={styles.leaderInitials} aria-hidden="true">{leader.name.split(/\s+/).map(part => part[0]).join('')}</div>}
               </div>
               <div className={styles.leaderBody}>
-                <div className={styles.leaderRole}>{leader.role}</div>
+                {leader.role && <div className={styles.leaderRole}>{leader.role}</div>}
                 <h3 className={styles.leaderName}>{leader.name}</h3>
-                <p className={styles.leaderBio}>{leader.bio}</p>
               </div>
             </div>
 

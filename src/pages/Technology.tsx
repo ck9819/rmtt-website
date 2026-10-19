@@ -19,7 +19,7 @@ export default function Technology() {
           <div className="section-eyebrow">Our capabilities</div>
           <h1 className={styles.pageTitle}>Manufacturing technology</h1>
           <p className={styles.pageSubtitle}>
-            German-benchmark equipment operated by experienced engineers from our Bengaluru facility. The facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment.
+            The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment.
           </p>
         </div>
       </section>

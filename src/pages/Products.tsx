@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Search, X, ArrowRight } from 'lucide-react';
 import { products } from '../data/products';
+import { industryNames } from '../data/industries';
 import { categories } from './productsData';
 import { filterProducts } from '../lib/catalogue';
 import ProductCard from '../components/ProductCard';
 import styles from './Products.module.css';
 
 const materials = [...new Set(products.flatMap(product => product.materials))].sort();
-const industries = [...new Set(products.flatMap(product => product.industries))].sort();
+const industries = industryNames;
 
 export default function Products() {
   const [params, setParams] = useSearchParams();
