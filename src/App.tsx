@@ -16,6 +16,7 @@ const TrustSignals = lazy(() => import('./pages/TrustSignals'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const News = lazy(() => import('./pages/News'));
+const NewsArticle = lazy(() => import('./pages/NewsArticle'));
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/downloads" element={<TrustSignals />} />
         <Route path="/news" element={<News />} />
+        <Route path="/news/:id" element={<NewsArticle />} />
         <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />
         <Route path="/terms" element={<LegalPage title="Terms" />} />
         <Route path="*" element={<NotFound />} />
