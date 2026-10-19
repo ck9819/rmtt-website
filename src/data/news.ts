@@ -12,7 +12,7 @@ export type NewsItem = {
 export const news: NewsItem[] = [
   {
     id: 'vollmer-edm-welcome',
-    date: '2026-08-31',
+    date: '', // TODO: confirm YYYY-MM-DD from the original LinkedIn post.
     title: 'Welcoming our new VOLLMER EDM machine',
     summary: 'We are happy to welcome our new VOLLMER EDM Machine to the Riddhi family. This addition strengthens our capabilities in precision manufacturing, advanced technology, and delivering the quality our customers expect from us.',
     image: '/images/news/vollmer-edm.webp',
@@ -35,5 +35,5 @@ export function formatNewsDate(date: string): string | undefined {
 export function newsImageUrl(image?: string): string | undefined {
   // Only local, root-relative news images; never external URLs or directory traversal.
   return image && /^\/images\/news\/[a-zA-Z0-9_-]+\.(?:webp|png|jpe?g|avif)$/.test(image)
-    ? `${import.meta.env.BASE_URL}${image.slice(1)}` : undefined;
+    ? `${import.meta.env?.BASE_URL || '/'}${image.slice(1)}` : undefined;
 }
