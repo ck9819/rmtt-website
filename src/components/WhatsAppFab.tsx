@@ -1,10 +1,10 @@
 import styles from './WhatsAppFab.module.css';
+import { siteConfig } from '../lib/siteConfig';
 
-const PHONE = '919945909155';
 const MESSAGE = 'Hello Riddhi team, I would like to discuss a tooling requirement.';
 
 export default function WhatsAppFab() {
-  const href = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+  const href = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(MESSAGE)}`;
   return (
     <aside aria-label="WhatsApp contact">
     <a

@@ -51,9 +51,6 @@ export default function CategoryPage() {
         <div className="container">
           <div className={styles.catHeader}>
             <div className={styles.catHeaderText}>
-              <div className="section-eyebrow">Capabilities</div>
-              <h2 className={styles.catTitle}>{cat.headline}</h2>
-              <p className={styles.catIntro}>{cat.intro}</p>
               <ul className={styles.features}>
                 {cat.features.map(f => (
                   <li key={f} className={styles.feature}>
@@ -71,11 +68,11 @@ export default function CategoryPage() {
           {cat.subcategories.map(sub => (
             <div key={sub.id} id={sub.id} className={styles.subCat}>
               <div className={styles.subCatHead}>
-                <h3 className={styles.subCatTitle}>{sub.title}</h3>
+                <h2 className={styles.subCatTitle}>{sub.title}</h2>
                 <p className={styles.subCatBlurb}>{sub.blurb}</p>
               </div>
               <div className={styles.productCards}>
-                {sub.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={4} />)}
+                {sub.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={3} />)}
               </div>
             </div>
           ))}
