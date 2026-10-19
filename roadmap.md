@@ -28,4 +28,4 @@
 - [ ] Populate the About leadership carousel — waiting for client-approved names, roles, biographies and portraits.
 - [x] Correct showcase copy and headings; add range links and quote/catalogue buttons.
 - [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.
-- [ ] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions.
+- [x] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions; browser checks, 13 tests and automatic build pass.
