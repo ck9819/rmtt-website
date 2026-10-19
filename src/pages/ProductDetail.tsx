@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Plus, Check, FileText, Settings } from 'lucide-react';
-import { products, type Product } from '../data/products';
+import { products, getProductImages, type Product } from '../data/products';
 import { categories } from './productsData';
 import { useQuote } from '../context/QuoteContext';
 import ProductCard from '../components/ProductCard';
-import PhotoPlaceholder from '../components/PhotoPlaceholder';
+import Gallery from '../components/Gallery';
 import styles from './Products.module.css';
 
 export default function ProductDetail({ product }: { product: Product }) {
@@ -20,7 +20,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     </div></section>
     <section className={styles.catalogueSection}><div className="container">
       <div className={styles.detailGrid}>
-        <div className={styles.detailImage}>{product.image ? <img src={product.image} alt={product.name} width={800} height={800} loading="lazy" /> : <PhotoPlaceholder icon={Settings} />}</div>
+        <div className={styles.detailImage}><Gallery images={getProductImages(product)} icon={Settings} eager /></div>
         <div><p className={styles.catIntro}>{product.description}</p>
           {product.applications.length > 0 && <><h2 className={styles.subCatTitle}>Typical applications</h2><ul className={styles.applicationList}>{product.applications.map(application => <li key={application}>{application}</li>)}</ul></>}
           {!!product.specs?.length && <table className={styles.specTable}><caption>Specifications</caption><tbody>{product.specs.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>}

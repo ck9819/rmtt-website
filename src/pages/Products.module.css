@@ -453,3 +453,6 @@
 @media (max-width: 600px) { .resultsHeader { gap: 12px; flex-wrap: wrap; } }
 
 @media (max-width: 600px) { .main { padding-top: 64px; } }
+
+.catGallery { min-width: 0; }
+.protectedImg { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
