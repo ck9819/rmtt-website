@@ -155,7 +155,7 @@
 .prodCard:hover { box-shadow: var(--shadow-md); }
 .prodCardImg {
   height: 360px;
-  padding: 24px 30px 48px;
+  padding: 0 0 28px;
   display: flex;
   align-items: center;
   justify-content: center;

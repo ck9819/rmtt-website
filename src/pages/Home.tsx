@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play, Expand } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
 import { industries } from '../data/industries';
-import Lightbox from '../components/Lightbox';
+import ZoomImage from '../components/ZoomImage';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
@@ -97,7 +97,6 @@ const trustItems = [
 
 export default function Home() {
   const [appIndex, setAppIndex] = useState(0);
-  const [toolImageIndex, setToolImageIndex] = useState<number | null>(null);
   const playback = useCarouselPlayback(applications.length);
   const appCount = applications.length;
 
@@ -171,11 +170,10 @@ export default function Home() {
               <article key={p.id} className={styles.prodCard}>
                 <div className={styles.prodCardImg}>
                   {p.image ? (
-                    <img src={p.image} alt={p.imageAlt} width={640} height={1600} loading="lazy" decoding="async" draggable={false} className={styles.prodCardImgProduct} />
+                    <ZoomImage src={p.image} alt={p.imageAlt} width={640} height={1600} />
                   ) : (
                     <p.icon size={40} color={p.color} strokeWidth={1.5} />
                   )}
-                  <button type="button" className={styles.prodExpand} aria-label={`Open larger view of ${p.caption}`} title={`View ${p.caption}`} onClick={() => setToolImageIndex(products.indexOf(p))}><Expand size={18} aria-hidden="true" /></button>
                   <span className={styles.prodCaption}>{p.caption}</span>
                 </div>
                 <div className={styles.prodCardBody}>
@@ -191,8 +189,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {toolImageIndex !== null && <Lightbox images={products.map(p => ({ src: p.image, alt: p.imageAlt }))} index={toolImageIndex} onIndex={setToolImageIndex} onClose={() => setToolImageIndex(null)} />}
 
       {/* Technology highlight */}
       <section className={styles.techSection}>

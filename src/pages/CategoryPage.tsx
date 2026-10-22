@@ -62,7 +62,7 @@ export default function CategoryPage() {
               </ul>
             </div>
             <div className={styles.catGallery}>
-              <Gallery images={[{ src: cat.image, alt: cat.headline }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
+              <Gallery images={[{ src: cat.image, alt: cat.imageAlt }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
             </div>
           </div>
 

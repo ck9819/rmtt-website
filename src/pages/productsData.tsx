@@ -1,8 +1,8 @@
 import { products, type Product } from '../data/products';
 import { Settings, Gem, Layers } from 'lucide-react';
-import solidCarbideOverview from '../assets/solid-carbide-overview.jpg.asset.json';
-import pcdOverview from '../assets/pcd-overview.jpg.asset.json';
-import brazedCarbideOverview from '../assets/brazed-carbide-overview.jpg.asset.json';
+import solidCarbideOverview from '../assets/home-solid-endmill.webp.asset.json';
+import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
+import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 
 
 export type SubCategory = {
@@ -21,6 +21,7 @@ export type Category = {
   headline: string;
   intro: string;
   image: string;
+  imageAlt: string;
   features: string[];
   subcategories: SubCategory[];
 };
@@ -36,6 +37,7 @@ export const categories: Category[] = [
     intro:
       'High-performance solid carbide tools for demanding machining across grey and nodular cast iron, alloyed and stainless steels, titanium, Inconel and aluminium. The range includes precision end mills, reamers and drills, with application-specific geometries, polished flutes, internal coolant options and wear-resistant PVD coatings.',
     image: solidCarbideOverview.url,
+    imageAlt: 'Solid carbide end mill — example from the Solid Carbide range',
     features: [
       'End mill diameters from 2 to 32 mm',
       '2, 3, 4, 5 and 6-flute options',
@@ -80,6 +82,7 @@ export const categories: Category[] = [
     intro:
       'Polycrystalline diamond tooling for highly productive machining of aluminium parts in automotive and aerospace applications. Riddhi develops application-specific PCD solutions for drilling, milling and precision boring, supporting tool design through manufacturing.',
     image: pcdOverview.url,
+    imageAlt: 'PCD boring tool — example from the PCD range',
     features: [
       'Application-specific drilling, milling and boring solutions',
       'Wire EDM, lapping and grinding of cutting edges',
@@ -124,6 +127,7 @@ export const categories: Category[] = [
     intro:
       'Brazed carbide-tipped tools offer a cost-conscious way to retain strong machining performance amid high carbide raw-material costs. A heat-treated tool-steel body carries carbide tips brazed into prepared pockets, with cutting edges ground on a 5-axis CNC tool-grinding machine.',
     image: brazedCarbideOverview.url,
+    imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
     features: [
       'Tool-steel body, heat-treated for the application',
       'Carbide tips brazed into prepared pockets',

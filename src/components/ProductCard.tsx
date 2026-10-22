@@ -3,6 +3,7 @@ import { Plus, Check, ArrowRight, Settings } from 'lucide-react';
 import type { Product } from '../data/products';
 import { useQuote } from '../context/QuoteContext';
 import PhotoPlaceholder from './PhotoPlaceholder';
+import ZoomImage from './ZoomImage';
 import styles from '../pages/Products.module.css';
 
 export default function ProductCard({ product, headingLevel = 3 }: { product: Product; headingLevel?: 2 | 3 | 4 }) {
@@ -10,9 +11,9 @@ export default function ProductCard({ product, headingLevel = 3 }: { product: Pr
   const { selected, add } = useQuote();
   const added = selected.some(tool => tool.slug === product.slug);
   return <article className={styles.productCard}>
-    <Link to={`/products/${product.slug}`} className={styles.productImgWrap} aria-label={`View ${product.name}`}>
-      {product.image ? <img src={product.image} alt={product.name} width={800} height={600} loading="lazy" decoding="async" draggable={false} onDragStart={e => e.preventDefault()} onContextMenu={e => e.preventDefault()} className={styles.protectedImg} /> : <PhotoPlaceholder icon={Settings} />}
-    </Link>
+    <div className={styles.productImgWrap}>
+      {product.image ? <ZoomImage src={product.image} alt={product.name} /> : <PhotoPlaceholder icon={Settings} />}
+    </div>
     <div className={styles.productBody}>
       <Heading className={styles.productName}><Link to={`/products/${product.slug}`}>{product.name}</Link></Heading>
       <p className={styles.productDesc}>{product.description}</p>
