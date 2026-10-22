@@ -70,8 +70,6 @@ export const news: NewsItem[] = [
         'Stepped profiles, piloted drills and coolant-fed geometries become practical to produce.',
         'Tool-to-tool repeatability for customers running multi-machine cells.',
       ] },
-      { type: 'h', text: 'Internal coolant' },
-      { type: 'p', text: 'Deep-hole drilling depends on coolant delivery. Coolant ducts can be ground directly into solid carbide drills and reamers so pressure reaches the cutting zone where chips form.' },
     ],
     published: true,
   },
