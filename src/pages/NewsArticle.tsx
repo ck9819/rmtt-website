@@ -32,7 +32,7 @@ export default function NewsArticle() {
         <article className={`container ${styles.article}`}>
           {hero && item.image && (
             <figure className={styles.figure}>
-              <img src={hero} alt={item.image.alt} width={1600} height={900} />
+              <Gallery images={[{ src: hero, alt: item.image.alt }]} icon={Newspaper} width={1600} height={900} aspect="16 / 9" eager />
               {item.image.credit && <figcaption className={styles.caption}>{item.image.credit}</figcaption>}
             </figure>
           )}

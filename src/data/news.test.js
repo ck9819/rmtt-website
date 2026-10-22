@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { news, publishedNews, getLatestNews, getNewsById } from './news';
 import { formatNewsDate, newsImageUrl } from '../lib/news';
 import { siteConfig } from '../lib/siteConfig';
+import brazedTslot from '../assets/home-brazed-tslot.webp.asset.json';
 
 test('eight articles are published, including the VOLLMER post', () => {
   expect(publishedNews.length).toBe(8);
@@ -20,6 +21,11 @@ test('dates format like "10 Oct 2026"', () => {
 test('only local news images resolve', () => {
   expect(newsImageUrl('/images/news/pcd-reamers.webp')).toBe('/images/news/pcd-reamers.webp');
   for (const path of ['https://example.com/a.webp', '/images/news/../a.webp', '/images/a.webp', undefined]) expect(newsImageUrl(path)).toBeUndefined();
+});
+test('the T-slot article uses the verified company T-slot photograph', () => {
+  expect(getNewsById('brazed-carbide-t-slot-cutters')?.image?.src).toBe(brazedTslot.url);
+  expect(newsImageUrl(brazedTslot.url)).toBe(brazedTslot.url);
+  expect(newsImageUrl('/__l5e/assets-v1/unapproved/photo.webp')).toBeUndefined();
 });
 test('article bodies do not repeat the shared call-to-action paragraph', () => {
   const cta = 'Need a custom tool for your application?';

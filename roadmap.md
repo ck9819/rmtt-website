@@ -33,6 +33,7 @@
 - [x] Add data-driven legal placeholders, required consent, shared 404 page, surface-aware focus rings and 1100px navigation collapse; browser flows, 16 tests and automatic build pass.
 - [x] Add shared News cards, a lazy-loaded News page, navigation, metadata and conditional Home latest news.
 - [x] Verify empty and single-item news states, sorting, local images and preview rendering; 23 tests pass and automatic build passes.
+- [x] Extend verified Drive photos to matching end-mill, PCD boring and T-slot product entries/category examples and T-slot news; add visible View larger controls across Home, catalogue and news. Verified loaded photos, zoom, Escape, detail navigation and mobile layout; 28 tests pass and automatic build OK. Other news subjects retain their credited photos because the three verified tool photos do not establish a match.
 - [ ] Obtain the VOLLMER post's confirmed publication date from the client; matching direct LinkedIn URL located, but exact date remains unverified and is not displayed.
 - [x] Add product gallery, zoom lens, accessible lightbox, image deterrents and footer image notice.
 - [x] Add article share controls and a static published-news RSS feed; verified copied public links, new-tab destinations, eight feed entries, omitted unconfirmed RSS date, nine tests and automatic build.
