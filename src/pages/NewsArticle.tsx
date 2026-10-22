@@ -3,6 +3,7 @@ import { ArrowLeft, FileText, Newspaper } from 'lucide-react';
 import { getNewsById, publishedNews } from '../data/news';
 import { formatNewsDate, newsImageUrl } from '../lib/news';
 import Gallery from '../components/Gallery';
+import NewsShare from '../components/NewsShare';
 import NotFound from './NotFound';
 import productStyles from './Products.module.css';
 import homeStyles from './Home.module.css';
@@ -48,6 +49,7 @@ export default function NewsArticle() {
               {item.gallery?.[0]?.credit && <p className={styles.caption}>{item.gallery[0].credit}</p>}
             </div>
           )}
+          <NewsShare id={item.id} title={item.title} />
           <nav className={styles.pager} aria-label="More articles">
             {newer && <Link to={`/news/${newer.id}`}><small>Previous article</small>{newer.title}</Link>}
             {older && <Link to={`/news/${older.id}`} className={styles.next}><small>Next article</small>{older.title}</Link>}

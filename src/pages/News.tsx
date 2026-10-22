@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Rss, Search } from 'lucide-react';
+import { rssUrl } from '../lib/newsSharing';
 import NewsCard from '../components/NewsCard';
 import { publishedNews } from '../data/news';
 import productStyles from './Products.module.css';
@@ -23,7 +24,7 @@ export default function News() {
   return (
     <div className={productStyles.main}>
       <section className={productStyles.pageHero}>
-        <div className="container"><h1 className={productStyles.pageTitle}>News &amp; Articles</h1></div>
+        <div className={`container ${styles.newsHeader}`}><h1 className={productStyles.pageTitle}>News &amp; Articles</h1><a href={rssUrl} className={styles.allLink} target="_blank" rel="noopener noreferrer" aria-label="RSS feed (opens in a new tab)"><Rss size={20} aria-hidden="true" /> RSS feed</a></div>
       </section>
       <section className={styles.section}>
         <div className="container">

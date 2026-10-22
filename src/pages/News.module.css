@@ -37,5 +37,11 @@
 .pager a:hover { border-color: var(--steel); }
 .pager small { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-secondary); margin-bottom: 4px; }
 .next { text-align: right; }
-.ctaNote { margin-top: 24px; padding: 16px 18px; border-left: 3px solid var(--steel); background: var(--surface); border-radius: var(--radius-sm); font-weight: 600; }
+.newsHeader { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.share { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.shareLabel { color: var(--navy); font-weight: 600; margin-right: 8px; }
+.shareControl { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex: 0 0 44px; border: 1px solid var(--border-light); border-radius: var(--radius-sm); background: var(--white); color: var(--navy); cursor: pointer; }
+.shareControl:hover { background: var(--surface); border-color: var(--steel); }
+.shareStatus { color: var(--text-secondary); font-size: 14px; }
+.copyFallback { flex-basis: 100%; min-width: 0; padding: 12px; color: var(--navy); background: var(--surface); border: 1px solid var(--border-light); font: inherit; }
 @media (min-width: 640px) { .pager { grid-template-columns: 1fr 1fr; } .next { grid-column: 2; } .articleTitle { font-size: 38px; } }
