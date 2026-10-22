@@ -22,9 +22,7 @@ export type NewsItem = {
   published: boolean; // false = hold until content/image rights are confirmed
 };
 
-const CTA =
-  'Need a custom tool for your application? Send us your drawing or part details and our team will get back to you.';
-
+// The shared call-to-action paragraph is rendered by NewsArticle, not stored per article.
 export const news: NewsItem[] = [
   {
     id: 'precision-tooling-from-bengaluru',
@@ -41,7 +39,7 @@ export const news: NewsItem[] = [
     body: [
       { type: 'p', text: 'Riddhi Machine Tool Technology (RMTT) started in Bengaluru in 2013 as a trading business and began manufacturing in 2017. Our aim is to build precision cutting tools in India that customers can rely on, with a team that is customer oriented, technology oriented and service oriented.' },
       { type: 'h', text: 'Control quality at the source' },
-      { type: 'p', text: 'Our core process runs in-house on a SAACKE 5-axis CNC tool and cutter grinding machine, which lets complex drill, reamer and end-mill geometries be ground in a single clamping. PCD tools are produced with our Vollmer EDM.' },
+      { type: 'p', text: 'Our core processes run in-house: tool grinding on a SAACKE 5-axis CNC machine and PCD cutting-edge production on a Vollmer EDM.' },
       { type: 'h', text: 'What we manufacture' },
       { type: 'ul', items: [
         'Special solid carbide drills, step drills and hole mills',
