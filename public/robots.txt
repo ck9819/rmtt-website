@@ -1,4 +1,3 @@
-# TODO: Switch to the client domain when connected.
+# Preview build: not for indexing. Replace with the real policy when the client domain goes live.
 User-agent: *
-Allow: /
-Sitemap: https://rmtt-website.lovable.app/sitemap.xml
+Disallow: /
