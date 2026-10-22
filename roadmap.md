@@ -36,3 +36,4 @@
 - [ ] Obtain the VOLLMER post's confirmed publication date from the client; matching direct LinkedIn URL located, but exact date remains unverified and is not displayed.
 - [x] Add product gallery, zoom lens, accessible lightbox, image deterrents and footer image notice.
 - [x] Add article share controls and a static published-news RSS feed; verified copied public links, new-tab destinations, eight feed entries, omitted unconfirmed RSS date, nine tests and automatic build.
+- [ ] Review the supplied Google Drive tool images against category descriptions and improve Home product-card prominence using matching photos.
