@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play, Expand } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
 import { industries } from '../data/industries';
-import { products as catalogueProducts } from '../data/products';
+import Lightbox from '../components/Lightbox';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
-import solidCarbideEndmills from '../assets/solid-carbide-endmills.jpg.asset.json';
-import pcdTool1 from '../assets/pcd-tool-1.png.asset.json';
-import brazedTool1 from '../assets/brazed-tool-1.png.asset.json';
+import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
+import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
+import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
 import { getLatestNews } from '../data/news';
 const latestNews = getLatestNews(3);
 import NewsCard from '../components/NewsCard';
@@ -23,10 +23,11 @@ const products = [
     id: 'solid-carbide',
     icon: Settings,
     category: 'Solid Carbide',
-    name: 'End Mills & Drills',
+    name: 'End Mills, Reamers & Drills',
     description:
-      'High-polish flutes, internal coolant channels and advanced PVD coatings for steel, titanium and aluminium. Fully ground on 5-axis SAACKE machines.',
-    tags: catalogueProducts.filter(product => product.category === 'solid-carbide').slice(0, 4).map(product => product.name),
+      'Solid carbide tools for milling, precision bores and drilling, with application-specific geometries.',
+    imageAlt: 'Solid carbide end mill with helical cutting flutes',
+    caption: 'Solid carbide end mill',
     color: 'var(--cat-solid)',
     bg: 'var(--cat-solid-bg)',
     image: solidCarbideEndmills.url,
@@ -35,10 +36,11 @@ const products = [
     id: 'pcd',
     icon: Gem,
     category: 'PCD Tools',
-    name: 'PCD Reamers & Millers',
+    name: 'PCD Boring, Reaming & Milling',
     description:
-      'Wire EDM + lapping edges, seamless brazing, steel & carbide body options. Ideal for aluminium die casting and non-ferrous applications.',
-    tags: catalogueProducts.filter(product => product.category === 'pcd').slice(0, 4).map(product => product.name),
+      'PCD tools for aluminium machining, including precision boring, reaming and milling solutions.',
+    imageAlt: 'PCD boring tool with a visible cutting tip and holder',
+    caption: 'PCD boring tool',
     color: 'var(--cat-pcd)',
     bg: 'var(--cat-pcd-bg)',
     image: pcdTool1.url,
@@ -49,8 +51,9 @@ const products = [
     category: 'Brazed Carbide',
     name: 'Special Brazed Tools',
     description:
-      'Cost-effective carbide solutions with 5-axis ground edges. T-slot cutters, shell mills, step reamers and custom profiles.',
-    tags: catalogueProducts.filter(product => product.category === 'brazed').slice(0, 4).map(product => product.name),
+      'Carbide-tipped tools on steel bodies, including T-slot cutters, reamers and customer-specific forms.',
+    imageAlt: 'Brazed carbide T-slot milling cutter with a wide cutting head',
+    caption: 'Brazed carbide T-slot cutter',
     color: 'var(--cat-brazed)',
     bg: 'var(--cat-brazed-bg)',
     image: brazedTool1.url,
@@ -94,6 +97,7 @@ const trustItems = [
 
 export default function Home() {
   const [appIndex, setAppIndex] = useState(0);
+  const [toolImageIndex, setToolImageIndex] = useState<number | null>(null);
   const playback = useCarouselPlayback(applications.length);
   const appCount = applications.length;
 
@@ -164,32 +168,31 @@ export default function Home() {
             className={`${styles.prodGrid} ${styles.revealStagger} ${productsGridReveal.shown ? styles.revealStaggerShown : ''}`}
           >
             {products.map(p => (
-              <Link to={`/products/${p.id}`} key={p.id} className={styles.prodCard}>
+              <article key={p.id} className={styles.prodCard}>
                 <div className={styles.prodCardImg}>
                   {p.image ? (
-                    <img src={p.image} alt={p.name} width={800} height={600} loading="lazy" className={styles.prodCardImgProduct} />
+                    <img src={p.image} alt={p.imageAlt} width={640} height={1600} loading="lazy" decoding="async" draggable={false} className={styles.prodCardImgProduct} />
                   ) : (
                     <p.icon size={40} color={p.color} strokeWidth={1.5} />
                   )}
+                  <button type="button" className={styles.prodExpand} aria-label={`Open larger view of ${p.caption}`} title={`View ${p.caption}`} onClick={() => setToolImageIndex(products.indexOf(p))}><Expand size={18} aria-hidden="true" /></button>
+                  <span className={styles.prodCaption}>{p.caption}</span>
                 </div>
                 <div className={styles.prodCardBody}>
                   <div className={styles.prodCat} style={{ color: p.color }}>{p.category}</div>
                   <h3 className={styles.prodName}>{p.name}</h3>
                   <p className={styles.prodDesc}>{p.description}</p>
-                  <div className={styles.prodTags}>
-                    {p.tags.map(t => (
-                      <span key={t} className={styles.prodTag}>{t}</span>
-                    ))}
-                  </div>
-                  <div className={styles.prodLink} style={{ color: p.color }}>
-                    Learn more <ChevronRight size={14} />
-                  </div>
+                  <Link to={`/products/${p.id}`} className={styles.prodLink} style={{ color: p.color }}>
+                    Explore range <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
+
+      {toolImageIndex !== null && <Lightbox images={products.map(p => ({ src: p.image, alt: p.imageAlt }))} index={toolImageIndex} onIndex={setToolImageIndex} onClose={() => setToolImageIndex(null)} />}
 
       {/* Technology highlight */}
       <section className={styles.techSection}>

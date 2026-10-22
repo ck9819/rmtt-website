@@ -142,103 +142,49 @@
   .prodGrid { grid-template-columns: 1fr; }
 }
 .prodCard {
-  border: none;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  display: block;
   background: var(--white);
-  border: 1px solid var(--border-light);
-  box-shadow:
-    var(--shadow-sm);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
 }
-
-.prodCard:hover {
-  transform: translateY(-6px);
-  background: var(--white);
-  box-shadow:
-    var(--shadow-md);
-}
+.prodCard:hover { box-shadow: var(--shadow-md); }
 .prodCardImg {
-  height: 280px;
+  height: 360px;
+  padding: 24px 30px 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s;
   position: relative;
-  background: var(--surface);
+  background: var(--white);
 }
-
-.prodCardImgProduct {
-  max-height: 240px;             /* ← was 120px */
-  max-width: 88%;
-  object-fit: contain;
-  width: auto;
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.prodCard:hover .prodCardImgProduct {
-  transform: scale(1.06) rotate(-1deg);
-}
-
-/* ── Card body — sits below large image ── */
-.prodCardBody {
-  padding: 22px 22px 24px;
-  border-top: 1px solid #EAECF0;
-}
-
-.prodCat {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.prodName {
-  font-size: 18px;               /* ← slightly larger */
-  font-weight: 700;
+.prodCardImgProduct { height: 100%; max-width: 85%; width: auto; object-fit: contain; }
+.prodExpand {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
   color: var(--navy);
-  margin-bottom: 10px;
-  line-height: 1.25;
-}
-
-.prodDesc {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 16px;
-}
-
-.prodTags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
-}
-
-.prodTag {
-  font-size: 11px;
-  color: var(--text-secondary);
-  border-radius: var(--radius-lg);
-  padding: 3px 8px;
   background: var(--white);
   border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  cursor: zoom-in;
 }
-
-.prodLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: gap 0.2s;
-}
-
-.prodCard:hover .prodLink {
-  gap: 8px;
-}
+.prodExpand:hover { background: var(--surface); border-color: var(--navy); }
+.prodCaption { position: absolute; bottom: 16px; left: 16px; right: 16px; text-align: center; font-size: 12px; color: var(--text-muted); }
+.prodCardBody { padding: 22px 22px 18px; border-top: 1px solid var(--border-light); background: var(--surface); display: flex; flex: 1; flex-direction: column; }
+.prodCat { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+.prodName { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.25; }
+.prodDesc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
+.prodLink { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; min-height: 44px; margin-top: auto; }
+.prodLink:hover { text-decoration: underline; }
 
 /* Technology */
 .techSection {
@@ -735,45 +681,6 @@
 .revealStaggerShown > *:nth-child(4) { transition-delay: 0.35s; }
 .revealStaggerShown > *:nth-child(5) { transition-delay: 0.45s; }
 .revealStaggerShown > *:nth-child(6) { transition-delay: 0.55s; }
-
-/* Product card image hover zoom */
-.prodCard .prodCardImgProduct {
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.prodCard:hover .prodCardImgProduct {
-  transform: scale(1.06) rotate(-1.5deg);
-}
-
-/* Shimmer sweep on product card */
-.prodCard {
-  position: relative;
-}
-.prodCard::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255,255,255,0.35) 50%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.prodCard:hover::after {
-  animation: shimmerSweep 0.9s ease-out;
-  opacity: 1;
-}
-@keyframes shimmerSweep {
-  0%   { left: -75%; }
-  100% { left: 125%; }
-}
 
 /* Industry tag pop-in */
 .industryTag {
