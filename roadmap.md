@@ -35,3 +35,4 @@
 - [x] Verify empty and single-item news states, sorting, local images and preview rendering; 23 tests pass and automatic build passes.
 - [ ] Obtain the VOLLMER post's confirmed publication date from the client; matching direct LinkedIn URL located, but exact date remains unverified and is not displayed.
 - [x] Add product gallery, zoom lens, accessible lightbox, image deterrents and footer image notice.
+- [ ] Add article share controls and a static published-news RSS feed; verify links, copying and feed contents.
