@@ -24,3 +24,5 @@
 - Allow the resolved dependency directory in Vite's development file serving so symlinked Fontsource assets load in the preview.
 - Keep news content in `src/data/news.ts` (supplied file, only `published` items render) with presentation helpers in `src/lib/news.ts`; regenerate `public/sitemap.xml` with `bun scripts/sitemap.ts` from `siteConfig.siteUrl` so held articles never leak into routes or the sitemap.
 - Generate `public/rss.xml` during both build modes from published news; share links use the configured public HashRouter article URL, and RSS omits unconfirmed publication dates so subscriptions never expose held posts or fabricated dates.
+
+- Home category photographs use cropped, optimized client-source asset pointers and the shared Lightbox; preserve complete tool geometry and distinguish the pictured example from the broader range.
