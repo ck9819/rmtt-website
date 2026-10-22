@@ -1,6 +1,7 @@
 // News & articles. Only items with `published: true` are shown on the site.
 // Source: rmtt-blogs.zip (text rewritten to remove unverified claims) + LinkedIn Vollmer post.
-// Images are third-party/manufacturer pictures until RMTT supplies its own: see `imageCredit`.
+// Image provenance is recorded in each credit; use supplied RMTT photos only for matching subjects.
+import brazedTslot from '../assets/home-brazed-tslot.webp.asset.json';
 
 export type NewsBlock =
   | { type: 'p'; text: string }
@@ -152,9 +153,9 @@ export const news: NewsItem[] = [
     summary:
       'Carbide cutting edges on a tough steel shank, for slot milling where HSS cutters limit speed and tool life.',
     image: {
-      src: '/images/news/t-slot-cutters.webp',
+      src: brazedTslot.url,
       alt: 'Brazed carbide T-slot cutter',
-      credit: 'Representative image. Replace with RMTT photo.',
+      credit: 'RMTT T-slot cutter — supplied company photograph.',
     },
     gallery: [
       { src: '/images/news/t-slot-milling.webp', alt: 'T-slot milling on a CNC machining centre', credit: 'Illustrative image. Replace with RMTT photo.' },

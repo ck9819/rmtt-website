@@ -1,8 +1,10 @@
 // Presentation helpers for src/data/news.ts (kept separate so the supplied data file stays unedited).
+import brazedTslot from '../assets/home-brazed-tslot.webp.asset.json';
 const LOCAL_NEWS_IMAGE = /^\/images\/news\/[a-zA-Z0-9_-]+\.(?:webp|png|jpe?g|avif)$/;
 
-/** Resolves only local news images; external URLs and traversal are rejected. */
+/** Resolves local images and explicitly approved checked-in asset pointers only. */
 export function newsImageUrl(src?: string): string | undefined {
+  if (src === brazedTslot.url) return src;
   return src && LOCAL_NEWS_IMAGE.test(src) ? `${import.meta.env?.BASE_URL || '/'}${src.slice(1)}` : undefined;
 }
 

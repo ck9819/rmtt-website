@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Newspaper } from 'lucide-react';
 import type { NewsItem } from '../data/news';
@@ -8,13 +7,12 @@ import ZoomImage from './ZoomImage';
 import styles from './NewsCard.module.css';
 
 export default function NewsCard({ item, headingLevel = 2, featured = false }: { item: NewsItem; headingLevel?: 2 | 3; featured?: boolean }) {
-  const [failed, setFailed] = useState(false);
   const src = newsImageUrl(item.image?.src);
   const Heading = `h${headingLevel}` as 'h2' | 'h3';
   return (
     <article className={`${styles.card} ${featured ? styles.featured : ''}`}>
       <div className={styles.media}>
-        {src && !failed ? <ZoomImage src={src} alt={item.image?.alt || item.title} width={1600} height={900} /> : <PhotoPlaceholder icon={Newspaper} />}
+        {src ? <ZoomImage src={src} alt={item.image?.alt || item.title} width={1600} height={900} /> : <PhotoPlaceholder icon={Newspaper} />}
       </div>
       <Link to={`/news/${item.id}`} className={styles.body}>
         <div className={styles.meta}>
