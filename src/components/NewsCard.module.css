@@ -10,4 +10,11 @@
 .summary { color: var(--text-secondary); font-size: 15px; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 14px; color: var(--navy); font-weight: 600; }
 .card:hover .more { text-decoration: underline; }
+@media (min-width: 1000px) {
+  .featured { grid-column: 1 / -1; flex-direction: row; }
+  .featured .media { flex: 0 0 46%; aspect-ratio: auto; }
+  .featured .body { padding: 28px; justify-content: center; }
+  .featured .title { font-size: 26px; }
+  .featured .summary { -webkit-line-clamp: 3; font-size: 16px; }
+}
 @media (prefers-reduced-motion: reduce) { .card { transition: none; } }

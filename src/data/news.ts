@@ -22,9 +22,7 @@ export type NewsItem = {
   published: boolean; // false = hold until content/image rights are confirmed
 };
 
-const CTA =
-  'Need a custom tool for your application? Send us your drawing or part details and our team will get back to you.';
-
+// The shared call-to-action paragraph is rendered by NewsArticle, not stored per article.
 export const news: NewsItem[] = [
   {
     id: 'precision-tooling-from-bengaluru',
@@ -41,7 +39,7 @@ export const news: NewsItem[] = [
     body: [
       { type: 'p', text: 'Riddhi Machine Tool Technology (RMTT) started in Bengaluru in 2013 as a trading business and began manufacturing in 2017. Our aim is to build precision cutting tools in India that customers can rely on, with a team that is customer oriented, technology oriented and service oriented.' },
       { type: 'h', text: 'Control quality at the source' },
-      { type: 'p', text: 'Our core process runs in-house on a SAACKE 5-axis CNC tool and cutter grinding machine, which lets complex drill, reamer and end-mill geometries be ground in a single clamping. PCD tools are produced with our Vollmer EDM.' },
+      { type: 'p', text: 'Our core processes run in-house: tool grinding on a SAACKE 5-axis CNC machine and PCD cutting-edge production on a Vollmer EDM.' },
       { type: 'h', text: 'What we manufacture' },
       { type: 'ul', items: [
         'Special solid carbide drills, step drills and hole mills',
@@ -49,7 +47,6 @@ export const news: NewsItem[] = [
         'End mills, including polished geometries for aluminium',
         'PCD special tools',
       ] },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },
@@ -73,9 +70,6 @@ export const news: NewsItem[] = [
         'Stepped profiles, piloted drills and coolant-fed geometries become practical to produce.',
         'Tool-to-tool repeatability for customers running multi-machine cells.',
       ] },
-      { type: 'h', text: 'Internal coolant' },
-      { type: 'p', text: 'Deep-hole drilling depends on coolant delivery. Coolant ducts can be ground directly into solid carbide drills and reamers so pressure reaches the cutting zone where chips form.' },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },
@@ -98,7 +92,6 @@ export const news: NewsItem[] = [
       { type: 'p', text: 'Reaming is a finishing operation. It removes only a few hundredths of a millimetre but sets final hole size, roundness and surface quality. In high-silicon aluminium alloys, abrasive silicon quickly wears carbide edges. PCD holds its edge far longer, which keeps hole size consistent over long production runs.' },
       { type: 'p', text: 'Our PCD reamers use a solid carbide body, brazed polycrystalline diamond cutting edges and an internal coolant supply. Internal coolant flushes chips along controlled paths, which helps avoid chip scoring inside the bore and keeps the cutting zone temperature stable.' },
       { type: 'p', text: 'Application tip: PCD delivers the most value in stable, high-volume machining of aluminium and non-ferrous materials. For hardened steels, ask us about alternatives.' },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },
@@ -124,7 +117,6 @@ export const news: NewsItem[] = [
       ] },
       { type: 'h', text: 'Made to your part' },
       { type: 'p', text: 'Share the drawing or the current process. Our team defines diameters, step lengths, corner radii, helix angle and coating, and the tool is ground to suit your component.' },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },
@@ -149,7 +141,6 @@ export const news: NewsItem[] = [
         'Sharp, lightly prepared edges that shear cleanly.',
       ] },
       { type: 'p', text: 'Typical uses include mould and die plates, automotive structural aluminium and aerospace housings.' },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },
@@ -178,7 +169,6 @@ export const news: NewsItem[] = [
         'Keep stick-out minimal and check holder runout.',
       ] },
       { type: 'p', text: 'For non-standard slot widths, neck lengths or profiles, send us the drawing and we will quote a special.' },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },
@@ -197,7 +187,6 @@ export const news: NewsItem[] = [
     body: [
       { type: 'p', text: 'A cutting tool is only as accurate as the interface holding it. Runout at the cutting edge shortens tool life, pushes holes out of round and degrades finish.' },
       { type: 'p', text: 'RMTT pairs its special tools with precision tool holders, collets and standard tooling, so the complete system, tool plus holder, delivers the accuracy your process was designed for. Our team can advise on the right holder for your tool and spindle.' },
-      { type: 'p', text: CTA },
     ],
     published: true,
   },

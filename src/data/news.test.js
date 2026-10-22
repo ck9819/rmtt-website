@@ -21,6 +21,13 @@ test('only local news images resolve', () => {
   expect(newsImageUrl('/images/news/pcd-reamers.webp')).toBe('/images/news/pcd-reamers.webp');
   for (const path of ['https://example.com/a.webp', '/images/news/../a.webp', '/images/a.webp', undefined]) expect(newsImageUrl(path)).toBeUndefined();
 });
+test('article bodies do not repeat the shared call-to-action paragraph', () => {
+  const cta = 'Need a custom tool for your application?';
+  for (const item of news) {
+    const hits = item.body.filter(block => (block.type !== 'ul' ? block.text : block.items.join(' ')).includes(cta));
+    expect(hits).toEqual([]);
+  }
+});
 test('sitemap lists every published article and not the held one, on the site domain', () => {
   const xml = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8');
   for (const item of publishedNews) expect(xml).toContain(`${siteConfig.siteUrl}/#/news/${item.id}`);
