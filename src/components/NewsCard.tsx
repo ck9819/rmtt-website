@@ -6,12 +6,12 @@ import { formatNewsDate, newsImageUrl } from '../lib/news';
 import PhotoPlaceholder from './PhotoPlaceholder';
 import styles from './NewsCard.module.css';
 
-export default function NewsCard({ item, headingLevel = 2 }: { item: NewsItem; headingLevel?: 2 | 3 }) {
+export default function NewsCard({ item, headingLevel = 2, featured = false }: { item: NewsItem; headingLevel?: 2 | 3; featured?: boolean }) {
   const [failed, setFailed] = useState(false);
   const src = newsImageUrl(item.image?.src);
   const Heading = `h${headingLevel}` as 'h2' | 'h3';
   return (
-    <Link to={`/news/${item.id}`} className={styles.card}>
+    <Link to={`/news/${item.id}`} className={`${styles.card} ${featured ? styles.featured : ''}`}>
       <div className={styles.media}>
         {src && !failed ? <img src={src} alt={item.image?.alt || ''} width={1600} height={900} loading="lazy" onError={() => setFailed(true)} /> : <PhotoPlaceholder icon={Newspaper} />}
       </div>

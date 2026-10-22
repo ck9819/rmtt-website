@@ -8,6 +8,9 @@ import productStyles from './Products.module.css';
 import homeStyles from './Home.module.css';
 import styles from './News.module.css';
 
+const CTA_TEXT =
+  'Need a custom tool for your application? Send us your drawing or part details and our team will get back to you.';
+
 export default function NewsArticle() {
   const { id = '' } = useParams();
   const item = getNewsById(id);
@@ -39,6 +42,7 @@ export default function NewsArticle() {
             {item.body.map((block, i) => block.type === 'p' ? <p key={i}>{block.text}</p>
               : block.type === 'h' ? <h2 key={i}>{block.text}</h2>
               : <ul key={i}>{block.items.map(li => <li key={li}>{li}</li>)}</ul>)}
+            <p className={styles.ctaNote}>{CTA_TEXT}</p>
           </div>
           {item.linkedinUrl && <p><a className={styles.back} href={item.linkedinUrl} target="_blank" rel="noopener noreferrer">View the original post on LinkedIn (opens in a new tab)</a></p>}
           {gallery.length > 0 && (
