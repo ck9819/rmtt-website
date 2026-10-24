@@ -104,6 +104,7 @@ export default function ProductShowcase(): JSX.Element {
   return (
     <section
       className={styles.showcase}
+      style={{ '--hero-img-h': slide.mobileImage ? '340px' : '240px' } as React.CSSProperties}
       role="region"
       aria-roledescription="carousel"
       {...playback.interactionProps}
