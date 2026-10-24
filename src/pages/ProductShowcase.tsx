@@ -11,6 +11,7 @@ import factoryFloor from '../assets/factory-hero-floor.jpg.asset.json';
 interface Slide {
   id: string;
   image: string;
+  mobileImage?: string; // optional crop for narrow screens
   imageAlt: string;
   category: string;
   title: string;
@@ -55,6 +56,7 @@ const slides: Slide[] = [
   {
     id: 'pcd-tools',
     image: `${import.meta.env.BASE_URL}images/hero/inspection.webp`,
+    mobileImage: `${import.meta.env.BASE_URL}images/hero/inspection-mobile.webp`,
     imageAlt: 'Tool measuring machine with an illuminated cutting tool in its clamping fixture',
     category: 'PCD Tools',
     title: 'Seamless Brazing',
@@ -119,6 +121,8 @@ export default function ProductShowcase(): JSX.Element {
               ${animating && i === current ? (direction === 'next' ? styles.bgEnterNext : styles.bgEnterPrev) : ''}
             `}
           >
+            <picture>
+              {s.mobileImage && <source media="(max-width: 768px)" srcSet={s.mobileImage} />}
             <img
               src={s.image}
               alt={s.imageAlt}
@@ -128,6 +132,7 @@ export default function ProductShowcase(): JSX.Element {
               fetchPriority={i === 0 ? 'high' : undefined}
               loading={i === 0 ? 'eager' : 'lazy'}
             />
+            </picture>
             {/* Dark vignette — strong at edges, lighter centre so product pops */}
             <div className={styles.vignette} />
           </div>
