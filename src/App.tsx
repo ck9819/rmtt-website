@@ -6,6 +6,7 @@ import WhatsAppFab from './components/WhatsAppFab';
 import Home from './pages/Home';
 import { QuoteProvider } from './context/QuoteContext';
 import RouteMeta from './components/RouteMeta';
+import ScrollToTop from './components/ScrollToTop';
 const Products = lazy(() => import('./pages/Products'));
 const ProductRoute = lazy(() => import('./pages/ProductRoute'));
 const Industries = lazy(() => import('./pages/Industries'));
@@ -23,6 +24,7 @@ export default function App() {
     <HashRouter>
       <QuoteProvider>
       <RouteMeta />
+      <ScrollToTop />
       <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to main content</a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>
