@@ -1,6 +1,7 @@
 import { siteConfig } from './siteConfig';
 
-export const rssUrl = `${siteConfig.siteUrl}/rss.xml`;
+// Relative to the running site so the link works on any host or base path.
+export const rssUrl = `${import.meta.env?.BASE_URL ?? '/'}rss.xml`;
 export function articleUrl(id: string): string {
   return `${siteConfig.siteUrl}/#/news/${encodeURIComponent(id)}`;
 }

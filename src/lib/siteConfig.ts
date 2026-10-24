@@ -1,6 +1,7 @@
 export const siteConfig = {
-  // TODO: switch to the client's own domain when it is connected.
-  siteUrl: 'https://rmtt-website.lovable.app',
+  // Public site address (no trailing slash). Override with VITE_SITE_URL, e.g. in the deploy
+  // workflow, when the client's own domain is connected.
+  siteUrl: String(import.meta.env?.VITE_SITE_URL || 'https://ck9819.github.io/rmtt-website').replace(/\/$/, ''),
   email: 'sales@rmtt.co.in',
   phone: '+91 99459 09155',
   phoneHref: 'tel:+919945909155',
