@@ -1,7 +1,7 @@
 # Client content required
 
 No replacements below should be published until supporting material is supplied.
-Source reviewed: the existing `public/rmtt-catalogue.pdf` company deck.
+Source reviewed: `public/rmtt-catalogue.pdf`, which is now the FINAL company deck (replaced the older RMTT PPT export).
 
 ## News
 - TODO: Add real posts supplied by the client (text, image, LinkedIn URL).
