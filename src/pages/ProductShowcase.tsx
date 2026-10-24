@@ -6,7 +6,6 @@ import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
 import factoryFloor from '../assets/factory-hero-floor.jpg.asset.json';
-import factoryInspection from '../assets/factory-hero-inspection.jpg.asset.json';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Slide {
@@ -55,8 +54,8 @@ const slides: Slide[] = [
   },
   {
     id: 'pcd-tools',
-    image: factoryInspection.url,
-    imageAlt: 'Precision tool inspection equipment in the Riddhi facility',
+    image: `${import.meta.env.BASE_URL}images/hero/inspection.webp`,
+    imageAlt: 'Tool measuring machine with an illuminated cutting tool in its clamping fixture',
     category: 'PCD Tools',
     title: 'Seamless Brazing',
     subtitle: 'A solid carbide body seamlessly brazed to a steel body, with well-balanced PCD material, high-quality pocket seats and perfectly smooth flutes.',
