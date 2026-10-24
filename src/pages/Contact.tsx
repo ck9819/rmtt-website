@@ -5,7 +5,7 @@ import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
 import { industryNames } from '../data/industries';
 import { useQuote } from '../context/QuoteContext';
-import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm } from '../lib/rfq';
+import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm, type RfqResult } from '../lib/rfq';
 
 const fields: { name: keyof typeof fieldLimits; label: string; required?: boolean; type?: string; placeholder?: string }[] = [
   { name: 'name', label: 'Full name', required: true, placeholder: 'Your full name' },
@@ -29,6 +29,7 @@ export default function Contact() {
   const [fileError, setFileError] = useState<string>();
   const [submitError, setSubmitError] = useState('');
   const [sending, setSending] = useState(false);
+  const [result, setResult] = useState<RfqResult>();
   const formRef = useRef<HTMLFormElement>(null);
   const selectedNames = selected.map(tool => tool.name).join('; ');
   const selectedSlugs = selected.map(tool => tool.slug);
@@ -54,7 +55,12 @@ export default function Contact() {
     const toolType = [...new Set([...parsed.data.toolType.split(';').map(value => value.trim()).filter(Boolean), ...selected.map(tool => tool.name)])].join('; ').slice(0, fieldLimits.toolType);
     setForm({ ...parsed.data, toolType });
     setSending(true);
-    try { await submitRfq({ ...parsed.data, toolType, tools: selectedSlugs, drawing }); }
+    try {
+      const outcome = await submitRfq({ ...parsed.data, toolType, tools: selectedSlugs, drawing }, siteConfig.email);
+      setResult(outcome);
+      if (outcome === 'sent') { setForm(initialForm); setDrawing(undefined); setErrors({}); }
+      requestAnimationFrame(() => document.getElementById('rfq-result')?.focus());
+    }
     catch (error) { setSubmitError(error instanceof Error ? error.message : 'Your request could not be sent. Please contact us directly.'); }
     finally { setSending(false); }
   };
@@ -87,6 +93,11 @@ export default function Contact() {
             }} />I agree</label>
             {errors.consent && <p id="consent-error" role="alert" className={styles.error}>{errors.consent}</p>}
           </div>
+          {result && <div id="rfq-result" tabIndex={-1} role="status" className={styles.notice}>
+            {result === 'sent'
+              ? <><strong>Thank you. Your request has been sent.</strong> Our team will get back to you shortly.</>
+              : <><strong>Almost done: your email app should have opened with your request.</strong> Press Send there to submit it{drawing ? `, and attach your drawing (${drawing.name})` : ''}. If nothing opened, email <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or call <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>. Your request has not been sent until you do.</>}
+          </div>}
           {submitError && <p role="alert" className={styles.submitError}>{submitError} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>}
           <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Submit request'}</button>
         </form>

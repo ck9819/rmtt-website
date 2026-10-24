@@ -4,7 +4,7 @@ import { industryNames } from '../data/industries';
 import { leaders } from '../data/leadership';
 import { equipment } from '../data/equipment';
 import { filterProducts, readQuoteSlugs, saveQuoteSlugs } from './catalogue';
-import { MAX_DRAWING_BYTES, rfqSchema, submitRfq, validateDrawing } from './rfq';
+import { MAX_DRAWING_BYTES, buildRfqMailto, rfqSchema, submitRfq, validateDrawing } from './rfq';
 
 describe('static catalogue rules', () => {
   test('filters the shared cat and q URL parameters', () => {
@@ -68,7 +68,9 @@ describe('client-side quote validation', () => {
     expect(rfqSchema.safeParse({ ...form, description: 'x'.repeat(2001) }).success).toBe(false);
   });
   test('submission never reports success while disconnected', async () => {
-    await expect(submitRfq({ ...form, tools: ['pcd-reamer'] })).rejects.toThrow('not connected');
+    const payload = { ...form, tools: ['pcd-reamer'] };
+    expect(await submitRfq(payload)).toBe('draft');
+    expect(buildRfqMailto(payload, 'sales@rmtt.co.in')).toContain('mailto:sales@rmtt.co.in?subject=');
   });
 });
 describe('approved company data', () => {

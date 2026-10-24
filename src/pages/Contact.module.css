@@ -337,3 +337,6 @@ a.contactValue:hover {
 .drawingField input::file-selector-button { min-height: 44px; padding: 8px 12px; font: inherit; }
 .pageHero :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
 @media (max-width: 600px) { .main { padding-top: 64px; } }
+
+.notice { border: 1px solid var(--accent); border-left-width: 4px; background: #f3f7fb; color: var(--navy); padding: 12px 16px; border-radius: 2px; font-size: 0.95rem; line-height: 1.5; }
+.notice a { color: var(--navy); text-decoration: underline; }
