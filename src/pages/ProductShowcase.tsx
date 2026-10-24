@@ -58,9 +58,9 @@ const slides: Slide[] = [
     image: factoryInspection.url,
     imageAlt: 'Precision tool inspection equipment in the Riddhi facility',
     category: 'PCD Tools',
-    title: 'Seameless Brazing',
-    subtitle: 'Solid Carbide Steel body + Well balanced PCD material High quality pocket seats Perfect smooth flutes.',
-    tag: 'Automotive · Grey cast iron',
+    title: 'Seamless Brazing',
+    subtitle: 'A solid carbide body seamlessly brazed to a steel body, with well-balanced PCD material, high-quality pocket seats and perfectly smooth flutes.',
+    tag: 'Wire EDM · Lapping & grinding of cutting edges',
     href: '/products/pcd',
   },
 ];

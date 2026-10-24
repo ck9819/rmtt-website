@@ -65,12 +65,13 @@
 .vignette {
   position: absolute;
   inset: 0;
+  /* Near-opaque white behind the text column (fixed px so it holds on any desktop width),
+     then a soft fade into the photo. Keeps body text above WCAG AA on any photo. */
   background: linear-gradient(
     to right,
-    rgba(255,255,255,0.92) 0%,       /* strong white on left (behind text) */
-    rgba(255,255,255,0.4)  38%,
-    rgba(255,255,255,0.0)  60%,
-    rgba(255,255,255,0.0)  100%
+    rgba(255,255,255,0.97) 0,
+    rgba(255,255,255,0.95) 560px,
+    rgba(255,255,255,0.0)  780px
   );
 }
 
@@ -82,7 +83,7 @@
   display: flex;
   align-items: center;          /* vertically centred */
   justify-content: space-between;
-  padding: 0 56px;
+  padding: 0 56px 0 96px;      /* left padding clears the previous-slide arrow */
   pointer-events: none;
 }
 
@@ -222,6 +223,9 @@
   align-items: flex-end;
   gap: 16px;
   pointer-events: all;
+  background: rgba(255,255,255,0.92);
+  padding: 12px 14px;
+  border-radius: 2px;
 }
 
 .counter {
