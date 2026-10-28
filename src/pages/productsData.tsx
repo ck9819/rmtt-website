@@ -53,7 +53,7 @@ export const categories: Category[] = [
         id: 'sc-end-mills',
         title: 'End Mills',
         blurb:
-          'Cost-effective high-performance milling tools for slot and shoulder milling, grooving, chamfering, roughing, finishing, high-feed and 3D profile milling.',
+          'Reliable, productive and cost-effective milling tools for slot and shoulder milling, grooving, chamfering, roughing, finishing, high-feed and 3D profile milling. Suitable materials include nodular cast iron, Inconel, titanium, stainless steel, PH steels and aerospace aluminium alloys.',
         products: products.filter(product => product.subcategory === 'sc-end-mills'),
       },
       {
@@ -80,7 +80,7 @@ export const categories: Category[] = [
     label: 'PCD Tools',
     headline: 'PCD Tools for High-Performance Machining',
     intro:
-      'Polycrystalline diamond tooling for highly productive machining of aluminium parts in automotive and aerospace applications. Riddhi develops application-specific PCD solutions for drilling, milling and precision boring, supporting tool design through manufacturing.',
+      'Polycrystalline diamond tooling for highly productive machining of aluminium parts in automotive and aerospace applications. Riddhi starts with the customer’s component and application requirements, then develops a proposal, tool design and manufacturing solution to meet production and performance requirements for drilling, milling and precision boring.',
     image: pcdOverview.url,
     imageAlt: 'PCD boring tool — example from the PCD range',
     features: [
@@ -90,15 +90,17 @@ export const categories: Category[] = [
       'Seamless brazing and high-quality pocket seats',
       'Smooth flutes and balanced PCD material',
       'Long tool life and high wear resistance',
-      'Surface finish below Ra 0.2 µm is achievable',
-      'Multiple operations can be combined in one tool',
+      'Surface finish below Ra 0.2 is possible (unit not stated in the FINAL deck)',
+      'Tight tolerances maintained over longer machining cycles',
+      'Combined operations reduce tool changes and production costs',
+      'High cutting speeds and feeds can reduce machining time',
     ],
     subcategories: [
       {
         id: 'pcd-tools',
         title: 'PCD Tooling Technology',
         blurb:
-          'PCD cutting material combines high hardness, a fine microstructure and smooth cutting surfaces to reduce built-up edge when machining aluminium.',
+          'PCD combines very high hardness, an ultra-fine microstructure, smooth chip surfaces and sharp cutting edges. Aluminium can adhere at a hot cutting edge and form built-up edge, impairing machining performance. PCD reduces this effect compared with solid carbide and supports high speeds, feeds and long tool life.',
         products: products.filter(product => product.subcategory === 'pcd-tools'),
       },
       {
@@ -125,7 +127,7 @@ export const categories: Category[] = [
     label: 'Brazed Carbide',
     headline: 'Brazed Carbide Tools & Special Solutions',
     intro:
-      'Brazed carbide-tipped tools offer a cost-conscious way to retain strong machining performance amid high carbide raw-material costs. A heat-treated tool-steel body carries carbide tips brazed into prepared pockets, with cutting edges ground on a 5-axis CNC tool-grinding machine.',
+      'Brazed carbide-tipped tools offer a cost-conscious alternative amid high carbide raw-material costs, with the FINAL deck describing performance comparable to solid carbide for the intended application. A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets. Cutting edges are ground on a 5-axis CNC tool-grinding machine to achieve the required geometries in one setup.',
     image: brazedCarbideOverview.url,
     imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
     features: [

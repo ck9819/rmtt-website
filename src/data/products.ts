@@ -20,6 +20,15 @@ import brazedTool5 from '../assets/brazed-tool-5.png.asset.json';
 import brazedTool6 from '../assets/brazed-tool-6.png.asset.json';
 import brazedTool7 from '../assets/brazed-tool-7.png.asset.json';
 import brazedTool8 from '../assets/brazed-tool-8.png.asset.json';
+import shellDrawing from '../assets/shell-cutter-drawing.webp.asset.json';
+import model00200 from '../assets/final-brazed-7.webp.asset.json';
+import model00220 from '../assets/final-brazed-9.webp.asset.json';
+import model00241 from '../assets/final-brazed-11.webp.asset.json';
+import model00232 from '../assets/final-brazed-13.webp.asset.json';
+import model006302 from '../assets/final-brazed-15.webp.asset.json';
+import model00229 from '../assets/final-brazed-17.webp.asset.json';
+import model00227 from '../assets/final-brazed-19.webp.asset.json';
+import model006301 from '../assets/final-brazed-21.webp.asset.json';
 
 export type ProductCategory = 'solid-carbide' | 'pcd' | 'brazed';
 export type Product = {
@@ -35,6 +44,8 @@ export type Product = {
   industries: string[];
   specs?: { label: string; value: string }[];
   datasheetUrl?: string;
+  benefits?: string[];
+  examples?: { model: string; image: string }[];
 };
 
 // Only source-backed, previously visible specifications are included.
@@ -44,7 +55,7 @@ export const products: Product[] = [
     slug: 'finishing-application-solid-carbide-endmill',
     category: 'solid-carbide',
     subcategory: 'sc-end-mills',
-    materials: [],
+    materials: ['cast iron', 'nodular cast iron', 'Inconel', 'titanium', 'stainless steel', 'PH steels', 'aluminium', 'aerospace aluminium alloys'],
     industries: [],
             name: 'Finishing Application Solid Carbide Endmill',
             description:
@@ -57,7 +68,8 @@ export const products: Product[] = [
               { label: 'Features', value: 'high-polished and edge-honed' },
             ],
             
-            applications: ['Finish milling of flat surfaces, shoulders and contours'],
+            applications: ['Slot and shoulder milling', 'Groove and chamfer milling', 'Rough and finish milling', 'High-feed and 3D profile milling', 'Nodular cast iron, Inconel, titanium, stainless steel, PH steels and aerospace aluminium alloys'],
+            benefits: ['Reliable milling results with a focus on cost-effectiveness and productivity', 'Application-specific milling solutions tailored to customer requirements'],
           },
 {
     slug: 'solid-carbide-reamers',
@@ -67,7 +79,7 @@ export const products: Product[] = [
     industries: ['Automotive', 'Aerospace'],
             name: 'Solid Carbide Reamers',
             description:
-              'High-performance monoblock reamers with unequal spacing and application-specific cutting geometry. Straight flutes suit through and blind holes; left-hand spiral flutes are available for through holes.',
+              'High-performance multi-blade monoblock reamers with unequal spacing and application-specific cutting geometry. Straight flutes suit through and blind holes; left-hand spiral flutes are available for through holes.',
             image: solidCarbideReamers.url,
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
@@ -76,8 +88,10 @@ export const products: Product[] = [
               { label: 'Material', value: 'Ultra-fine carbide' },
               { label: 'Coolant', value: 'Internal coolant supply' },
               { label: 'Options', value: 'Special multi-step reamers' },
+              { label: 'Coating', value: 'Application-specific PVD wear-resistant coating' },
             ],
             applications: ['Grey and nodular iron, alloyed steel, stainless steel, titanium and Inconel precision bores'],
+            benefits: ['Very small hole tolerances — the first bore is the right bore', 'High rigidity for optimum performance', 'High surface quality and geometrical accuracy of each bore'],
           },
 {
     slug: 'solid-carbide-drills',
@@ -87,15 +101,19 @@ export const products: Product[] = [
     industries: ['Aerospace'],
             name: 'Solid Carbide Drills',
             description:
-              'Application-designed two- and three-edge drills for cast iron, alloyed steel, stainless and titanium. Aluminium options include straight-fluted, high-polish designs; aerospace aluminium geometries help reduce long chips and built-up edge.',
+              'Application-designed two- and three-edge drills for cast iron, alloyed steel, stainless steel, PH steels and titanium. Aluminium options include straight-fluted, high-polished, edge-honed burnishing designs. For low-silicon aerospace aluminium alloys, specific rake geometry, high-gloss polished helical flutes and internal coolant address long chips and built-up edge.',
             image: solidCarbideDrills.url,
             specs: [
               { label: 'Diameter', value: '2–25 mm' },
               { label: 'Edges', value: '2 or 3' },
               { label: 'Helix', value: '30° standard; 40° for multi-step' },
               { label: 'Coolant', value: 'Internal from 4 mm diameter' },
+              { label: 'Material', value: 'Ultra-fine carbide' },
+              { label: 'Coating', value: 'Application-specific PVD wear-resistant coating' },
+              { label: 'Range', value: 'Standard drills and special step drills' },
             ],
             applications: ['Grey and nodular iron, alloyed and stainless steels, PH steel, titanium and aluminium alloys'],
+            benefits: ['Well-polished flutes for better chip flow', 'Application-matched edge honing to increase tool life'],
           },
 {
     slug: 'pcd-cutting-tool-construction',
@@ -219,6 +237,8 @@ export const products: Product[] = [
             description:
               'Brazed carbide-tipped shell milling cutter built on a tool-steel body for demanding machining and reduced tooling cost.',
             image: brazedShellCutter.url,
+            images: [{ src: brazedShellCutter.url, alt: 'Brazed carbide shell milling cutter RDH60-00164 — pictured example' }, { src: shellDrawing.url, alt: 'RDH60-00164 example drawing: Ø80 ±0.1, Ø77 −0.2, Ø52, Ø40 H6, Ø58, length 132, shoulder 12 and datum A' }],
+            examples: [{ model: 'RDH60-00164', image: brazedShellCutter.url }],
             applications: ['Customer-specific milling applications'],
           },
 {
@@ -231,6 +251,7 @@ export const products: Product[] = [
             description:
               'Brazed carbide T-slot cutter manufactured to the profile and requirements of the component.',
             image: brazedTool1.url,
+            examples: [{ model: 'RDH60-00241', image: model00241.url }],
             applications: ['T-slot milling'],
           },
 {
@@ -308,6 +329,15 @@ export const products: Product[] = [
             name: 'Special Carbide Tool',
             description: 'Application-engineered brazed tool manufactured to customer-specific requirements.',
             image: brazedTool8.url,
+            examples: [
+              { model: 'RDH60-00229', image: model00229.url },
+              { model: 'RDH60-00062-01', image: model006301.url },
+              { model: 'RDH60-00135', image: model006302.url },
+              { model: 'RDH60-00200', image: model00200.url },
+              { model: 'RDH60-00220', image: model00220.url },
+              { model: 'RDH60-00227', image: model00227.url },
+              { model: 'RDH60-00232', image: model00232.url },
+            ],
             applications: ['Customer-specific machining operations'],
           }
 ];

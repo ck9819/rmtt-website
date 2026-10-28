@@ -6,6 +6,7 @@ import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
 import factoryFloor from '../assets/factory-hero-floor.jpg.asset.json';
+import { siteConfig } from '../lib/siteConfig';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Slide {
@@ -159,7 +160,7 @@ export default function ProductShowcase(): JSX.Element {
           </div>
           <div className={styles.ctaRow}>
             <Link to="/contact" className={styles.primaryCta}><FileText size={16} />Request a Quote</Link>
-            <a href={`${import.meta.env.BASE_URL}rmtt-catalogue.pdf`} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryCta}><Download size={16} />Download Catalogue</a>
+            <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryCta}><Download size={16} />Download Catalogue</a>
           </div>
         </div>
 

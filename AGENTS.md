@@ -1,5 +1,5 @@
 # Project decisions
-- Keep product records in `src/data/products.ts` and category presentation in `src/pages/productsData.tsx` and reference PDF-sourced media through checked-in `.asset.json` pointers in `src/assets` so category pages share one catalog and image binaries stay off-repo.
+- Keep product records, searchable model examples and example drawings in `src/data/products.ts`, category presentation in `src/pages/productsData.tsx` and media in checked-in asset pointers; label example geometry separately from range specifications. Share the catalogue pointer through siteConfig so all downloads serve the same edition.
 - Define shared contact details, including WhatsApp, in `src/lib/siteConfig.ts` and import them wherever contact links render to prevent inconsistent destinations.
 - Render privacy and terms routes through the shared LegalPage with existing page styles to keep legal placeholders consistent without redesigning the site.
 - Store approved legal sections in `src/data/legal.ts`; empty arrays render a contact placeholder so legal copy is never fabricated.

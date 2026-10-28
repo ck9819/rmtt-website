@@ -8,6 +8,7 @@ import { leaders } from '../data/leadership';
 import { facilityEquipment } from '../data/equipment';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
+import { siteConfig } from '../lib/siteConfig';
 
 const missionVision = [
   {
@@ -333,7 +334,7 @@ export default function About() {
                   <MapPin size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />
                   <div>
                     <span className={styles.locationLabel}>Address</span>
-                    <span>GNC Industrial Estate, Agara village, Tataguni, Kanakapura Main Rd, Bengaluru, Karnataka 560082</span>
+                    <span>{siteConfig.address.street}, {siteConfig.address.cityLine}</span>
                   </div>
                 </li>
               </ul>

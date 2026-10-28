@@ -16,6 +16,7 @@ import { getLatestNews } from '../data/news';
 const latestNews = getLatestNews(3);
 import NewsCard from '../components/NewsCard';
 import newsStyles from './News.module.css';
+import { siteConfig } from '../lib/siteConfig';
 
 
 const products = [
@@ -353,7 +354,7 @@ export default function Home() {
                 Request a Quote
               </Link>
               <a
-                href={`${import.meta.env.BASE_URL}rmtt-catalogue.pdf`}
+                href={siteConfig.catalogueUrl}
                 download="rmtt-catalogue.pdf"
                 target="_blank"
                 rel="noopener noreferrer"

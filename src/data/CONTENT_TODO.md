@@ -1,7 +1,7 @@
 # Client content required
 
 No replacements below should be published until supporting material is supplied.
-Source reviewed: `public/rmtt-catalogue.pdf`, which is now the FINAL company deck (replaced the older RMTT PPT export).
+Source reviewed: the uploaded 17-page FINAL company deck; the shared catalogue asset pointer replaces the older RMTT PPT download.
 
 ## News
 - TODO: Add real posts supplied by the client (text, image, LinkedIn URL).
@@ -11,7 +11,7 @@ Source reviewed: `public/rmtt-catalogue.pdf`, which is now the FINAL company dec
 
 ## Leadership
 - Removed Suresh Kumar, Lakshmi Suresh and Karthik R. profiles, biographies and three stock portraits. These were invented, not verified people.
-- Approved names now appear in the leadership carousel: Roshan Tanuk, K. Ravi Kumar and K. Syamala Kumar. TODO: client-approved roles and portraits; initials are shown until portraits are supplied. No biographies.
+- FINAL page 16 supplies portraits for Roshan Tanuk, K. Ravi Kumar and K. Syamala Kumar; those photos now appear in the carousel. TODO: client-approved roles only. No biographies.
 
 ## Customers and certifications
 - Removed Automotive OEM, Two-Wheeler Major, Hydraulics Leader, Aerospace Tier-1, Precision Engineer and General Industry single-letter tiles.
@@ -53,4 +53,11 @@ The original specification arrays are commented with “TODO: confirm with clien
 - TODO: confirm Swiss Cylindrical Grinding Systems before listing as owned equipment. Removed Home body/shank grinding summary and Technology / About equipment entries.
 - TODO: confirm Advanced Edge Honing and Polishing Equipment before listing as owned equipment. Removed edge preparation / honing equipment entry; product edge-honed specifications remain approved.
 - Removed “German-benchmark equipment”, “German-benchmark machines”, “German-grade capability” and “Our manufacturing standards match German quality benchmarks, ensuring high accuracy, process consistency, and extended tool life across applications.” TODO: source evidence and client approval before reinstating benchmark claims.
-- TODO: confirm Journey's measuring-machine spelling in the FINAL deck. Its extracted text does not confirm it; the Journey document says “Helichek Pro”, while the earlier RMTT PPT page 4 says “Helicheck”. Keep “Helicheck” until the FINAL source resolves the discrepancy.
+- FINAL page 5 nameplate confirms HELICHECK PRO; keep Helicheck spelling. SAACKE UW II / UW ID O and VOLLMER QWD are now identified in shared equipment data.
+
+## FINAL PDF coverage update
+- The shared catalogue download now points to the supplied 17-page FINAL PDF, not the older 29-page presentation.
+- Full postal address, end-mill material assignments and product-specific reamer/drill details are supplied by FINAL pages 7–9 and 17.
+- Page 13 model references are searchable as pictured customer-specific examples, without inferring standard availability or general dimensions. Original embedded-photo engravings correct OCR: RDH60-00062-01 and RDH60-00135, not RDH60-0063-01 / RDH60-0063-02.
+- Page 14 shell-cutter drawing is available in the product gallery. Its dimensions apply only to the pictured example; Ø40 H6 is verified visually, correcting OCR's Ø4.0 H6.
+- FINAL states Ra 0.2 without a unit; do not add a unit until confirmed.

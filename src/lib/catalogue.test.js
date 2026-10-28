@@ -3,6 +3,11 @@ import { products } from '../data/products';
 import { industryNames } from '../data/industries';
 import { leaders } from '../data/leadership';
 import { equipment } from '../data/equipment';
+import { siteConfig } from './siteConfig';
+import roshan from '../assets/roshan-tanuk.webp.asset.json';
+import ravi from '../assets/ravi-kumar.webp.asset.json';
+import syamala from '../assets/syamala-kumar.webp.asset.json';
+import catalogue from '../assets/rmtt-final-catalogue.pdf.asset.json';
 import { filterProducts, readQuoteSlugs, saveQuoteSlugs } from './catalogue';
 import { MAX_DRAWING_BYTES, buildRfqMailto, rfqSchema, submitRfq, validateDrawing } from './rfq';
 
@@ -77,15 +82,46 @@ describe('approved company data', () => {
   test('industry options contain exactly the six approved sectors', () => {
     expect(industryNames).toEqual(['Automotive', 'Aerospace', 'Defence', 'Energy', 'General Engineering', 'Hydraulic']);
   });
-  test('leadership uses approved names without unknown roles or photos', () => {
+  test('leadership pairs FINAL portraits with approved names and no invented roles', () => {
     expect(leaders).toEqual([
-      { name: 'Roshan Tanuk', role: '', img: '' },
-      { name: 'K. Ravi Kumar', role: '', img: '' },
-      { name: 'K. Syamala Kumar', role: '', img: '' },
+      { name: 'Roshan Tanuk', role: '', img: roshan.url },
+      { name: 'K. Ravi Kumar', role: '', img: ravi.url },
+      { name: 'K. Syamala Kumar', role: '', img: syamala.url },
     ]);
   });
   test('unconfirmed equipment is excluded', () => {
     expect(equipment.map(item => item.id)).toEqual(['saacke', 'vollmer', 'helicheck', 'coating']);
+  });
+  test('equipment models match FINAL page 5 nameplates', () => {
+    expect(equipment.flatMap(item => item.models || [])).toEqual(['UW II', 'UW ID O', 'QWD', 'HELICHECK PRO']);
+  });
+  test('the complete FINAL postal address is shared', () => {
+    expect(siteConfig.address).toEqual({ street: 'GNC Industrial Estate, Agara Village, Tataguni Post, Kanakapura Main Road', cityLine: 'Bengaluru – 560082, India' });
+  });
+  test('the catalogue download uses the supplied FINAL PDF pointer', () => {
+    expect(siteConfig.catalogueUrl).toBe(catalogue.url);
+    expect(catalogue.content_type).toBe('application/pdf');
+  });
+});
+describe('FINAL catalogue additions', () => {
+  test('end mills are returned by each approved material filter', () => {
+    for (const material of ['nodular cast iron', 'Inconel', 'titanium', 'stainless steel', 'PH steels', 'aerospace aluminium alloys']) {
+      expect(filterProducts(new URLSearchParams({ material })).some(tool => tool.slug === 'finishing-application-solid-carbide-endmill')).toBe(true);
+    }
+  });
+  test('reamer and drill PVD specifications are product-specific', () => {
+    for (const slug of ['solid-carbide-reamers', 'solid-carbide-drills']) expect(products.find(tool => tool.slug === slug)?.specs).toContainEqual({ label: 'Coating', value: 'Application-specific PVD wear-resistant coating' });
+    expect(products.find(tool => tool.slug === 'solid-carbide-drills')?.specs).toContainEqual({ label: 'Material', value: 'Ultra-fine carbide' });
+  });
+  test('all eight FINAL brazed model references are searchable', () => {
+    for (const model of ['RDH60-00229', 'RDH60-00062-01', 'RDH60-00135', 'RDH60-00200', 'RDH60-00220', 'RDH60-00227', 'RDH60-00232', 'RDH60-00241']) expect(filterProducts(new URLSearchParams({ q: model })).length).toBe(1);
+    expect(filterProducts(new URLSearchParams({ q: 'RDH60-00241' }))[0]?.slug).toBe('t-slot-milling-cutter');
+  });
+  test('shell drawing is an example gallery image, not a general range specification', () => {
+    const shell = products.find(tool => tool.slug === 'brazed-carbide-shell-milling-cutter');
+    expect(shell?.images?.length).toBe(2);
+    expect(shell?.images?.[1].alt).toContain('Ø40 H6');
+    expect(shell?.specs).toBeUndefined();
   });
 });
 
