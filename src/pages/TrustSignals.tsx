@@ -3,6 +3,7 @@ import { Download, FileText, Award } from 'lucide-react';
 import styles from './TrustSignals.module.css';
 import pageStyles from './Contact.module.css';
 import { customers } from '../data/customers';
+import { siteConfig } from '../lib/siteConfig';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Certificate {
@@ -43,9 +44,9 @@ const downloads: Download[] = [
     id: 'company-catalogue',
     title: 'Product Catalogue',
     description:
-      'Complete product range — solid carbide, PCD and brazed carbide tools with specifications, applications and case studies.',
+      'FINAL company catalogue — solid carbide, PCD and brazed carbide tools, specifications, equipment and leadership.',
     fileType: 'PDF',
-    href: `${import.meta.env.BASE_URL}rmtt-catalogue.pdf`,
+    href: siteConfig.catalogueUrl,
     featured: true,
   },
 
