@@ -1,7 +1,7 @@
 # Client content required
 
 No replacements below should be published until supporting material is supplied.
-Source reviewed: `public/rmtt-catalogue.pdf`, which is now the FINAL company deck (replaced the older RMTT PPT export).
+Source reviewed: the uploaded 17-page FINAL company deck; the shared catalogue asset pointer replaces the older RMTT PPT download.
 
 ## News
 - TODO: Add real posts supplied by the client (text, image, LinkedIn URL).
@@ -58,6 +58,6 @@ The original specification arrays are commented with “TODO: confirm with clien
 ## FINAL PDF coverage update
 - The shared catalogue download now points to the supplied 17-page FINAL PDF, not the older 29-page presentation.
 - Full postal address, end-mill material assignments and product-specific reamer/drill details are supplied by FINAL pages 7–9 and 17.
-- Page 13 model references are searchable as pictured customer-specific examples, without inferring standard availability or general dimensions.
+- Page 13 model references are searchable as pictured customer-specific examples, without inferring standard availability or general dimensions. Original embedded-photo engravings correct OCR: RDH60-00062-01 and RDH60-00135, not RDH60-0063-01 / RDH60-0063-02.
 - Page 14 shell-cutter drawing is available in the product gallery. Its dimensions apply only to the pictured example; Ø40 H6 is verified visually, correcting OCR's Ø4.0 H6.
 - FINAL states Ra 0.2 without a unit; do not add a unit until confirmed.

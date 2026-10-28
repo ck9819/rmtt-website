@@ -331,8 +331,8 @@ export const products: Product[] = [
             image: brazedTool8.url,
             examples: [
               { model: 'RDH60-00229', image: model00229.url },
-              { model: 'RDH60-0063-01', image: model006301.url },
-              { model: 'RDH60-0063-02', image: model006302.url },
+              { model: 'RDH60-00062-01', image: model006301.url },
+              { model: 'RDH60-00135', image: model006302.url },
               { model: 'RDH60-00200', image: model00200.url },
               { model: 'RDH60-00220', image: model00220.url },
               { model: 'RDH60-00227', image: model00227.url },
