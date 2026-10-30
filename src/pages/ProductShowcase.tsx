@@ -166,18 +166,9 @@ export default function ProductShowcase(): JSX.Element {
 
         {/* Right — slide counter + dots */}
         <div className={styles.controls}>
-          <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion}>
-            {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
+          <button type="button" className={styles.playBtn} onClick={playback.toggle} disabled={playback.reducedMotion} aria-label={playback.paused || playback.reducedMotion ? 'Play slideshow' : 'Pause slideshow'}>
+            {playback.paused || playback.reducedMotion ? <Play size={12} /> : <Pause size={12} />}
           </button>
-          <div className={styles.counter}>
-            <span className={styles.counterCurrent}>
-              {String(current + 1).padStart(2, '0')}
-            </span>
-            <span className={styles.counterSep}>/</span>
-            <span className={styles.counterTotal}>
-              {String(count).padStart(2, '0')}
-            </span>
-          </div>
           <div className={styles.dots}>
             {slides.map((_, i) => (
               <button
