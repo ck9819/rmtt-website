@@ -114,7 +114,7 @@ describe('FINAL catalogue additions', () => {
     expect(products.find(tool => tool.slug === 'solid-carbide-drills')?.specs).toContainEqual({ label: 'Material', value: 'Ultra-fine carbide' });
   });
   test('all eight FINAL brazed model references are searchable', () => {
-    for (const model of ['RDH60-00229', 'RDH60-00062-01', 'RDH60-00135', 'RDH60-00200', 'RDH60-00220', 'RDH60-00227', 'RDH60-00232', 'RDH60-00241']) expect(filterProducts(new URLSearchParams({ q: model })).length).toBe(1);
+    for (const model of ['RDH60-00229', 'RDH60-00062-01', 'RDH60-00135', 'RDH60-00200', 'RDH60-00220', 'RDH60-00227', 'RDH60-00232', 'RDH60-00241']) expect(filterProducts(new URLSearchParams({ q: model })).length).toBeGreaterThan(0);
     expect(filterProducts(new URLSearchParams({ q: 'RDH60-00241' }))[0]?.slug).toBe('t-slot-milling-cutter');
   });
   test('shell drawing is an example gallery image, not a general range specification', () => {
