@@ -39,3 +39,4 @@
 - [x] Add product gallery, zoom lens, accessible lightbox, image deterrents and footer image notice.
 - [x] Add article share controls and a static published-news RSS feed; verified copied public links, new-tab destinations, eight feed entries, omitted unconfirmed RSS date, nine tests and automatic build.
 - [x] Review the supplied Google Drive tool images against category descriptions and improve Home product-card prominence using matching photos; used labelled Solid Carbide/PCD/Brazed folders with visually matching end mill, boring tool and T-slot cutter, cropped empty margins without altering geometry, verified image zoom, PCD range link, mobile overflow, 18 tests and automatic build.
+- [x] Improve manufacturing-process readability and layout: continuous rail with direction markers, equal-height step panels, centred section label, vertical rail on phones. Verified at 1280/900/375px; 42 tests pass and automatic build OK.
