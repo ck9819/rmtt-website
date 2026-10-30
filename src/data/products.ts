@@ -6,7 +6,6 @@ import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import pcdTool2 from '../assets/pcd-tool-2.png.asset.json';
-import pcdTool3 from '../assets/pcd-tool-3.png.asset.json';
 import pcdTool4 from '../assets/pcd-tool-4.png.asset.json';
 import pcdTool5 from '../assets/pcd-tool-5.png.asset.json';
 import pcdTool6 from '../assets/pcd-tool-6.png.asset.json';
