@@ -65,10 +65,11 @@ export default function Technology() {
             <p className={styles.processSub}>Transparent, fast and technical — from your requirement to a precision tool at your machine.</p>
           </div>
           <div className={styles.processSteps}>
-            {processSteps.map((p, i) => (
+            {processSteps.map((p) => (
               <div key={p.step} className={styles.processStep}>
-                <div className={styles.processStepNum}>{p.step}</div>
-                {i < processSteps.length - 1 && <div className={styles.processLine} />}
+                <div className={styles.processStepTrack}>
+                  <div className={styles.processStepNum}>{p.step}</div>
+                </div>
                 <div className={styles.processStepContent}>
                   <div className={styles.processStepTitle}>{p.title}</div>
                   <div className={styles.processStepDesc}>{p.desc}</div>
