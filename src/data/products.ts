@@ -2,7 +2,7 @@ import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers.jpg.asset.json';
 import solidCarbideDrills from '../assets/solid-carbide-drills.jpg.asset.json';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
-import pcdToolingRange from '../assets/pcd-tooling-range.jpg.asset.json';
+import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import pcdTool2 from '../assets/pcd-tool-2.png.asset.json';
@@ -223,9 +223,15 @@ export const products: Product[] = [
     materials: ['aluminium'],
     industries: ['Automotive', 'Aerospace'],
             name: 'PCD Tool Range',
-            description: 'Selection of precision tool solutions designed for high-performance machining.',
+            description: 'PCD (Polycrystalline Diamond) tools are the top choice for highly productive machining of aluminium parts in the automotive and aerospace industries. RIDDHI offers application-based individual solutions for drilling, milling and precision boring — from proposal and tool design to manufacturing. PCD has the highest hardness of any cutting material, an ultra-fine microstructure and sharp cutting edges, giving zero or very low built-up edge on aluminium. This allows the highest cutting speeds and feeds, drastically reducing machining time with very long tool life.',
             image: pcdToolingRange.url,
             applications: ['Application-specific drilling, milling and precision boring'],
+            benefits: [
+              'Highest wear resistance, longer tool life',
+              'Tight tolerances can be achieved for longer machining cycles',
+              'Surface finish less than Ra 0.2 is possible to achieve',
+              'Multi-operations can be combined into a single tool, eliminating the need for multiple tools, lowering production costs and achieving the highest process capability',
+            ],
           },
 {
     slug: 'brazed-carbide-shell-milling-cutter',
