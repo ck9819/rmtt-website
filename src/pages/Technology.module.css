@@ -197,7 +197,7 @@
 
 .processStepDesc {
   font-size: 15px;
-  color: #DCE5EE;
+  color: var(--on-dark);
   line-height: 1.7;
 }
 
