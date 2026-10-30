@@ -55,7 +55,7 @@
   overflow: hidden;
 }
 
-.machineImg > button { width: 100%; aspect-ratio: 4 / 3; height: auto; padding: 24px 24px 64px; }
+.machineImg > button { width: 100%; aspect-ratio: 4 / 3; height: auto; padding: 24px; }
 
 .machineImg img {
   width: 100%;
