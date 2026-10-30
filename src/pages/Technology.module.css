@@ -40,7 +40,6 @@
   align-items: stretch;
   border-bottom: 1px solid var(--border-light);
   overflow: hidden;
-  display: flex;
   background: var(--white);
 }
 
@@ -72,6 +71,8 @@
   min-height: 280px;
   overflow: hidden;
 }
+
+.machineImg > button { min-height: 340px; }
 
 .machineImg img {
   width: 100%;
