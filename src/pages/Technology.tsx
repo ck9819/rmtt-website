@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import styles from './Technology.module.css';
 import ZoomImage from '../components/ZoomImage';
-import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { equipment } from '../data/equipment';
 
 const processSteps = [
@@ -29,18 +28,27 @@ export default function Technology() {
       <section className={styles.machinesSection}>
         <div className="container">
           <div className={styles.machinesGrid}>
-            {equipment.map((m, i) => (
-              <article key={m.num} className={`${styles.machineCard} ${i % 2 === 1 ? styles.machineCardAlt : ''}`}>
-                <div className={styles.machineImg}>
-                  {m.image ? <ZoomImage src={m.image} alt={m.imageAlt} width={1000} height={700} /> : <PhotoPlaceholder icon={m.icon} />}
-                </div>
+            {equipment.map(m => (
+              <article key={m.num} className={`${styles.machineCard} ${m.image ? '' : styles.machineCardText}`}>
+                {m.image && (
+                  <div className={styles.machineImg}>
+                    <ZoomImage src={m.image} alt={m.imageAlt} width={1000} height={700} />
+                  </div>
+                )}
                 <div className={styles.machineBody}>
                   <div className={styles.machineNum}>{m.num}</div>
-                  <div className={styles.machineIconWrap}>
-                    <m.icon size={22} />
-                  </div>
                   <h2 className={styles.machineName}>{m.name}</h2>
                   <p className={styles.machineDetail}>{m.detail}</p>
+                  {m.uses && (
+                    <ul className={styles.machineSpecs}>
+                      {m.uses.map(u => (
+                        <li key={u} className={styles.machineSpec}>
+                          <Check size={15} className={styles.specIcon} aria-hidden="true" />
+                          {u}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                 </div>
               </article>
