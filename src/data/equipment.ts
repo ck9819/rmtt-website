@@ -18,7 +18,8 @@ export const equipment = [
     name: 'SAACKE UW II & UW ID O',
     models: ['UW II', 'UW ID O'],
     detail:
-      'The FINAL deck identifies SAACKE UW II and UW ID O machines for CNC tool grinding.',
+      '5-axis CNC tool grinding machines used to grind solid carbide end mills, drills and reamers, and the cutting edges of brazed carbide tools — producing the required geometries in one go.',
+    uses: ['Solid carbide end mills, drills and reamers', 'Brazed carbide tool cutting edges', 'Multi-helix, multi-step and form geometries'],
     // TODO: confirm with client
     // specs: ['5-axis simultaneous interpolation', 'Sub-micron geometric accuracy', 'Internal coolant hole grinding', 'Repeatable setups via digital machine memory'],
   },
@@ -36,7 +37,8 @@ export const equipment = [
     name: 'VOLLMER QWD Wire EDM',
     models: ['QWD'],
     detail:
-      'The VOLLMER QWD Wire EDM machine is part of the RMTT facility for PCD tooling.',
+      'Wire EDM machine used to produce PCD cutting edges. Wire EDM is combined with lapping and grinding to finish edges on PCD reamers, boring and milling tools.',
+    uses: ['PCD cutting-edge production', 'PCD reamers, boring and milling tools', 'Edges finished with lapping and grinding'],
     // TODO: confirm with client
     // specs: ['PCD & CBN compatible', 'Edge geometry to ±0.002mm', 'Precision lapping post-EDM', 'No heat-affected zone'],
   },
@@ -54,7 +56,8 @@ export const equipment = [
     name: 'WALTER HELICHECK PRO Optical Measurement',
     models: ['HELICHECK PRO'],
     detail:
-      'The RMTT facility includes a WALTER HELICHECK PRO measuring machine.',
+      'Measuring machine used to check tool geometry, so manufactured tools can be verified against the drawing before dispatch.',
+    uses: ['Tool geometry measurement', 'Inspection before dispatch'],
     // TODO: confirm with client
     // specs: ['Non-contact optical measurement', 'Full geometry verification', '100% outgoing inspection', 'Digital measurement records per tool'],
   },
@@ -68,7 +71,8 @@ export const equipment = [
     icon: Microscope,
     name: 'PVD Coating Solutions',
     detail:
-      'The catalogue describes application-specific wear-resistant PVD coatings.',
+      'Wear-resistant PVD coatings are applied to solid carbide reamers and drills and to brazed carbide reamers, selected to suit the workpiece material and application.',
+    uses: ['Solid carbide reamers and drills', 'Brazed carbide reamers', 'Application-specific selection'],
     // TODO: confirm with client
     // specs: ['AlTiN — steel and cast iron', 'TiSiN — hardened steel (>55 HRC)', 'DLC — aluminium and non-ferrous', 'nACo — general high-performance'],
   },
