@@ -753,3 +753,8 @@
 .carDot::after { content: ''; width: 8px; height: 8px; border: 1px solid var(--border); border-radius: 50%; background: var(--white); }
 .carDotActive::after { width: 24px; background: var(--navy); border-radius: var(--radius-lg); }
 .carDot:hover { background: transparent; }
+
+.equipList { list-style: none; margin: 0 0 28px; padding: 0; border-top: 1px solid var(--border-light); }
+.equipList li { display: flex; flex-direction: column; gap: 2px; padding: 12px 0 12px 16px; border-bottom: 1px solid var(--border-light); border-left: 3px solid var(--blue); margin-top: 8px; }
+.equipList strong { font-size: 15px; color: var(--navy); }
+.equipList span { font-size: 13px; color: var(--text-secondary); }

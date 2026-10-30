@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import ZoomImage from './ZoomImage';
 import styles from './EquipmentCarousel.module.css';
@@ -30,18 +29,11 @@ export default function EquipmentCarousel({ items }: { items: Item[] }) {
         </div>
       </div>
       <div className={styles.controls}>
-        <button type="button" onClick={() => go(index - 1)} aria-label="Previous machine"><ChevronLeft size={18} /></button>
         <div className={styles.dots}>
           {slides.map((m, i) => (
             <button key={m.id} type="button" className={i === index ? styles.dotActive : styles.dot} onClick={() => go(i)} aria-label={`Show ${m.shortName ?? m.name}`} aria-current={i === index} />
           ))}
         </div>
-        <button type="button" onClick={() => go(index + 1)} aria-label="Next machine"><ChevronRight size={18} /></button>
-        {!playback.reducedMotion && (
-          <button type="button" onClick={playback.toggle} aria-label={playback.paused ? 'Play slideshow' : 'Pause slideshow'}>
-            {playback.paused ? <Play size={16} /> : <Pause size={16} />}
-          </button>
-        )}
       </div>
     </section>
   );

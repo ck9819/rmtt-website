@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import type { KeyboardEvent, PointerEvent } from 'react';
 import type { LucideIcon } from 'lucide-react';
-import { Expand } from 'lucide-react';
+import { ZoomIn } from 'lucide-react';
 import type { ProductImage } from '../data/products';
 import PhotoPlaceholder from './PhotoPlaceholder';
 import Lightbox, { preloadImage } from './Lightbox';
@@ -50,7 +50,7 @@ export default function Gallery({ images, icon, width = 800, height = 800, aspec
             </button>
           ))}
         </div>}
-        <button ref={viewButton} type="button" className={styles.viewLarger} onClick={() => setOpen(true)}><Expand size={16} aria-hidden="true" />View larger</button>
+        <button ref={viewButton} type="button" className={styles.viewLarger} onClick={() => setOpen(true)} aria-label={`View larger: ${current.alt}`} title="View larger"><ZoomIn size={18} aria-hidden="true" /></button>
       </div>
       {open && <Lightbox images={images} index={index} onIndex={setIndex} onClose={() => setOpen(false)} />}
     </div>

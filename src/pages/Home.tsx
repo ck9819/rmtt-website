@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Award, Download, FileText, Pause, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Download, FileText, Pause, Play } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
@@ -93,9 +93,6 @@ const applications = [
 ];
 
 
-const trustItems = [
-  { icon: Award, text: 'SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement' },
-];
 
 export default function Home() {
   const [appIndex, setAppIndex] = useState(0);
@@ -207,14 +204,14 @@ export default function Home() {
               <p className={styles.techSub}>
                 The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck optical measurement.
               </p>
-              <div className={styles.trustItems}>
-                {trustItems.map(t => (
-                  <div key={t.text} className={styles.trustItem}>
-                    <t.icon size={16} className={styles.trustIcon} />
-                    <span>{t.text}</span>
-                  </div>
+              <ul className={styles.equipList}>
+                {homeEquipment.map(m => (
+                  <li key={m.id}>
+                    <strong>{m.shortName}</strong>
+                    <span>{m.summary}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <Link to="/services" className={styles.techLink}>
                 See all technology <ArrowRight size={14} />
               </Link>

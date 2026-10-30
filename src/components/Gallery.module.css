@@ -45,8 +45,8 @@
 .thumb[aria-current='true'] { border-color: var(--navy); }
 
 .viewLarger {
-  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px;
-  border: 1px solid var(--navy); border-radius: 2px; background: var(--white);
+  display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; margin-left: auto;
+  border: 1px solid var(--border-light); border-radius: 2px; background: var(--white);
   color: var(--navy); font: inherit; font-weight: 600; cursor: pointer;
 }
 .viewLarger:hover { background: var(--surface-blue); }
