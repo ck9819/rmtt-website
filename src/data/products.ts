@@ -348,6 +348,47 @@ export const products: Product[] = [
           }
 ];
 
+// Category-level details quoted from the FINAL catalogue (PCD page 11, Brazed Carbide page 13).
+// Applied only where a product has no product-specific specs or benefits of its own.
+const categoryDetails: Partial<Record<ProductCategory, Pick<Product, 'specs' | 'benefits'>>> = {
+  pcd: {
+    specs: [
+      { label: 'Cutting material', value: 'Well-balanced PCD (polycrystalline diamond)' },
+      { label: 'Body', value: 'Solid carbide or steel body with high-quality pocket seats' },
+      { label: 'Cutting edges', value: 'Wire EDM, lapping and grinding' },
+      { label: 'Joining', value: 'Seamless brazing' },
+      { label: 'Surface finish', value: 'Less than Ra 0.2 possible' },
+      { label: 'Design', value: 'Application-specific, from proposal and tool design to manufacturing' },
+    ],
+    benefits: [
+      'Highest wear resistance, longer tool life',
+      'Tight tolerances can be achieved for longer machining cycles',
+      'Surface finish less than Ra 0.2 is possible to achieve',
+      'Zero or very low built-up edge on aluminium, allowing the highest cutting speeds and feeds',
+      'Multi-operations can be combined into a single tool, lowering production costs',
+    ],
+  },
+  brazed: {
+    specs: [
+      { label: 'Body', value: 'Heat-treated, high-quality tool steel' },
+      { label: 'Cutting tips', value: 'Carbide tips brazed into prepared, fluted pockets' },
+      { label: 'Grinding', value: 'Cutting edges ground on a 5-axis CNC tool grinding machine in one go' },
+      { label: 'Design', value: 'Manufactured to customer-specific requirements' },
+    ],
+    benefits: [
+      'Reduced tool cost compared with solid carbide',
+      'Performance comparable to solid carbide tools',
+      'Required geometries achieved in a single grinding setup',
+    ],
+  },
+};
+for (const product of products) {
+  const details = categoryDetails[product.category];
+  if (!details) continue;
+  if (!product.specs?.length) product.specs = details.specs;
+  if (!product.benefits?.length) product.benefits = details.benefits;
+}
+
 export type ProductImage = { src: string; alt: string };
 export function getProductImages(product: Pick<Product, 'name' | 'image' | 'images'>): ProductImage[] {
   if (product.images?.length) return product.images;

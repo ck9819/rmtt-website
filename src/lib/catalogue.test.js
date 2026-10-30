@@ -121,7 +121,12 @@ describe('FINAL catalogue additions', () => {
     const shell = products.find(tool => tool.slug === 'brazed-carbide-shell-milling-cutter');
     expect(shell?.images?.length).toBe(2);
     expect(shell?.images?.[1].alt).toContain('Ø40 H6');
-    expect(shell?.specs).toBeUndefined();
+    expect(shell?.specs?.some(spec => spec.value.includes('Ø40'))).toBe(false);
+  });
+  test('tools without their own details get catalogue category details', () => {
+    expect(products.find(tool => tool.slug === 'pcd-milling-tool')?.benefits).toContain('Surface finish less than Ra 0.2 is possible to achieve');
+    expect(products.find(tool => tool.slug === 't-slot-milling-cutter')?.specs?.[0].value).toBe('Heat-treated, high-quality tool steel');
+    expect(products.find(tool => tool.slug === 'solid-carbide-drills')?.benefits?.[0]).toBe('Well-polished flutes for better chip flow');
   });
 });
 
