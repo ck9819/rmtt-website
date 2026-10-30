@@ -7,7 +7,7 @@ export function filterProducts(params: URLSearchParams): Product[] {
   const industries = params.getAll('industry');
   return products.filter(product =>
     (!cat || cat === 'all' || product.category === cat) &&
-    (!query || [product.name, product.description, ...product.applications, ...(product.examples || []).map(example => example.model)].join(' ').toLowerCase().includes(query)) &&
+    (!query || [product.name, product.description, ...product.applications, ...(product.examples || []).map(example => example.model), ...(product.markings || []).map(m => m.value)].join(' ').toLowerCase().includes(query)) &&
     (!materials.length || materials.some(material => product.materials.includes(material))) &&
     (!industries.length || industries.some(industry => product.industries.includes(industry)))
   );

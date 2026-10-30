@@ -6,11 +6,11 @@ import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import pcdTool2 from '../assets/pcd-tool-2.png.asset.json';
-import pcdTool3 from '../assets/pcd-tool-3.png.asset.json';
 import pcdTool4 from '../assets/pcd-tool-4.png.asset.json';
 import pcdTool5 from '../assets/pcd-tool-5.png.asset.json';
 import pcdTool6 from '../assets/pcd-tool-6.png.asset.json';
 import pcdTool7 from '../assets/pcd-tool-7.png.asset.json';
+import pcdTool1Throttle from '../assets/pcd-tool-1.png.asset.json';
 import pcdTool8 from '../assets/pcd-tool-8.png.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
 import brazedTool2 from '../assets/brazed-tool-2.png.asset.json';
@@ -46,6 +46,8 @@ export type Product = {
   datasheetUrl?: string;
   benefits?: string[];
   examples?: { model: string; image: string }[];
+  /** Text engraved on the pictured tool, read from its photo. Describes that example only. */
+  markings?: { label: string; value: string }[];
 };
 
 // Only source-backed, previously visible specifications are included.
@@ -137,6 +139,7 @@ export const products: Product[] = [
             description:
               'Steel-body precision boring tool with a PCD cutting head for high-productivity machining.',
             image: pcdTool1.url,
+            markings: [{ label: 'Model', value: 'RDH70-0337' }, { label: 'Size marked (mm)', value: 'Ø62.0141 × 116.0' }],
             applications: ['Aluminium component precision boring'],
           },
 {
@@ -148,6 +151,7 @@ export const products: Product[] = [
             name: 'PCD Finish Boring Tool',
             description: 'Long-reach PCD tool for accurate, smooth bore finishing.',
             image: pcdTool2.url,
+            markings: [{ label: 'Model', value: 'RDH70-0417' }, { label: 'Size marked (mm)', value: 'Ø10.2 / R15 / Ø31.85 × 174.0' }],
             applications: ['High-performance bore finishing'],
           },
 {
@@ -158,7 +162,8 @@ export const products: Product[] = [
     industries: ['Automotive', 'Aerospace'],
             name: 'PCD Step Boring Tool',
             description: 'Application-designed PCD boring tool with stepped cutting geometry.',
-            image: pcdTool3.url,
+            image: pcdTool1Throttle.url,
+            markings: [{ label: 'Model', value: 'RDH70-0424' }, { label: 'Size marked (mm)', value: 'Ø48 / Ø56.02 × 70.0' }, { label: 'Application marked', value: 'TLG-2030 throttle body' }],
             applications: ['Multi-feature aluminium bores'],
           },
 {
@@ -170,6 +175,7 @@ export const products: Product[] = [
             name: 'PCD Reamer',
             description: 'PCD-edged reaming solution for consistent precision bore machining.',
             image: pcdTool4.url,
+            markings: [{ label: 'Model', value: 'RDH70-0411' }, { label: 'Size marked (mm)', value: 'Ø22.05 / Ø23.75 × 100.0' }],
             applications: ['Aluminium precision reaming'],
           },
 {
@@ -181,6 +187,7 @@ export const products: Product[] = [
             name: 'PCD Milling Tool',
             description: 'Multi-edge PCD milling tool for high material-removal rates and repeatable finishes.',
             image: pcdTool5.url,
+            markings: [{ label: 'Model', value: 'RDH70-0434' }, { label: 'Size marked (mm)', value: 'Ø34' }, { label: 'Shank', value: 'HSK-A63' }],
             applications: ['Aluminium milling operations'],
           },
 {
@@ -257,6 +264,7 @@ export const products: Product[] = [
             description:
               'Brazed carbide T-slot cutter manufactured to the profile and requirements of the component.',
             image: brazedTool1.url,
+            markings: [{ label: 'Model', value: 'RDH60-00241' }, { label: 'Size marked (mm)', value: 'Ø39 / W 7.15 × 100.0' }],
             examples: [{ model: 'RDH60-00241', image: model00241.url }],
             applications: ['T-slot milling'],
           },
@@ -269,6 +277,7 @@ export const products: Product[] = [
             name: 'Brazed Carbide Reamer',
             description: 'Carbide-tipped reamer with a heat-treated steel body, ground to the required geometry.',
             image: brazedTool2.url,
+            markings: [{ label: 'Model', value: 'RDH60-00220' }, { label: 'Size marked (mm)', value: 'Ø20.32 × 30 × 130.0' }],
             applications: ['Customer-specific precision reaming'],
           },
 {
@@ -291,6 +300,7 @@ export const products: Product[] = [
             name: 'Brazed Carbide Drill',
             description: 'Carbide-tipped drill with application-specific cutting geometry.',
             image: brazedTool4.url,
+            markings: [{ label: 'Model', value: 'RDH60-00232' }, { label: 'Size marked (mm)', value: 'Ø8 / Ø14.8 × 110.0' }],
             applications: ['Industrial drilling applications'],
           },
 {
@@ -302,6 +312,7 @@ export const products: Product[] = [
             name: 'Brazed Carbide Reamer with Coolant',
             description: 'Special brazed carbide reamer option with internal coolant supply and PVD coating.',
             image: brazedTool5.url,
+            markings: [{ label: 'Model', value: 'RDH60-00135' }, { label: 'Size marked (mm)', value: 'Ø11.55 / Ø15.60 / 24 × 153.0' }],
             applications: ['Precision reaming with internal coolant'],
           },
 {
@@ -313,6 +324,7 @@ export const products: Product[] = [
             name: 'Stepped Special Tool',
             description: 'Brazed carbide tool with stepped geometry made to suit the required machining sequence.',
             image: brazedTool6.url,
+            markings: [{ label: 'Model', value: 'RDH60-00229' }, { label: 'Size marked (mm)', value: 'Ø21.55 / Ø15.76 × 100.0' }],
             applications: ['Customer-specific stepped machining'],
           },
 {
@@ -324,6 +336,7 @@ export const products: Product[] = [
             name: 'Brazed Carbide Form Tool',
             description: 'Profiled carbide tips brazed to a steel body and ground to the required form.',
             image: brazedTool7.url,
+            markings: [{ label: 'Model', value: 'RDH60-00227' }, { label: 'Size marked (mm)', value: 'Ø42 / Ø52.8 × 180.0' }],
             applications: ['Special form milling and turning operations'],
           },
 {
@@ -335,6 +348,7 @@ export const products: Product[] = [
             name: 'Special Carbide Tool',
             description: 'Application-engineered brazed tool manufactured to customer-specific requirements.',
             image: brazedTool8.url,
+            markings: [{ label: 'Model', value: 'RDH60-00062-01' }, { label: 'Size marked (mm)', value: 'Ø22 m5 × 260.0' }],
             examples: [
               { model: 'RDH60-00229', image: model00229.url },
               { model: 'RDH60-00062-01', image: model006301.url },

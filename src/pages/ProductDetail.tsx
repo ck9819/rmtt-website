@@ -24,6 +24,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         <div><p className={styles.catIntro}>{product.description}</p>
           {product.applications.length > 0 && <><h2 className={styles.subCatTitle}>Typical applications</h2><ul className={styles.applicationList}>{product.applications.map(application => <li key={application}>{application}</li>)}</ul></>}
           {product.benefits?.length ? <><h2 className={styles.subCatTitle}>Benefits</h2><ul className={styles.applicationList}>{product.benefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul></> : null}
+          {!!product.markings?.length && <table className={styles.specTable}><caption>Pictured tool — markings on the photo</caption><tbody>{product.markings.map(m => <tr key={m.label}><th scope="row">{m.label}</th><td>{m.value}</td></tr>)}</tbody></table>}
           {!!product.specs?.length && <table className={styles.specTable}><caption>Specifications</caption><tbody>{product.specs.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>}
           <div className={styles.detailActions}>
             <button type="button" className={styles.quoteButton} disabled={added} onClick={() => add(product.slug)}>{added ? <Check size={16} /> : <Plus size={16} />}{added ? 'Added to quote' : 'Add to quote'}</button>

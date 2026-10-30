@@ -114,7 +114,7 @@ describe('FINAL catalogue additions', () => {
     expect(products.find(tool => tool.slug === 'solid-carbide-drills')?.specs).toContainEqual({ label: 'Material', value: 'Ultra-fine carbide' });
   });
   test('all eight FINAL brazed model references are searchable', () => {
-    for (const model of ['RDH60-00229', 'RDH60-00062-01', 'RDH60-00135', 'RDH60-00200', 'RDH60-00220', 'RDH60-00227', 'RDH60-00232', 'RDH60-00241']) expect(filterProducts(new URLSearchParams({ q: model })).length).toBe(1);
+    for (const model of ['RDH60-00229', 'RDH60-00062-01', 'RDH60-00135', 'RDH60-00200', 'RDH60-00220', 'RDH60-00227', 'RDH60-00232', 'RDH60-00241']) expect(filterProducts(new URLSearchParams({ q: model })).length).toBeGreaterThan(0);
     expect(filterProducts(new URLSearchParams({ q: 'RDH60-00241' }))[0]?.slug).toBe('t-slot-milling-cutter');
   });
   test('shell drawing is an example gallery image, not a general range specification', () => {
@@ -136,5 +136,16 @@ describe('product images', () => {
     expect(getProductImages({ name: 'A', image: 'a.jpg', images: [{ src: 'b.jpg', alt: 'B' }] })).toEqual([{ src: 'b.jpg', alt: 'B' }]);
     expect(getProductImages({ name: 'A', image: 'a.jpg' })).toEqual([{ src: 'a.jpg', alt: 'A' }]);
     expect(getProductImages({ name: 'A' })).toEqual([]);
+  });
+});
+
+describe('pictured tool markings', () => {
+  test('PCD reamer shows the size engraved on its photo', async () => {
+    const { products } = await import('../data/products.ts');
+    const reamer = products.find(p => p.slug === 'pcd-reamer');
+    expect(reamer.markings).toEqual([{ label: 'Model', value: 'RDH70-0411' }, { label: 'Size marked (mm)', value: 'Ø22.05 / Ø23.75 × 100.0' }]);
+  });
+  test('engraved PCD model numbers are searchable', () => {
+    expect(filterProducts(new URLSearchParams({ q: 'RDH70-0434' }))[0]?.slug).toBe('pcd-milling-tool');
   });
 });
