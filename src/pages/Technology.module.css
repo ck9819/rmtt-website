@@ -117,25 +117,26 @@
 /* Process */
 .processSection {
   background: var(--navy);
-  padding: 80px 0;
+  padding: 88px 0;
 }
 
 .processHead {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
 
 .processTitle {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
 }
 
 .processSub {
   font-size: 17px;
   color: var(--white);
-  max-width: 560px;
+  max-width: 620px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -143,23 +144,51 @@
 .processSteps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 20px;
   position: relative;
 }
 
-@media (max-width: 768px) {
-  .processSteps {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .processLine {
-    display: none;
-  }
+/* one continuous rail running behind the number circles */
+.processSteps::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.10) 0%,
+    rgba(255,255,255,0.30) 14%,
+    rgba(255,255,255,0.30) 86%,
+    rgba(255,255,255,0.10) 100%);
 }
 
 .processStep {
-  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
   position: relative;
+}
+
+.processStepTrack {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: none;
+}
+
+/* direction marker on the rail, between neighbouring circles */
+.processStep:not(:last-child) .processStepTrack::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: calc(100% + 10px);
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid rgba(255,255,255,0.62);
+  border-right: 2px solid rgba(255,255,255,0.62);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .processStepNum {
@@ -167,24 +196,38 @@
   height: 52px;
   border-radius: 50%;
   background: var(--white);
-  border: 2px solid var(--white);
   color: var(--navy);
   font-size: 16px;
   font-weight: 700;
+  letter-spacing: 0.02em;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.08);
+  transition: box-shadow 0.25s ease;
 }
 
-.processLine {
-  position: absolute;
-  top: 26px;
-  left: calc(50% + 24px);
-  right: calc(-50% + 24px);
-  height: 2px;
-  background: rgba(255,255,255,0.4);
-  z-index: 0;
+.processStepContent {
+  flex: 1;
+  margin-top: 22px;
+  padding: 20px 22px 22px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-md);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.processStep:hover .processStepContent,
+.processStep:focus-within .processStepContent {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.processStep:hover .processStepNum,
+.processStep:focus-within .processStepNum {
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.16);
 }
 
 .processStepTitle {
@@ -199,6 +242,35 @@
   font-size: 15px;
   color: var(--on-dark);
   line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .processSection { padding: 64px 0; }
+  .processHead { margin-bottom: 40px; }
+  .processSteps {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .processSteps::before { display: none; }
+  .processStep {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    column-gap: 16px;
+    padding-bottom: 26px;
+  }
+  .processStep:last-child { padding-bottom: 0; }
+  /* vertical rail joining the circles top to bottom */
+  .processStep:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 52px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.14));
+  }
+  .processStep:not(:last-child) .processStepTrack::after { display: none; }
+  .processStepContent { margin-top: 0; }
 }
 
 /* CTA */
@@ -253,4 +325,4 @@
 .pageHero :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
 @media (max-width: 600px) { .main { padding-top: 64px; } }
 
-.processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
+.processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); margin-left: auto; margin-right: auto; }
