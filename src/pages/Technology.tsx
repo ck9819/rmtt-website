@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import styles from './Technology.module.css';
+import ZoomImage from '../components/ZoomImage';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { equipment } from '../data/equipment';
 
@@ -31,7 +32,7 @@ export default function Technology() {
             {equipment.map((m, i) => (
               <article key={m.num} className={`${styles.machineCard} ${i % 2 === 1 ? styles.machineCardAlt : ''}`}>
                 <div className={styles.machineImg}>
-                  <PhotoPlaceholder icon={m.icon} />
+                  {m.image ? <ZoomImage src={m.image} alt={m.imageAlt} width={1000} height={700} /> : <PhotoPlaceholder icon={m.icon} />}
                 </div>
                 <div className={styles.machineBody}>
                   <div className={styles.machineNum}>{m.num}</div>

@@ -1,9 +1,14 @@
+import saackeImg from '../assets/equip-saacke.webp.asset.json';
+import vollmerImg from '../assets/equip-vollmer.webp.asset.json';
+import walterImg from '../assets/equip-walter.webp.asset.json';
 import { Microscope, Cpu, Sparkles, Eye } from 'lucide-react';
 
 export const equipment = [
   {
     num: '01',
     id: 'saacke',
+    image: saackeImg.url as string | undefined,
+    imageAlt: 'SAACKE UW II and UW ID O tool grinding machines',
     homeFeatured: true,
     facilityEquipment: true,
     shortName: "SAACKE UW II & UW ID O",
@@ -20,6 +25,8 @@ export const equipment = [
   {
     num: '02',
     id: 'vollmer',
+    image: vollmerImg.url as string | undefined,
+    imageAlt: 'VOLLMER QWD wire EDM machine',
     homeFeatured: true,
     facilityEquipment: true,
     shortName: "VOLLMER QWD Wire EDM",
@@ -36,6 +43,8 @@ export const equipment = [
   {
     num: '03',
     id: 'helicheck',
+    image: walterImg.url as string | undefined,
+    imageAlt: 'WALTER HELICHECK PRO measuring machine',
     homeFeatured: true,
     facilityEquipment: true,
     shortName: "WALTER HELICHECK PRO",
@@ -52,6 +61,8 @@ export const equipment = [
   {
     num: '04',
     id: 'coating',
+    image: undefined as string | undefined,
+    imageAlt: '',
     homeFeatured: false,
     facilityEquipment: false,
     icon: Microscope,
