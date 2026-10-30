@@ -6,6 +6,7 @@ import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
+import EquipmentCarousel from '../components/EquipmentCarousel';
 import { industries } from '../data/industries';
 import ZoomImage from '../components/ZoomImage';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
@@ -222,15 +223,7 @@ export default function Home() {
               ref={techRightReveal.ref}
               className={`${styles.techRight} ${styles.revealStagger} ${techRightReveal.shown ? styles.revealStaggerShown : ''}`}
             >
-              {homeEquipment.map(m => (
-                <div key={m.num} className={styles.techCard}>
-                  <div className={styles.techCardNum}>{m.num}</div>
-                  <div className={styles.techCardBody}>
-                    <div className={styles.techCardName}>{m.shortName}</div>
-                    <div className={styles.techCardDetail}>{m.summary}</div>
-                  </div>
-                </div>
-              ))}
+              <EquipmentCarousel items={homeEquipment} />
             </div>
           </div>
         </div>
