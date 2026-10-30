@@ -138,3 +138,14 @@ describe('product images', () => {
     expect(getProductImages({ name: 'A' })).toEqual([]);
   });
 });
+
+describe('pictured tool markings', () => {
+  test('PCD reamer shows the size engraved on its photo', async () => {
+    const { products } = await import('../data/products.ts');
+    const reamer = products.find(p => p.slug === 'pcd-reamer');
+    expect(reamer.markings).toEqual([{ label: 'Model', value: 'RDH70-0411' }, { label: 'Size marked (mm)', value: 'Ø22.05 / Ø23.75 × 100.0' }]);
+  });
+  test('engraved PCD model numbers are searchable', () => {
+    expect(filterProducts(new URLSearchParams({ q: 'RDH70-0434' }))[0]?.slug).toBe('pcd-milling-tool');
+  });
+});
