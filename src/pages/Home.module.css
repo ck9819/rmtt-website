@@ -196,7 +196,7 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 64px;
-  align-items: start;
+  align-items: center;
 }
 
 @media (max-width: 900px) {
@@ -265,11 +265,7 @@
   transform: translateY(-1px);
 }
 
-.techRight {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+.techRight { min-width: 0; }
 
 .techCard {
   background: var(--white);

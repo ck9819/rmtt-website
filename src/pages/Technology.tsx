@@ -36,7 +36,6 @@ export default function Technology() {
                   </div>
                 )}
                 <div className={styles.machineBody}>
-                  <div className={styles.machineNum}>{m.num}</div>
                   <h2 className={styles.machineName}>{m.name}</h2>
                   <p className={styles.machineDetail}>{m.detail}</p>
                   {m.uses && (
