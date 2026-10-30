@@ -41,7 +41,7 @@
   border-bottom: 1px solid var(--border-light);
   overflow: hidden;
   display: flex;
-  background: var(--white, #fff);
+  background: var(--white);
 }
 
 .machineCard:last-child {
